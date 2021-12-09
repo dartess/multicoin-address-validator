@@ -645,6 +645,7 @@ describe('WAValidator.validate()', function () {
             await valid('cro1mwdzawjd27uku0cqf8zngxfcycd292u353xe7v', 'cro');
             await valid('tcro1mz5rdtf9wufwkh8te2zww7twtmna6rhl2qlhlc', 'cro', 'testnet');
             await valid('tcro1mz5rdtf9wufwkh8te2zww7twtmna6rhl2qlhlc', 'cro', 'testnet');
+            await valid('tcro1mz5rdtf9wufwkh8te2zww7twtmna6rhl2qlhlc', 'cro', 'some-new');
 
             await invalid('bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4', 'cro');
             await invalid('cro1mwdzawjd27uku0cqf8zngxfcycd292u353xe77', 'cro');
@@ -837,6 +838,12 @@ describe('WAValidator.validate()', function () {
 
     describe('invalid results', function () {
         async function commonTests(currency) {
+            await invalid(undefined, currency); // wrong type: undefined
+            await invalid(null, currency); // wrong type: null
+            await invalid(true, currency); // wrong type: boolean
+            await invalid(42, currency); // wrong type: number
+            await invalid([42], currency); // wrong type: array
+            await invalid({ foo: 'bar' }, currency); // wrong type: object
             await invalid('', currency); //reject blank
             await invalid('%%@', currency); //reject invalid base58 string
             await invalid('1A1zP1ePQGefi2DMPTifTL5SLmv7DivfNa', currency); //reject invalid address
@@ -1147,6 +1154,7 @@ describe('WAValidator.validate()', function () {
             await invalid('pzuefrpg3kl2ykqe52rxn96pd3kp4qudywr5py', 'bsv');
             await invalid('rlt2c2wuxr644encp3as0hygtj9djrsaumku3cex5', 'bsv');
             await invalid('qra607y4wnkmnpy3wcmrxmltzkrxywcq85c7watpdx09', 'bsv');
+            await invalid('bitcoincash:qrwkk9a3es2wu7mdvzh0VEKFVJUZYSQ8TV7R3HCWR5', 'bsv');
         });
 
         it('should return false for incorrect stellar addresses', async function () {
@@ -1183,6 +1191,7 @@ describe('WAValidator.validate()', function () {
         });
 
         it('should return false for incorrect solana addresses', async function () {
+            await commonTests('sol');
             await invalid('833XQoXTx05iya53Tr6iqEs9GbRuvVfwyLCP2vpdzhq', 'solana');
             await invalid('833XorXTTx5iya5B3Tr6iqEs9GbRuvVfwyLCP2vpdz', 'solana');
             await invalid('bc1qwqdg6squsna38e46795at95yu9atm8azzmyvckulcc7kytlcckxswvvzej', 'sol');

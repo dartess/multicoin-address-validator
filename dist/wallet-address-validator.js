@@ -8371,8 +8371,11 @@ const base58 = require('./crypto/base58');
 // simple base58 validator.  Just checks if it can be decoded.
 module.exports = {
     isValidAddress: function (address, currency, opts = {}) {
+        if (typeof address !== 'string') {
+            return false;
+        }
         try {
-            if (!address || address.length == 0) {
+            if (!address) {
                 return false;
             }
 
@@ -8385,14 +8388,11 @@ module.exports = {
             }
             try {
                 const decoded = base58.decode(address);
-                if (!decoded || !decoded.length) {
-                    return false;
-                }
+                return decoded.length > 0;
             } catch (e) {
                 // if decoding fails, assume invalid address
                 return false;
             }
-            return true;
         } catch (e) {
             return false;
         }
@@ -8445,6 +8445,9 @@ function validateAddress(address, currency, opts) {
 
 module.exports = {
     isValidAddress: function (address, currency, networkType) {
+        if (typeof address !== 'string') {
+            return false;
+        }
         return validateAddress(address, currency, networkType) || BTCValidator.isValidAddress(address, currency, networkType);
     }
 }
@@ -8455,6 +8458,9 @@ var bech32 = require('./crypto/bech32');
 // bip 173 bech 32 addresses (https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)
 module.exports = {
     isValidAddress: function (address, currency, opts = {}) {
+        if (typeof address !== 'string') {
+            return false;
+        }
         const { networkType = 'prod' } = opts;
         const decoded = bech32.decode(address, bech32.encodings.BECH32);
         if (!decoded) {
@@ -8462,14 +8468,9 @@ module.exports = {
         }
 
         const bech32Hrp = decoded.hrp;
-        let correctBech32Hrps;
-        if (networkType === 'prod' || networkType === 'testnet') {
-            correctBech32Hrps = currency.bech32Hrp[networkType];
-        } else if (currency.bech32Hrp) {
-            correctBech32Hrps = currency.bech32Hrp.prod.concat(currency.bech32Hrp.testnet)
-        } else {
-            return false;
-        }
+        const correctBech32Hrps = networkType === 'prod' || networkType === 'testnet'
+            ? currency.bech32Hrp[networkType]
+            : currency.bech32Hrp.prod.concat(currency.bech32Hrp.testnet);
 
         if (correctBech32Hrps.indexOf(bech32Hrp) === -1) {
             return false;
@@ -8514,7 +8515,6 @@ function getChecksum(hashFunction, payload) {
 }
 
 function getAddressType(address, currency) {
-    currency = currency || {};
     // should be 25 bytes per btc address spec and 26 decred
     var expectedLength = currency.expectedLength || 25;
     var hashFunction = currency.hashFunction || 'sha256';
@@ -8533,9 +8533,9 @@ function getAddressType(address, currency) {
             }
         }
 
-        var checksum = cryptoUtils.toHex(decoded.slice(length - 4, length)),
-            body = cryptoUtils.toHex(decoded.slice(0, length - 4)),
-            goodChecksum = getChecksum(hashFunction, body);
+        const checksum = cryptoUtils.toHex(decoded.slice(length - 4, length));
+        const body = cryptoUtils.toHex(decoded.slice(0, length - 4));
+        const goodChecksum = getChecksum(hashFunction, body);
 
         return checksum === goodChecksum ? cryptoUtils.toHex(decoded.slice(0, expectedLength - 24)) : null;
     }
@@ -8550,13 +8550,9 @@ function isValidP2PKHandP2SHAddress(address, currency, opts) {
     var addressType = getAddressType(address, currency);
 
     if (addressType) {
-        if (networkType === 'prod' || networkType === 'testnet') {
-            correctAddressTypes = currency.addressTypes[networkType]
-        } else if (currency.addressTypes) {
-            correctAddressTypes = currency.addressTypes.prod.concat(currency.addressTypes.testnet);
-        } else {
-            return false;
-        }
+        correctAddressTypes = networkType === 'prod' || networkType === 'testnet'
+            ? currency.addressTypes[networkType]
+            : currency.addressTypes.prod.concat(currency.addressTypes.testnet);
 
         return correctAddressTypes.indexOf(addressType) >= 0;
     }
@@ -8566,6 +8562,9 @@ function isValidP2PKHandP2SHAddress(address, currency, opts) {
 
 module.exports = {
     isValidAddress: function (address, currency, opts = {}) {
+        if (typeof address !== 'string') {
+            return false;
+        }
         return isValidP2PKHandP2SHAddress(address, currency, opts) || segwit.isValidAddress(address, currency, opts);
     }
 };
@@ -12565,6 +12564,9 @@ function isValidEOSAddress (address, currency, networkType) {
 
 module.exports = {
   isValidAddress: function (address, currency, networkType) {
+    if (typeof address !== 'string') {
+      return false;
+    }
     return isValidEOSAddress(address, currency, networkType)
   }
 }
@@ -12734,7 +12736,10 @@ var cryptoUtils = require('./crypto/utils');
 * @return {boolean} - True if address is valid, false otherwise
 */
 var isValidAddress = function(_address) {
-    var address = _address.toString().toUpperCase().replace(/-/g, '');
+    if (typeof _address !== 'string') {
+        return false;
+    }
+    var address = _address.toUpperCase().replace(/-/g, '');
     if (!address || address.length !== 40) {
         return false;
     }
@@ -12783,16 +12788,11 @@ module.exports = {
 var cryptoUtils = require('./crypto/utils')
 var isEqual = require('lodash.isequal')
 
-function hexToBytes(hex) {
-  var bytes = []
-  for (var c = 0; c < hex.length; c += 2) {
-    bytes.push(parseInt(hex.substr(c, 2), 16))
-  }
-  return bytes
-}
-
 module.exports = {
   isValidAddress: function(address) {
+    if (typeof address !== 'string') {
+      return false;
+    }
     if (address.length !== 76) {
       // Check if it has the basic requirements of an address
       return false

@@ -8,7 +8,10 @@ var cryptoUtils = require('./crypto/utils');
 * @return {boolean} - True if address is valid, false otherwise
 */
 var isValidAddress = function(_address) {
-    var address = _address.toString().toUpperCase().replace(/-/g, '');
+    if (typeof _address !== 'string') {
+        return false;
+    }
+    var address = _address.toUpperCase().replace(/-/g, '');
     if (!address || address.length !== 40) {
         return false;
     }

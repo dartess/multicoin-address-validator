@@ -31,7 +31,6 @@ function getChecksum(hashFunction, payload) {
 }
 
 function getAddressType(address, currency) {
-    currency = currency || {};
     // should be 25 bytes per btc address spec and 26 decred
     var expectedLength = currency.expectedLength || 25;
     var hashFunction = currency.hashFunction || 'sha256';
@@ -50,9 +49,9 @@ function getAddressType(address, currency) {
             }
         }
 
-        var checksum = cryptoUtils.toHex(decoded.slice(length - 4, length)),
-            body = cryptoUtils.toHex(decoded.slice(0, length - 4)),
-            goodChecksum = getChecksum(hashFunction, body);
+        const checksum = cryptoUtils.toHex(decoded.slice(length - 4, length));
+        const body = cryptoUtils.toHex(decoded.slice(0, length - 4));
+        const goodChecksum = getChecksum(hashFunction, body);
 
         return checksum === goodChecksum ? cryptoUtils.toHex(decoded.slice(0, expectedLength - 24)) : null;
     }
@@ -67,13 +66,9 @@ function isValidP2PKHandP2SHAddress(address, currency, opts) {
     var addressType = getAddressType(address, currency);
 
     if (addressType) {
-        if (networkType === 'prod' || networkType === 'testnet') {
-            correctAddressTypes = currency.addressTypes[networkType]
-        } else if (currency.addressTypes) {
-            correctAddressTypes = currency.addressTypes.prod.concat(currency.addressTypes.testnet);
-        } else {
-            return false;
-        }
+        correctAddressTypes = networkType === 'prod' || networkType === 'testnet'
+            ? currency.addressTypes[networkType]
+            : currency.addressTypes.prod.concat(currency.addressTypes.testnet);
 
         return correctAddressTypes.indexOf(addressType) >= 0;
     }
@@ -83,6 +78,9 @@ function isValidP2PKHandP2SHAddress(address, currency, opts) {
 
 module.exports = {
     isValidAddress: function (address, currency, opts = {}) {
+        if (typeof address !== 'string') {
+            return false;
+        }
         return isValidP2PKHandP2SHAddress(address, currency, opts) || segwit.isValidAddress(address, currency, opts);
     }
 };

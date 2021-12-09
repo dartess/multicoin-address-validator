@@ -1,16 +1,11 @@
 var cryptoUtils = require('./crypto/utils')
 var isEqual = require('lodash.isequal')
 
-function hexToBytes(hex) {
-  var bytes = []
-  for (var c = 0; c < hex.length; c += 2) {
-    bytes.push(parseInt(hex.substr(c, 2), 16))
-  }
-  return bytes
-}
-
 module.exports = {
   isValidAddress: function(address) {
+    if (typeof address !== 'string') {
+      return false;
+    }
     if (address.length !== 76) {
       // Check if it has the basic requirements of an address
       return false

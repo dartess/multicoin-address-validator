@@ -43,6 +43,9 @@ function validateAddress(address, currency, opts) {
 
 module.exports = {
     isValidAddress: function (address, currency, networkType) {
+        if (typeof address !== 'string') {
+            return false;
+        }
         return validateAddress(address, currency, networkType) || BTCValidator.isValidAddress(address, currency, networkType);
     }
 }

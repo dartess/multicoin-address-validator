@@ -9,6 +9,9 @@ function isValidEOSAddress (address, currency, networkType) {
 
 module.exports = {
   isValidAddress: function (address, currency, networkType) {
+    if (typeof address !== 'string') {
+      return false;
+    }
     return isValidEOSAddress(address, currency, networkType)
   }
 }

@@ -5,10 +5,8 @@ var ADAValidator = require('./ada_validator');
 var XMRValidator = require('./monero_validator');
 var NANOValidator = require('./nano_validator');
 var SCValidator = require('./siacoin_validator');
-var TRXValidator = require('./tron_validator');
 var NEMValidator = require('./nem_validator');
 var LSKValidator = require('./lisk_validator');
-var BCHValidator = require('./bch_validator');
 var XLMValidator = require('./stellar_validator');
 var EOSValidator = require('./eos_validator');
 var XTZValidator = require('./tezos_validator');
@@ -17,6 +15,9 @@ var AlgoValidator = require('./algo_validator');
 var DotValidator = require('./dot_validator');
 var BIP173Validator = require('./bip173_validator')
 var Base58Validator = require('./base58_validator')
+const {bch} = require("./currencies/bch");
+const {bsv} = require("./currencies/bsv");
+const {trx} = require("./currencies/trx");
 
 // defines P2PKH and P2SH address types for standard (prod) and testnet networks
 var CURRENCIES = [
@@ -27,20 +28,8 @@ var CURRENCIES = [
         bech32Hrp: {prod: ['bc'], testnet: ['tb']},
         validator: BTCValidator
     },
-    {
-        name: 'BitcoinCash',
-        symbol: 'bch',
-        regexp: '^[qQpP]{1}[0-9a-zA-Z]{41}$',
-        addressTypes: {prod: ['00', '05'], testnet: ['6f', 'c4']},
-        validator: BCHValidator
-    },
-    {
-        name: 'Bitcoin SV',
-        symbol: 'bsv',
-        regexp: '^[qQ]{1}[0-9a-zA-Z]{41}$',
-        addressTypes: {prod: ['00', '05'], testnet: ['6f', 'c4']},
-        validator: BCHValidator
-    },
+    bch,
+    bsv,
     {
         name: 'LiteCoin',
         symbol: 'ltc',
@@ -483,12 +472,7 @@ var CURRENCIES = [
         addressTypes: {prod: ['55'], testnet: []},
         validator: BTCValidator
     },
-    {
-        name: 'Tron',
-        symbol: 'trx',
-        addressTypes: {prod: [0x41], testnet: [0xa0]},
-        validator: TRXValidator
-    },
+    trx,
     {
         name: 'Nem',
         symbol: 'xem',

@@ -1,3 +1,4 @@
+const { Buffer } = require('buffer');
 var jsSHA = require('jssha');
 var sha512256 = require('js-sha512').sha512_256
 var Blake256 = require('./blake256');
@@ -5,7 +6,7 @@ var keccak256 = require('./sha3')['keccak256'];
 var Blake2B = require('./blake2b');
 var base58 = require('./base58');
 var base32 = require('./base32');
-var BigNum = require('browserify-bignum');
+var BigNum = require('./bignum');
 
 function numberToHex(number, length) {
     var hex = number.toString(16);

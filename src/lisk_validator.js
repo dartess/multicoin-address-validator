@@ -1,3 +1,5 @@
+const { Buffer } = require('buffer');
+
 var cryptoUtils = require('./crypto/utils');
 
 var regexp = new RegExp('^[0-9]{1,20}L$');

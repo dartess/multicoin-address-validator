@@ -1,4 +1,4 @@
-'use strict';
+const { Buffer } = require('buffer');
 
 /**
  * Credits to https://github.com/cryptocoinjs/blake-hash

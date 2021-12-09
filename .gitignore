@@ -3,3 +3,6 @@ bower_components
 .idea
 .vscode
 .DS_Store
+
+# tmp
+lib/

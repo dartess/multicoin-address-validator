@@ -7,7 +7,6 @@
  * @license MIT
  */
 /*jslint bitwise: true */
-'use strict';
 
 var ERROR = 'input is invalid type';
 var WINDOW = typeof window === 'object';

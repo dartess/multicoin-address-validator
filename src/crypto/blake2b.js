@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Credits to https://github.com/emilbayes/blake2b
  *

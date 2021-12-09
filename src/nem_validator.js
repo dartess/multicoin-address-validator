@@ -1,3 +1,4 @@
+const { Buffer } = require('buffer');
 var cryptoUtils = require('./crypto/utils');
 
  /**

@@ -21,7 +21,7 @@ const isValid = async (address, currency, networkType) => {
 
 async function valid(address, currency, networkType) {
     const valid = await isValid(address, currency, networkType);
-    expect({ address, currency, valid }).toEqual({ address, currency, valid: true });
+    expect({ address, currency, valid, networkType }).toEqual({ address, currency, networkType, valid: true });
 }
 
 async function invalid(address, currency, networkType) {

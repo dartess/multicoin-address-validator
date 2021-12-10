@@ -1,0 +1,25 @@
+import { TRXValidator } from '../tron_validator';
+
+type Validator = Parameters<typeof TRXValidator.isValidAddress>;
+
+const trxCurrency = {
+    name: 'Tron',
+    symbol: 'trx',
+    addressTypes: { prod: [0x41], testnet: [0xa0] },
+} as const;
+
+const trxValidate = (
+    address: Validator[0],
+    opts: Validator[2],
+) => TRXValidator.isValidAddress(address, trxCurrency, opts);
+
+const trx = {
+    ...trxCurrency,
+    validate: trxValidate,
+};
+
+export {
+    trxCurrency,
+    trxValidate,
+    trx,
+};

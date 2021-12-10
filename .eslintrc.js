@@ -19,7 +19,7 @@ module.exports = {
     '@typescript-eslint/naming-convention': 'off',
     '@typescript-eslint/indent': ['error', 4],
     'import/prefer-default-export': 'off',
-    'max-len': ['error', 100, 2, {
+    'max-len': ['error', 120, 2, {
       ignoreUrls: true,
       ignoreComments: false,
       ignoreRegExpLiterals: true,

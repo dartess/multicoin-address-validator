@@ -1,6 +1,7 @@
 var baseX = require('base-x');
 var crc = require('crc');
-var cryptoUtils = require('./crypto/utils');
+var {numberToHex} = require('./utils/numberToHex');
+var {toHex} = require('./utils/toHex');
 
 var ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 
@@ -30,8 +31,8 @@ module.exports = {
             return false;
         }
 
-        var computedChecksum = cryptoUtils.numberToHex(swap16(crc.crc16xmodem(bytes.slice(0, -2))), 4);
-        var checksum = cryptoUtils.toHex(bytes.slice(-2));
+        var computedChecksum = numberToHex(swap16(crc.crc16xmodem(bytes.slice(0, -2))), 4);
+        var checksum = toHex(bytes.slice(-2));
 
         return computedChecksum === checksum
     }

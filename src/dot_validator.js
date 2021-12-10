@@ -1,4 +1,6 @@
-const cryptoUtils = require('./crypto/utils');
+const {byteArray2hexStr} = require("./utils/byteArray2hexStr");
+const {blake2b} = require("./utils/blake2b");
+const {base58Decode} = require("./utils/base58Decode");
 
 // from https://github.com/paritytech/substrate/wiki/External-Address-Format-(SS58)
 const addressFormats = [
@@ -32,8 +34,8 @@ module.exports = {
         try {
             const preImage = '53533538505245'
 
-            const decoded = cryptoUtils.base58(address);
-            const addressType = cryptoUtils.byteArray2hexStr(decoded.slice(0, 1));
+            const decoded = base58Decode(address);
+            const addressType = byteArray2hexStr(decoded.slice(0, 1));
             const addressAndChecksum = decoded.slice(1)
 
             // get the address format
@@ -43,11 +45,10 @@ module.exports = {
                 throw new Erorr('Invalid address length');
             }
 
-            const decodedAddress = cryptoUtils.byteArray2hexStr(addressAndChecksum.slice(0, addressFormat.accountIndexLength));
-            const checksum = cryptoUtils.byteArray2hexStr(addressAndChecksum.slice(-addressFormat.checkSumLength));
+            const decodedAddress = byteArray2hexStr(addressAndChecksum.slice(0, addressFormat.accountIndexLength));
+            const checksum = byteArray2hexStr(addressAndChecksum.slice(-addressFormat.checkSumLength));
 
-            const calculatedHash = cryptoUtils
-                .blake2b(preImage + addressType + decodedAddress, 64)
+            const calculatedHash = blake2b(preImage + addressType + decodedAddress, 64)
                 .substr(0, addressFormat.checkSumLength * 2)
                 .toUpperCase();
 

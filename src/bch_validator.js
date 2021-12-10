@@ -1,4 +1,4 @@
-var cryptoUtils = require('./crypto/utils');
+const {base32Decode} = require("./utils/base32");
 var bech32 = require('./crypto/bech32');
 var BTCValidator = require('./bitcoin_validator');
 
@@ -26,7 +26,7 @@ function validateAddress(address, currency, opts) {
         return false;
     }
 
-    var decoded = cryptoUtils.base32.b32decode(raw_address);
+    var decoded = base32Decode(raw_address);
     if (networkType === 'testnet') {
         prefix = 'bchtest';
     }

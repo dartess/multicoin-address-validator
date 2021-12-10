@@ -1,5 +1,6 @@
-var cryptoUtils = require('./crypto/utils');
 var baseX = require('base-x');
+const {toHex} = require("./utils/toHex");
+const {blake2b} = require("./utils/blake2b");
 
 var ALLOWED_CHARS = '13456789abcdefghijkmnopqrstuwxyz';
 
@@ -19,8 +20,8 @@ module.exports = {
     verifyChecksum: function (address) {
         var bytes = codec.decode(regexp.exec(address)[2]).slice(-37);
         // https://github.com/nanocurrency/raiblocks/blob/master/rai/lib/numbers.cpp#L73
-        var computedChecksum = cryptoUtils.blake2b(cryptoUtils.toHex(bytes.slice(0, -5)), 5);
-        var checksum = cryptoUtils.toHex(bytes.slice(-5).reverse());
+        var computedChecksum = blake2b(toHex(bytes.slice(0, -5)), 5);
+        var checksum = toHex(bytes.slice(-5).reverse());
 
         return computedChecksum === checksum
     }

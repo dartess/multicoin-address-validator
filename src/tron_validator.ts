@@ -1,9 +1,11 @@
 import { Address, OptsNetworkTypeOptional } from './types';
+import { sha256 } from './utils/sha256';
+import { base58Decode } from './utils/base58Decode';
+import { byteArray2hexStr } from './utils/byteArray2hexStr';
+import { hexStr2byteArray } from './utils/hexStr2byteArray';
 
 type Currency = typeof import('./currencies/trx').trxCurrency;
 type CurrencyAddressType = keyof Currency['addressTypes'];
-
-const cryptoUtils = require('./crypto/utils');
 
 function decodeBase58Address(base58Sting: string) {
     if (typeof (base58Sting) !== 'string') {
@@ -15,7 +17,7 @@ function decodeBase58Address(base58Sting: string) {
 
     let address: Array<number>;
     try {
-        address = cryptoUtils.base58(base58Sting);
+        address = base58Decode(base58Sting);
     } catch (e) {
         return false;
     }
@@ -24,8 +26,8 @@ function decodeBase58Address(base58Sting: string) {
     const offset = len - 4;
     const checkSum = address.slice(offset);
     address = address.slice(0, offset);
-    const hash0 = cryptoUtils.sha256(cryptoUtils.byteArray2hexStr(address));
-    const hash1 = cryptoUtils.hexStr2byteArray(cryptoUtils.sha256(hash0));
+    const hash0 = sha256(byteArray2hexStr(address));
+    const hash1 = hexStr2byteArray(sha256(hash0));
     const checkSum1 = hash1.slice(0, 4);
     if (checkSum[0] === checkSum1[0] && checkSum[1] === checkSum1[1] && checkSum[2]
         === checkSum1[2] && checkSum[3] === checkSum1[3]

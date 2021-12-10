@@ -1,5 +1,5 @@
-var cryptoUtils = require('./crypto/utils')
 var isEqual = require('lodash.isequal')
+const {blake2b} = require("./utils/blake2b");
 
 module.exports = {
   isValidAddress: function(address) {
@@ -17,7 +17,7 @@ module.exports = {
   verifyChecksum: function(address) {
     var checksumBytes = address.slice(0, 32*2)
     var check = address.slice(32*2, 38*2)
-    var blakeHash = cryptoUtils.blake2b(checksumBytes, 32).slice(0, 6*2)
+    var blakeHash = blake2b(checksumBytes, 32).slice(0, 6*2)
     return !!isEqual(blakeHash, check)
   }
 }

@@ -1,5 +1,5 @@
-var cryptoUtils = require('./crypto/utils')
 var cnBase58 = require('./crypto/cnBase58')
+const {keccak256Checksum} = require("./utils/keccak256Checksum");
 
 var DEFAULT_NETWORK_TYPE = 'prod'
 var addressRegTest = new RegExp(
@@ -57,7 +57,7 @@ module.exports = {
     if (!validateNetwork(decodedAddrStr, currency, networkType, addressType)) return false
 
     var addrChecksum = decodedAddrStr.slice(-8)
-    var hashChecksum = cryptoUtils.keccak256Checksum(hextobin(decodedAddrStr.slice(0, -8)))
+    var hashChecksum = keccak256Checksum(hextobin(decodedAddrStr.slice(0, -8)))
 
     return addrChecksum === hashChecksum
   }

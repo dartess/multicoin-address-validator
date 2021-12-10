@@ -1,4 +1,4 @@
-const base58 = require('./crypto/base58');
+const {base58Decode} = require("./utils/base58Decode");
 
 // simple base58 validator.  Just checks if it can be decoded.
 module.exports = {
@@ -19,7 +19,7 @@ module.exports = {
                 return false;
             }
             try {
-                const decoded = base58.decode(address);
+                const decoded = base58Decode(address);
                 return decoded.length > 0;
             } catch (e) {
                 // if decoding fails, assume invalid address

@@ -1,4 +1,4 @@
-var cryptoUtils = require('./crypto/utils');
+const {keccak256} = require("./utils/keccak256");
 
 module.exports = {
     isValidAddress: function (address) {
@@ -19,7 +19,7 @@ module.exports = {
         // Check each case
         address = address.replace('0x','');
 
-        var addressHash = cryptoUtils.keccak256(address.toLowerCase());
+        var addressHash = keccak256(address.toLowerCase());
 
         for (var i = 0; i < 40; i++ ) {
             // The nth letter should be uppercase if the nth digit of casemap is 1

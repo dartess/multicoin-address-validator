@@ -1,14 +1,18 @@
 const { Buffer } = require('buffer');
 
-var base58 = require('./crypto/base58');
 var segwit = require('./crypto/segwit_addr');
-var cryptoUtils = require('./crypto/utils');
+const {toHex} = require("./utils/toHex");
+const {sha256Checksum} = require("./utils/sha256Checksum");
+const {blake256Checksum} = require("./utils/blake256Checksum");
+const {blake2b256} = require("./utils/blake2b256");
+const {keccak256Checksum} = require("./utils/keccak256Checksum");
+const {base58Decode} = require("./utils/base58Decode");
 
 var DEFAULT_NETWORK_TYPE = 'prod';
 
 function getDecoded(address) {
     try {
-        return base58.decode(address);
+        return base58Decode(address);
     } catch (e) {
         // if decoding fails, assume invalid address
         return null;
@@ -20,15 +24,15 @@ function getChecksum(hashFunction, payload) {
     switch (hashFunction) {
         // blake then keccak hash chain
         case 'blake256keccak256':
-            var blake = cryptoUtils.blake2b256(payload);
-            return cryptoUtils.keccak256Checksum(Buffer.from(blake, 'hex'));
+            var blake = blake2b256(payload);
+            return keccak256Checksum(Buffer.from(blake, 'hex'));
         case 'blake256':
-            return cryptoUtils.blake256Checksum(payload);
+            return blake256Checksum(payload);
         case 'keccak256':
-            return cryptoUtils.keccak256Checksum(payload);
+            return keccak256Checksum(payload);
         case 'sha256':
         default:
-            return cryptoUtils.sha256Checksum(payload);
+            return sha256Checksum(payload);
     }
 }
 
@@ -51,11 +55,11 @@ function getAddressType(address, currency) {
             }
         }
 
-        const checksum = cryptoUtils.toHex(decoded.slice(length - 4, length));
-        const body = cryptoUtils.toHex(decoded.slice(0, length - 4));
+        const checksum = toHex(decoded.slice(length - 4, length));
+        const body = toHex(decoded.slice(0, length - 4));
         const goodChecksum = getChecksum(hashFunction, body);
 
-        return checksum === goodChecksum ? cryptoUtils.toHex(decoded.slice(0, expectedLength - 24)) : null;
+        return checksum === goodChecksum ? toHex(decoded.slice(0, expectedLength - 24)) : null;
     }
 
     return null;

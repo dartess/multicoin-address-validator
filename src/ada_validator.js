@@ -1,11 +1,11 @@
 var cbor = require('cbor-js');
 var CRC = require('crc');
-var base58 = require('./crypto/base58');
 var BIP173Validator = require('./bip173_validator')
+const {base58Decode} = require("./utils/base58Decode");
 
 function getDecoded(address) {
     try {
-        var decoded = base58.decode(address);
+        var decoded = base58Decode(address);
         return cbor.decode(new Uint8Array(decoded).buffer);
     } catch (e) {
         // if decoding fails, assume invalid address

@@ -1,5 +1,7 @@
 const { Buffer } = require('buffer');
-var cryptoUtils = require('./crypto/utils');
+const {base32Decode} = require("./utils/base32");
+const {toHex} = require("./utils/toHex");
+const {keccak256Checksum} = require("./utils/keccak256Checksum");
 
  /**
 * Check if an address is valid
@@ -16,8 +18,8 @@ var isValidAddress = function(_address) {
     if (!address || address.length !== 40) {
         return false;
     }
-    var decoded = cryptoUtils.toHex(cryptoUtils.base32.b32decode(address));
-    var stepThreeChecksum = cryptoUtils.keccak256Checksum(Buffer.from(decoded.slice(0, 42), 'hex'));
+    var decoded = toHex(base32Decode(address));
+    var stepThreeChecksum = keccak256Checksum(Buffer.from(decoded.slice(0, 42), 'hex'));
 
     return stepThreeChecksum === decoded.slice(42);
 };

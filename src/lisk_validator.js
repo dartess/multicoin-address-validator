@@ -1,6 +1,6 @@
 const { Buffer } = require('buffer');
 
-var cryptoUtils = require('./crypto/utils');
+const {bigNumberToBuffer} = require("./utils/bigNumberToBuffer");
 
 var regexp = new RegExp('^[0-9]{1,20}L$');
 
@@ -15,7 +15,7 @@ module.exports = {
     verifyAddress: function(address) {
         var BUFFER_SIZE = 8;
         var bigNumber = address.substring(0, address.length - 1);
-        var addressBuffer = cryptoUtils.bigNumberToBuffer(bigNumber);
+        var addressBuffer = bigNumberToBuffer(bigNumber);
         return Buffer.from(addressBuffer).slice(0, BUFFER_SIZE).equals(addressBuffer);
     }
 };

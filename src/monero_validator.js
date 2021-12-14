@@ -1,4 +1,4 @@
-var cnBase58 = require('./crypto/cnBase58')
+const {cnBase58Decode} = require('./crypto/cnBase58')
 const {keccak256Checksum} = require("./utils/keccak256Checksum");
 
 var DEFAULT_NETWORK_TYPE = 'prod'
@@ -51,7 +51,7 @@ module.exports = {
       }
     }
 
-    var decodedAddrStr = cnBase58.decode(address)
+    var decodedAddrStr = cnBase58Decode(address)
     if (!decodedAddrStr) return false
 
     if (!validateNetwork(decodedAddrStr, currency, networkType, addressType)) return false

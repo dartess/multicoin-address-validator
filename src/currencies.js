@@ -9,7 +9,7 @@ var LSKValidator = require('./lisk_validator');
 var XLMValidator = require('./stellar_validator');
 var EOSValidator = require('./eos_validator');
 var XTZValidator = require('./tezos_validator');
-var USDTValidator = require('./usdt_validator');
+const {usdtCurrency, usdtValidate} = require("./currencies/usdt");
 const {algoCurrency, algoValidate} = require("./currencies/algo");
 const {dotCurrency, dotValidate} = require("./currencies/dot");
 const {croCurrency, croValidate} = require("./currencies/cro");
@@ -224,10 +224,8 @@ var CURRENCIES = [
         validator: BTCValidator
     },
     {
-        name: 'Tether',
-        symbol: 'usdt',
-        addressTypes: {prod: ['00', '05'], testnet: ['6f', 'c4']},
-        validator: USDTValidator
+        ...usdtCurrency,
+        validate: usdtValidate,
     },
     {
         ...xrpCurrency,

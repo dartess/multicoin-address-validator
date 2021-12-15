@@ -5,7 +5,7 @@ var XMRValidator = require('./monero_validator');
 var NANOValidator = require('./nano_validator');
 var SCValidator = require('./siacoin_validator');
 var NEMValidator = require('./nem_validator');
-var LSKValidator = require('./lisk_validator');
+const {lskCurrency, lskValidate} = require("./currencies/lsk");
 const {xlmCurrency, xlmValidate} = require("./currencies/xlm");
 const {eosCurrency, eosValidate} = require("./currencies/eos");
 const {xtzCurrency, xtzValidate} = require("./currencies/xtz");
@@ -485,9 +485,8 @@ var CURRENCIES = [
         validator: NEMValidator
     },
     {
-        name: 'Lisk',
-        symbol: 'lsk',
-        validator: LSKValidator
+        ...lskCurrency,
+        validate: lskValidate,
     },
     {
         ...xlmCurrency,

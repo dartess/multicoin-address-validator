@@ -1,4 +1,4 @@
-var bech32 = require('./crypto/bech32');
+var {bech32} = require('./crypto/bech32');
 
 // bip 173 bech 32 addresses (https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)
 module.exports = {

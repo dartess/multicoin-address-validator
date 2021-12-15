@@ -1,5 +1,5 @@
 const {base32Decode} = require("./utils/base32");
-var bech32 = require('./crypto/bech32');
+var {bech32} = require('./crypto/bech32');
 var BTCValidator = require('./bitcoin_validator');
 
 function validateAddress(address, currency, opts) {

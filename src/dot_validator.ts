@@ -1,6 +1,7 @@
-const {byteArray2hexStr} = require("./utils/byteArray2hexStr");
-const {blake2b} = require("./utils/blake2b");
-const {base58Decode} = require("./utils/base58Decode");
+import { byteArray2hexStr } from './utils/byteArray2hexStr';
+import { blake2b } from './utils/blake2b';
+import { base58Decode } from './utils/base58Decode';
+import { Address } from './types';
 
 // from https://github.com/paritytech/substrate/wiki/External-Address-Format-(SS58)
 const addressFormats = [
@@ -22,39 +23,41 @@ const addressFormats = [
     { addressLength: 34, accountIndexLength: 32, checkSumLength: 2 },
 ];
 
-module.exports = {
-    isValidAddress: function (address, currency, opts = {}) {
-        const { networkType = 'prod' } = opts;
-
-        return this.verifyChecksum(address)
+const DotValidator = {
+    isValidAddress(address: Address) {
+        return this.verifyChecksum(address);
     },
 
-    verifyChecksum: function (address) {
-
+    verifyChecksum(address: Address) {
         try {
-            const preImage = '53533538505245'
+            const preImage = '53533538505245';
 
             const decoded = base58Decode(address);
             const addressType = byteArray2hexStr(decoded.slice(0, 1));
-            const addressAndChecksum = decoded.slice(1)
+            const addressAndChecksum = decoded.slice(1);
 
             // get the address format
-            const addressFormat = addressFormats.find(af => af.addressLength === addressAndChecksum.length);
+            const addressFormat = addressFormats.find((af) => af.addressLength === addressAndChecksum.length);
 
             if (!addressFormat) {
-                throw new Erorr('Invalid address length');
+                return false;
             }
 
             const decodedAddress = byteArray2hexStr(addressAndChecksum.slice(0, addressFormat.accountIndexLength));
             const checksum = byteArray2hexStr(addressAndChecksum.slice(-addressFormat.checkSumLength));
 
             const calculatedHash = blake2b(preImage + addressType + decodedAddress, 64)
-                .substr(0, addressFormat.checkSumLength * 2)
+                .slice(0, addressFormat.checkSumLength * 2)
                 .toUpperCase();
 
-            return calculatedHash == checksum;
-        } catch(err) {
+            return calculatedHash === checksum;
+        } catch (err) {
             return false;
         }
-    }
-}
+    },
+};
+
+type Validator = Parameters<typeof DotValidator.isValidAddress>;
+
+export { DotValidator };
+export type { Validator };

@@ -11,7 +11,7 @@ var EOSValidator = require('./eos_validator');
 var XTZValidator = require('./tezos_validator');
 var USDTValidator = require('./usdt_validator');
 var AlgoValidator = require('./algo_validator');
-var DotValidator = require('./dot_validator');
+const {dotCurrency, dotValidate} = require("./currencies/dot");
 const {croCurrency, croValidate} = require("./currencies/cro");
 const {solCurrency, solValidate} = require("./currencies/sol");
 const {bchCurrency, bchValidate} = require("./currencies/bch");
@@ -651,9 +651,8 @@ var CURRENCIES = [
         validator: AlgoValidator
     },
     {
-        name: 'Polkadot',
-        symbol: 'dot',
-        validator: DotValidator
+        ...dotCurrency,
+        validate: dotValidate,
     },
     {
         name: 'Uniswap Coin',

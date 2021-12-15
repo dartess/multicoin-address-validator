@@ -22,7 +22,7 @@
         "test:browser": "npm run bundle && jest --config test/jest.puppeteer.config.js",
         "test:coverage": "jest --coverage",
         "test": "npm run test:node && npm run test:browser && npm run lint",
-        "start": "npm run bundle && npm test",
+        "start": "npm run bundle && npm run transpile && npm test",
         "prepare": "husky install"
     },
     "dependencies": {

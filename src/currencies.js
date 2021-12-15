@@ -3,7 +3,8 @@ var BTCValidator = require('./bitcoin_validator');
 var ADAValidator = require('./ada_validator');
 var XMRValidator = require('./monero_validator');
 var NANOValidator = require('./nano_validator');
-var SCValidator = require('./siacoin_validator');
+const {scCurrency, scValidate} = require("./currencies/sc");
+const {xscCurrency, xscValidate} = require("./currencies/xsc");
 const {xemCurrency, xemValidate} = require("./currencies/xem");
 const {lskCurrency, lskValidate} = require("./currencies/lsk");
 const {xlmCurrency, xlmValidate} = require("./currencies/xlm");
@@ -453,14 +454,12 @@ var CURRENCIES = [
         validator: NANOValidator,
     },
     {
-        name: 'Siacoin',
-        symbol: 'sc',
-        validator: SCValidator
+        ...scCurrency,
+        validate: scValidate,
     },
     {
-        name: 'HyperSpace',
-        symbol: 'xsc',
-        validator: SCValidator
+        ...xscCurrency,
+        validate: xscValidate,
     },
     {
         name: 'loki',

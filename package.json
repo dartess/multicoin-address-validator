@@ -34,7 +34,6 @@
         "js-sha3": "^0.8.0",
         "js-sha512": "^0.8.0",
         "jssha": "^3.2.0",
-        "lodash.isequal": "^4.5.0",
         "stream-browserify": "^3.0.0"
     },
     "devDependencies": {

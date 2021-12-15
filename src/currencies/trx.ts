@@ -8,7 +8,7 @@ const trxCurrency = {
 
 const trxValidate = (
     address: Validator[0],
-    opts: Validator[2],
+    opts?: Validator[2],
 ) => TRXValidator.isValidAddress(address, trxCurrency, opts);
 
 export {

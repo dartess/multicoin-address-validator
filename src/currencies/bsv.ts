@@ -9,7 +9,7 @@ const bsvCurrency = {
 
 const bsvValidate = (
     address: Validator[0],
-    opts: Validator[2],
+    opts?: Validator[2],
 ) => BCHValidator.isValidAddress(address, bsvCurrency, opts);
 
 export {

@@ -10,7 +10,7 @@ var XLMValidator = require('./stellar_validator');
 var EOSValidator = require('./eos_validator');
 var XTZValidator = require('./tezos_validator');
 var USDTValidator = require('./usdt_validator');
-var AlgoValidator = require('./algo_validator');
+const {algoCurrency, algoValidate} = require("./currencies/algo");
 const {dotCurrency, dotValidate} = require("./currencies/dot");
 const {croCurrency, croValidate} = require("./currencies/cro");
 const {solCurrency, solValidate} = require("./currencies/sol");
@@ -646,9 +646,8 @@ var CURRENCIES = [
         validator: ETHValidator
     },
     {
-        name: 'Algorand',
-        symbol: 'algo',
-        validator: AlgoValidator
+        ...algoCurrency,
+        validate: algoValidate,
     },
     {
         ...dotCurrency,

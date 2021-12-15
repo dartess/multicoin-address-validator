@@ -4,7 +4,7 @@ function byte2hexStr(byte: number) {
     return `${hexByteMap.charAt(byte >> 4)}${hexByteMap.charAt(byte & 0x0f)}`;
 }
 
-export function byteArray2hexStr(byteArray: Array<number>) {
+export function byteArray2hexStr(byteArray: Array<number> | Uint8Array) {
     let str = '';
     let i;
     for (i = 0; i < (byteArray.length - 1); i++) {

@@ -1,7 +1,7 @@
 {
-    "name": "multicoin-address-validator",
+    "name": "@dartess/multicoin-address-validator",
     "description": "Multicoin address validator for Bitcoin and other Altcoins.",
-    "version": "0.5.6",
+    "version": "0.6.0",
     "author": "Chris <chris.tsim@gmail.com>",
     "homepage": "https://github.com/christsim/multicoin-address-validator",
     "license": "MIT",
@@ -56,7 +56,7 @@
         "lint-staged": "^12.1.2",
         "minify": "^6.0.1",
         "ts-jest": "^27.1.1",
-        "typescript": "^4.5.2"
+        "typescript": "~4.5.4"
     },
     "lint-staged": {
         "src/**/*.ts": "eslint --cache --fix"

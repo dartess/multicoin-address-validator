@@ -1,7 +1,8 @@
 var ETHValidator = require('./ethereum_validator');
 var BTCValidator = require('./bitcoin_validator');
 var ADAValidator = require('./ada_validator');
-var XMRValidator = require('./monero_validator');
+const {xmrCurrency, xmrValidate} = require("./currencies/xmr");
+const {lokiCurrency, lokiValidate} = require("./currencies/loki");
 const {nanoCurrency, nanoValidate} = require("./currencies/nano");
 const {xrbCurrency, xrbValidate} = require("./currencies/xrb");
 const {scCurrency, scValidate} = require("./currencies/sc");
@@ -298,11 +299,8 @@ var CURRENCIES = [
         validator: ADAValidator
     },
     {
-        name: 'Monero',
-        symbol: 'xmr',
-        addressTypes: {prod: ['18', '42'], testnet: ['53', '63'], stagenet: ['24']},
-        iAddressTypes: {prod: ['19'], testnet: ['54'], stagenet: ['25']},
-        validator: XMRValidator
+        ...xmrCurrency,
+        validate: xmrValidate,
     },
     {
         name: 'Aragon',
@@ -461,11 +459,8 @@ var CURRENCIES = [
         validate: xscValidate,
     },
     {
-        name: 'loki',
-        symbol: 'loki',
-        addressTypes: {prod: ['114', '115', '116'], testnet: []},
-        iAddressTypes: {prod: ['115'], testnet: []},
-        validator: XMRValidator
+        ...lokiCurrency,
+        validate: lokiValidate,
     },
     {
         name: 'LBRY Credits',

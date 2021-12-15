@@ -4,7 +4,7 @@ var ADAValidator = require('./ada_validator');
 var XMRValidator = require('./monero_validator');
 var NANOValidator = require('./nano_validator');
 var SCValidator = require('./siacoin_validator');
-var NEMValidator = require('./nem_validator');
+const {xemCurrency, xemValidate} = require("./currencies/xem");
 const {lskCurrency, lskValidate} = require("./currencies/lsk");
 const {xlmCurrency, xlmValidate} = require("./currencies/xlm");
 const {eosCurrency, eosValidate} = require("./currencies/eos");
@@ -480,9 +480,8 @@ var CURRENCIES = [
         validate: trxValidate,
     },
     {
-        name: 'Nem',
-        symbol: 'xem',
-        validator: NEMValidator
+        ...xemCurrency,
+        validate: xemValidate,
     },
     {
         ...lskCurrency,

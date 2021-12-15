@@ -6,7 +6,7 @@ var NANOValidator = require('./nano_validator');
 var SCValidator = require('./siacoin_validator');
 var NEMValidator = require('./nem_validator');
 var LSKValidator = require('./lisk_validator');
-var XLMValidator = require('./stellar_validator');
+const {xlmCurrency, xlmValidate} = require("./currencies/xlm");
 const {eosCurrency, eosValidate} = require("./currencies/eos");
 const {xtzCurrency, xtzValidate} = require("./currencies/xtz");
 const {usdtCurrency, usdtValidate} = require("./currencies/usdt");
@@ -490,9 +490,8 @@ var CURRENCIES = [
         validator: LSKValidator
     },
     {
-        name: 'Stellar',
-        symbol: 'xlm',
-        validator: XLMValidator,
+        ...xlmCurrency,
+        validate: xlmValidate,
     },
     {
         name: 'BTU Protocol',

@@ -1,6 +1,6 @@
 var cbor = require('cbor-js');
 var CRC = require('crc');
-var BIP173Validator = require('./bip173_validator')
+var {BIP173Validator} = require('./bip173_validator')
 const {base58Decode} = require("./utils/base58Decode");
 
 function getDecoded(address) {

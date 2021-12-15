@@ -12,7 +12,7 @@ var XTZValidator = require('./tezos_validator');
 var USDTValidator = require('./usdt_validator');
 var AlgoValidator = require('./algo_validator');
 var DotValidator = require('./dot_validator');
-var BIP173Validator = require('./bip173_validator')
+const {croCurrency, croValidate} = require("./currencies/cro");
 const {solCurrency, solValidate} = require("./currencies/sol");
 const {bchCurrency, bchValidate} = require("./currencies/bch");
 const {bsvCurrency, bsvValidate} = require("./currencies/bsv");
@@ -502,10 +502,8 @@ var CURRENCIES = [
         validator: ETHValidator,
     },
     {
-        name: 'Crypto.com Coin',
-        symbol: 'cro',
-        bech32Hrp: {prod: ['cro'], testnet: ['tcro']},
-        validator: BIP173Validator,
+        ...croCurrency,
+        validate: croValidate,
     },
     {
         name: 'Multi-collateral DAI',

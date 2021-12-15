@@ -22,7 +22,7 @@
 
 // Ported to TypeScript by Sergey Kozlov
 
-import { Address } from '../types';
+import { Address, OptsNetworkTypeOptional } from '../types';
 
 import { bech32, Encoding } from './bech32';
 
@@ -106,11 +106,9 @@ type Currency = {
     };
 };
 
-type Options = {
-    networkType?: 'prod' | 'testnet' | string;
-};
+type NetworkType = 'prod' | 'testnet' | string;
 
-function isValidAddress(address: Address, currency: Currency, opts: Options = {}) {
+function isValidAddress(address: Address, currency: Currency, opts: OptsNetworkTypeOptional<NetworkType> = {}) {
     if (!currency.bech32Hrp) {
         return false;
     }

@@ -13,7 +13,7 @@ function base32Decode(s: string) {
         const len = (s.length * 5) / 8;
         return arr[0] === 0 ? arr.slice(1, len + 1) : arr.slice(0, len);
     } catch (e) {
-        return [];
+        return new Uint8Array();
     }
 }
 

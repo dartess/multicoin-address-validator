@@ -1,4 +1,5 @@
-/* eslint-disable no-bitwise,no-param-reassign */
+/* eslint-disable no-param-reassign */
+
 // Copyright (c) 2017, 2021 Pieter Wuille
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -70,8 +71,8 @@ function hrpExpand(hrp: string) {
     return ret;
 }
 
-function verifyChecksum(hrp: string, data: Array<number>, enc: Encoding) {
-    return polymod(hrpExpand(hrp).concat(data)) === getEncodingConst(enc);
+function verifyChecksum(hrp: string, data: Uint8Array | Array<number>, enc: Encoding) {
+    return polymod(hrpExpand(hrp).concat(data as Array<number>)) === getEncodingConst(enc);
 }
 
 function createChecksum(hrp: string, data: Array<number>, enc: Encoding) {

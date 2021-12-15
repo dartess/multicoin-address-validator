@@ -1,0 +1,20 @@
+import { BCHValidator } from '../bch_validator';
+
+type Validator = Parameters<typeof BCHValidator.isValidAddress>;
+
+const bsvCurrency = {
+    name: 'Bitcoin SV',
+    symbol: 'bsv',
+    regexp: '^[qQ]{1}[0-9a-zA-Z]{41}$',
+    addressTypes: { prod: ['00', '05'], testnet: ['6f', 'c4'] },
+};
+
+const bsvValidate = (
+    address: Validator[0],
+    opts: Validator[2],
+) => BCHValidator.isValidAddress(address, bsvCurrency, opts);
+
+export {
+    bsvCurrency,
+    bsvValidate,
+};

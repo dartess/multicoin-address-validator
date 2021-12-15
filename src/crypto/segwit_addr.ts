@@ -1,4 +1,4 @@
-/* eslint-disable no-restricted-syntax,no-bitwise */
+/* eslint-disable no-restricted-syntax */
 
 // Copyright (c) 2017, 2021 Pieter Wuille
 //

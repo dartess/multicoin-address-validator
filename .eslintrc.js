@@ -27,6 +27,8 @@ module.exports = {
             ignoreTemplateLiterals: true,
             ignorePattern: '^/\\* eslint-disable',
         }],
+        'prefer-destructuring': 'off',
         'no-plusplus': 'off',
+        'no-bitwise': 'off',
     },
 };

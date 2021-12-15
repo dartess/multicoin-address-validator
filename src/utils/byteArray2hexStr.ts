@@ -1,5 +1,3 @@
-/* eslint-disable no-bitwise */
-
 /* Convert a byte to string */
 function byte2hexStr(byte: number) {
     const hexByteMap = '0123456789ABCDEF';

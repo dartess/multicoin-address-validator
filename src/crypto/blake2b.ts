@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign,no-bitwise,@typescript-eslint/no-shadow,@typescript-eslint/no-use-before-define,no-underscore-dangle */
+/* eslint-disable no-param-reassign,@typescript-eslint/no-shadow,@typescript-eslint/no-use-before-define,no-underscore-dangle */
 
 /**
  * Credits to https://github.com/emilbayes/blake2b

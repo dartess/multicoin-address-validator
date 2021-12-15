@@ -1,4 +1,4 @@
-/* eslint-disable no-underscore-dangle,no-param-reassign,no-bitwise */
+/* eslint-disable no-underscore-dangle,no-param-reassign */
 
 import { Buffer } from 'buffer';
 

@@ -4,8 +4,10 @@ import { base58Decode } from './utils/base58Decode';
 import { byteArray2hexStr } from './utils/byteArray2hexStr';
 import { hexStr2byteArray } from './utils/hexStr2byteArray';
 
-type Currency = typeof import('./currencies/trx').trxCurrency;
-type CurrencyAddressType = keyof Currency['addressTypes'];
+type TrxCurrency = typeof import('./currencies/trx').trxCurrency;
+
+type Currency = TrxCurrency;
+type CurrencyAddressType = keyof TrxCurrency['addressTypes'];
 
 function decodeBase58Address(base58Sting: string) {
     if (typeof (base58Sting) !== 'string') {

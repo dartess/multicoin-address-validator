@@ -1,5 +1,3 @@
-/* eslint-disable no-bitwise */
-
 function isHexChar(c: string) {
     if ((c >= 'A' && c <= 'F')
         || (c >= 'a' && c <= 'f')

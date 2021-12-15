@@ -15,9 +15,9 @@ var AlgoValidator = require('./algo_validator');
 var DotValidator = require('./dot_validator');
 var BIP173Validator = require('./bip173_validator')
 var Base58Validator = require('./base58_validator')
-const {bch} = require("./currencies/bch");
-const {bsv} = require("./currencies/bsv");
-const {trx} = require("./currencies/trx");
+const {bchCurrency, bchValidate} = require("./currencies/bch");
+const {bsvCurrency, bsvValidate} = require("./currencies/bsv");
+const {trxCurrency, trxValidate} = require("./currencies/trx");
 
 // defines P2PKH and P2SH address types for standard (prod) and testnet networks
 var CURRENCIES = [
@@ -28,8 +28,14 @@ var CURRENCIES = [
         bech32Hrp: {prod: ['bc'], testnet: ['tb']},
         validator: BTCValidator
     },
-    bch,
-    bsv,
+    {
+        ...bchCurrency,
+        validate: bchValidate,
+    },
+    {
+        ...bsvCurrency,
+        validate: bsvValidate,
+    },
     {
         name: 'LiteCoin',
         symbol: 'ltc',
@@ -472,7 +478,10 @@ var CURRENCIES = [
         addressTypes: {prod: ['55'], testnet: []},
         validator: BTCValidator
     },
-    trx,
+    {
+        ...trxCurrency,
+        validate: trxValidate,
+    },
     {
         name: 'Nem',
         symbol: 'xem',

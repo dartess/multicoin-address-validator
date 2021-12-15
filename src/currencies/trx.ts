@@ -13,13 +13,7 @@ const trxValidate = (
     opts: Validator[2],
 ) => TRXValidator.isValidAddress(address, trxCurrency, opts);
 
-const trx = {
-    ...trxCurrency,
-    validate: trxValidate,
-};
-
 export {
     trxCurrency,
     trxValidate,
-    trx,
 };

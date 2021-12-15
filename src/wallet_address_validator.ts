@@ -5,7 +5,7 @@ const DEFAULT_CURRENCY_NAME = 'bitcoin';
 function validate(
     address: string,
     currencyNameOrSymbol: string,
-    networkTypeOrOpts?: string | Record<string, unknown>,
+    networkTypeOrOpts?: string | Record<string, unknown>, // TODO
 ) {
     const currency = currencies.getByNameOrSymbol(currencyNameOrSymbol || DEFAULT_CURRENCY_NAME);
 

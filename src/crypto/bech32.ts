@@ -139,3 +139,4 @@ const bech32 = {
 };
 
 export { bech32 };
+export type { Encoding };

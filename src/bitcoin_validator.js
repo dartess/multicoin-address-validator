@@ -1,6 +1,6 @@
 const { Buffer } = require('buffer');
 
-var segwit = require('./crypto/segwit_addr');
+var {segwit} = require('./crypto/segwit_addr');
 const {toHex} = require("./utils/toHex");
 const {sha256Checksum} = require("./utils/sha256Checksum");
 const {blake256Checksum} = require("./utils/blake256Checksum");

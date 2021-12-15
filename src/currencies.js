@@ -8,7 +8,7 @@ var NEMValidator = require('./nem_validator');
 var LSKValidator = require('./lisk_validator');
 var XLMValidator = require('./stellar_validator');
 var EOSValidator = require('./eos_validator');
-var XTZValidator = require('./tezos_validator');
+const {xtzCurrency, xtzValidate} = require("./currencies/xtz");
 const {usdtCurrency, usdtValidate} = require("./currencies/usdt");
 const {algoCurrency, algoValidate} = require("./currencies/algo");
 const {dotCurrency, dotValidate} = require("./currencies/dot");
@@ -579,9 +579,8 @@ var CURRENCIES = [
         validator: EOSValidator
     },
     {
-        name: 'Tezos',
-        symbol: 'xtz',
-        validator: XTZValidator
+        ...xtzCurrency,
+        validate: xtzValidate,
     },
     {
         name: 'VeChain',

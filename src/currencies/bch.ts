@@ -1,6 +1,4 @@
-import { BCHValidator } from '../bch_validator';
-
-type Validator = Parameters<typeof BCHValidator.isValidAddress>;
+import { BCHValidator, Validator } from '../bch_validator';
 
 const bchCurrency = {
     name: 'BitcoinCash',

@@ -1,6 +1,4 @@
-import { TRXValidator } from '../tron_validator';
-
-type Validator = Parameters<typeof TRXValidator.isValidAddress>;
+import { TRXValidator, Validator } from '../tron_validator';
 
 const trxCurrency = {
     name: 'Tron',

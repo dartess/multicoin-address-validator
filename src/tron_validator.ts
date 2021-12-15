@@ -72,4 +72,7 @@ const TRXValidator = {
     },
 };
 
+type Validator = Parameters<typeof TRXValidator.isValidAddress>;
+
 export { TRXValidator };
+export type { Validator };

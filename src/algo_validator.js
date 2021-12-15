@@ -7,6 +7,10 @@ const ALGORAND_ADDRESS_LENGTH = 58;
 
 module.exports = {
     isValidAddress: function (address, currency, opts = {}) {
+        if (typeof address !== 'string') {
+            return false;
+        }
+
         const { networkType = 'prod' } = opts;
 
         return this.verifyChecksum(address)

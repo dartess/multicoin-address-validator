@@ -1,8 +1,13 @@
-const {base58Decode} = require("./utils/base58Decode");
+import { base58Decode } from './utils/base58Decode';
+import { Address } from './types';
+
+type SolCurrency = typeof import('./currencies/sol').solCurrency;
+
+type Currency = SolCurrency;
 
 // simple base58 validator.  Just checks if it can be decoded.
-module.exports = {
-    isValidAddress: function (address, currency, opts = {}) {
+const Base58Validator = {
+    isValidAddress(address: Address, currency: Currency) {
         if (typeof address !== 'string') {
             return false;
         }
@@ -28,5 +33,10 @@ module.exports = {
         } catch (e) {
             return false;
         }
-    }
+    },
 };
+
+type Validator = Parameters<typeof Base58Validator.isValidAddress>;
+
+export { Base58Validator };
+export type { Validator };

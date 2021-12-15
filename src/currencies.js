@@ -13,7 +13,7 @@ var USDTValidator = require('./usdt_validator');
 var AlgoValidator = require('./algo_validator');
 var DotValidator = require('./dot_validator');
 var BIP173Validator = require('./bip173_validator')
-var Base58Validator = require('./base58_validator')
+const {solCurrency, solValidate} = require("./currencies/sol");
 const {bchCurrency, bchValidate} = require("./currencies/bch");
 const {bsvCurrency, bsvValidate} = require("./currencies/bsv");
 const {trxCurrency, trxValidate} = require("./currencies/trx");
@@ -678,12 +678,9 @@ var CURRENCIES = [
         validator: ETHValidator
     },
     {
-        name: 'Solana',
-        symbol: 'sol',
-        validator: Base58Validator,
-        maxLength: 44,
-        minLength: 43
-    }
+        ...solCurrency,
+        validate: solValidate,
+    },
 ];
 
 module.exports = {

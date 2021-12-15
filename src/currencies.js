@@ -2,7 +2,8 @@ var ETHValidator = require('./ethereum_validator');
 var BTCValidator = require('./bitcoin_validator');
 var ADAValidator = require('./ada_validator');
 var XMRValidator = require('./monero_validator');
-var NANOValidator = require('./nano_validator');
+const {nanoCurrency, nanoValidate} = require("./currencies/nano");
+const {xrbCurrency, xrbValidate} = require("./currencies/xrb");
 const {scCurrency, scValidate} = require("./currencies/sc");
 const {xscCurrency, xscValidate} = require("./currencies/xsc");
 const {xemCurrency, xemValidate} = require("./currencies/xem");
@@ -444,14 +445,12 @@ var CURRENCIES = [
         validator: ETHValidator
     },
     {
-        name: 'Nano',
-        symbol: 'nano',
-        validator: NANOValidator,
+        ...nanoCurrency,
+        validate: nanoValidate,
     },
     {
-        name: 'RaiBlocks',
-        symbol: 'xrb',
-        validator: NANOValidator,
+        ...xrbCurrency,
+        validate: xrbValidate,
     },
     {
         ...scCurrency,

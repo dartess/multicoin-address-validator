@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any,no-restricted-syntax,no-bitwise */
+/* eslint-disable no-restricted-syntax,no-bitwise */
+
 // Copyright (c) 2017, 2021 Pieter Wuille
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy

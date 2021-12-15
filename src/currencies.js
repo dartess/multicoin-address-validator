@@ -1,4 +1,3 @@
-var XRPValidator = require('./ripple_validator');
 var ETHValidator = require('./ethereum_validator');
 var BTCValidator = require('./bitcoin_validator');
 var ADAValidator = require('./ada_validator');
@@ -18,6 +17,7 @@ var Base58Validator = require('./base58_validator')
 const {bchCurrency, bchValidate} = require("./currencies/bch");
 const {bsvCurrency, bsvValidate} = require("./currencies/bsv");
 const {trxCurrency, trxValidate} = require("./currencies/trx");
+const {xrpCurrency, xrpValidate} = require("./currencies/xrp");
 
 // defines P2PKH and P2SH address types for standard (prod) and testnet networks
 var CURRENCIES = [
@@ -230,9 +230,8 @@ var CURRENCIES = [
         validator: USDTValidator
     },
     {
-        name: 'Ripple',
-        symbol: 'xrp',
-        validator: XRPValidator,
+        ...xrpCurrency,
+        validate: xrpValidate,
     },
     {
         name: 'Dash',

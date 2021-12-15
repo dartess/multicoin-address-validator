@@ -5,7 +5,7 @@ const bs58 = baseX(BASE58_ALPHABET);
 
 // TODO Buffer?
 function base58Decode(string: string): Array<number> {
-    return [...bs58.decode(string)];
+    return Array.from(bs58.decode(string));
 }
 
 export { base58Decode };

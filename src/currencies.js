@@ -7,7 +7,7 @@ var SCValidator = require('./siacoin_validator');
 var NEMValidator = require('./nem_validator');
 var LSKValidator = require('./lisk_validator');
 var XLMValidator = require('./stellar_validator');
-var EOSValidator = require('./eos_validator');
+const {eosCurrency, eosValidate} = require("./currencies/eos");
 const {xtzCurrency, xtzValidate} = require("./currencies/xtz");
 const {usdtCurrency, usdtValidate} = require("./currencies/usdt");
 const {algoCurrency, algoValidate} = require("./currencies/algo");
@@ -574,9 +574,8 @@ var CURRENCIES = [
         validator: ETHValidator,
     },
     {
-        name: 'EOS',
-        symbol: 'eos',
-        validator: EOSValidator
+        ...eosCurrency,
+        validate: eosValidate,
     },
     {
         ...xtzCurrency,

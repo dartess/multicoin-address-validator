@@ -14,7 +14,7 @@ function decodeBase58Address(base58Sting: string) {
         return false;
     }
 
-    let address: Array<number>;
+    let address: Buffer;
     try {
         address = base58Decode(base58Sting);
     } catch (e) {

@@ -5,7 +5,7 @@ import { byteArray2hexStr } from '../utils/byteArray2hexStr';
 
 const prefix = new Uint8Array([6, 161, 159]);
 
-function decodeRaw(buffer: Array<number>) {
+function decodeRaw(buffer: Buffer) {
     const payload = buffer.slice(0, -4);
     const checksum = buffer.slice(-4);
     const newChecksum = hexStr2byteArray(

@@ -3,6 +3,7 @@
     "include": [
         "src/**/*",
         "test/**/*",
+        "generation/index.ts",
         ".eslintrc.js",
         "jest.config.js"
     ],

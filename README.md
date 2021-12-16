@@ -1,5 +1,11 @@
 # WIP: PLEASE DON'T USE
 
+<!--
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Do NOT manually edit README.md. Edit README_TEMPLATE.md and run 'npm run generate'. #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+-->
+
 # wallet-address-validator
 
 Simple wallet address validator for validating Bitcoin and other altcoins addresses in **Node.js and browser**.
@@ -127,6 +133,7 @@ npm install multicoin-address-validator
 * Serve/serv `'Serve'` or `'serv'`
 * Siacoin/sc `'Siacoin'` or `'sc'`
 * SnowGem/sng `'SnowGem'` or `'sng'`
+* Solana/sol `'Solana'` or `'sol'`
 * SolarCoin/slr `'SolarCoin'` or `'slr'`
 * SOLVE/solve `'SOLVE'` or `'solve'`
 * Spendcoin/spnd `'Spendcoin'` or `'spnd'`
@@ -155,7 +162,6 @@ npm install multicoin-address-validator
 * ZCash/zec `'ZCash'` or `'zec'`
 * ZClassic/zcl `'ZClassic'` or `'zcl'`
 * ZenCash/zen `'ZenCash'` or `'zen'`
-
 
 ### Usage example
 

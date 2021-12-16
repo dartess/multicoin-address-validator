@@ -1,9 +1,12 @@
+// @ts-ignore
 import cbor from 'cbor-js';
 import { crc32 } from 'crc';
 
 import { BIP173Validator } from './bip173_validator';
 import { base58Decode } from '../utils/base58Decode';
 import { OptsNetworkTypeOptional } from '../types';
+
+const cborDecode: (data: unknown, tagger?: unknown, simpleValue?: unknown) => [Uint8Array, number] = cbor.decode;
 
 type AdaCurrency = typeof import('../currencies/ada').adaCurrency;
 
@@ -13,7 +16,7 @@ type CurrencyNetworkType = keyof AdaCurrency['bech32Hrp'];
 function getDecoded(address: string) {
     try {
         const decoded = base58Decode(address);
-        return cbor.decode(new Uint8Array(decoded).buffer);
+        return cborDecode(new Uint8Array(decoded).buffer);
     } catch (e) {
         // if decoding fails, assume invalid address
         return null;

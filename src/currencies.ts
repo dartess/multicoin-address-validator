@@ -632,6 +632,7 @@ function getSupportedSymbols(): Array<string> {
 }
 
 export {
+    currencies,
     getCurrency,
     getSupportedSymbols,
 };

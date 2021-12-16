@@ -1,4 +1,4 @@
-import { keccak256 } from '../utils/keccak256';
+import { keccak256 } from 'js-sha3';
 
 const ETHValidator = {
     isValidAddress(address: string) {

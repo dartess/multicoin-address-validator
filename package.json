@@ -1,6 +1,6 @@
 {
     "name": "@dartess/multicoin-address-validator",
-    "description": "Multicoin address validator for Bitcoin and other Altcoins.",
+    "description": "Multicoin address validator for Bitcoin and other Altcoins ported to TypeScript.",
     "version": "0.6.0",
     "author": "Sergey Kozlov <dartess@mail.ru>",
     "homepage": "https://github.com/dartess/multicoin-address-validator",

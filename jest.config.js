@@ -3,6 +3,8 @@ module.exports = {
     coveragePathIgnorePatterns: [
         '/node_modules/',
         '/src/crypto/',
+        '/src/currencies/',
+        '/src/utils/',
     ],
     coverageDirectory: 'coverage',
     coverageProvider: 'v8',

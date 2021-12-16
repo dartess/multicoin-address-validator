@@ -633,6 +633,12 @@ describe('WAValidator.validate()', function () {
     });
 
     describe('invalid results', function () {
+        test('should throw error for unknown currency', async () => {
+            await expect(isValid('12KYrjTdVGjFMtaxERSk3gphreJ5US8aUP', '__unknown__'))
+                .rejects
+                .toThrow('Missing validator for currency: __unknown__');
+        });
+
         async function commonTests(currency) {
             await invalid(undefined, currency); // wrong type: undefined
             await invalid(null, currency); // wrong type: null

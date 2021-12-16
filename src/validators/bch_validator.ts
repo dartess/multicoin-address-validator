@@ -50,9 +50,6 @@ function validateAddress(address: string, currency: Currency, opts?: OptsNetwork
 
 const BCHValidator = {
     isValidAddress(address: string, currency: Currency, opts?: OptsNetworkTypeOptional<CurrencyNetworkType>) {
-        if (typeof address !== 'string') {
-            return false;
-        }
         return validateAddress(address, currency, opts)
             || BTCValidator.isValidAddress(address, currency, opts);
     },

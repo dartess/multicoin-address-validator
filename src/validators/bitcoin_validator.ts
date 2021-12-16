@@ -173,9 +173,6 @@ function isValidP2PKHandP2SHAddress(address: string, currency: Currency, opts: O
 
 const BTCValidator = {
     isValidAddress(address: string, currency: Currency, opts: Opts = {}) {
-        if (typeof address !== 'string') {
-            return false;
-        }
         return isValidP2PKHandP2SHAddress(address, currency, opts) || segwit.isValidAddress(address, currency, opts);
     },
 };

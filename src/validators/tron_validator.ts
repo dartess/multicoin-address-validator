@@ -10,9 +10,6 @@ type Currency = TrxCurrency;
 type CurrencyNetworkType = ExtractNetworkType<Currency>;
 
 function decodeBase58Address(base58Sting: string) {
-    if (typeof (base58Sting) !== 'string') {
-        return false;
-    }
     if (base58Sting.length <= 4) {
         return false;
     }

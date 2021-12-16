@@ -7,9 +7,6 @@ type Currency = SolCurrency;
 // simple base58 validator.  Just checks if it can be decoded.
 const Base58Validator = {
     isValidAddress(address: string, currency: Currency) {
-        if (typeof address !== 'string') {
-            return false;
-        }
         try {
             if (!address) {
                 return false;

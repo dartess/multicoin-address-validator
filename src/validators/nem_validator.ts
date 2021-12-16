@@ -13,9 +13,6 @@ const NEMValidator = {
      * @return {boolean} - True if address is valid, false otherwise
      */
     isValidAddress(_address: string) {
-        if (typeof _address !== 'string') {
-            return false;
-        }
         const address = _address.toUpperCase().replace(/-/g, '');
         if (!address || address.length !== 40) {
             return false;

@@ -11,6 +11,10 @@ function validate(
     currencySymbolOrName: CurrencySymbol | CurrencyNameAnyRegister,
     networkTypeOrOpts?: string | ValidateOpts,
 ) {
+    if (typeof address !== 'string') {
+        return false; // protection against untyped input
+    }
+
     const currency = getCurrency(currencySymbolOrName);
 
     if (!currency) {

@@ -2,9 +2,6 @@ import { blake2b } from '../utils/blake2b';
 
 const SCValidator = {
     isValidAddress(address: string) {
-        if (typeof address !== 'string') {
-            return false;
-        }
         if (address.length !== 76) {
             // Check if it has the basic requirements of an address
             return false;

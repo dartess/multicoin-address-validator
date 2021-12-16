@@ -7,10 +7,6 @@ const ALGORAND_ADDRESS_LENGTH = 58;
 
 const AlgoValidator = {
     isValidAddress(address: string) {
-        if (typeof address !== 'string') {
-            return false;
-        }
-
         return this.verifyChecksum(address);
     },
 

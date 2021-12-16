@@ -10,9 +10,6 @@ type CurrencyNetworkType = keyof CroCurrency['bech32Hrp'] | keyof AdaCurrency['b
 // bip 173 bech 32 addresses (https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)
 const BIP173Validator = {
     isValidAddress(address: string, currency: Currency, opts: OptsNetworkTypeOptional<CurrencyNetworkType> = {}) {
-        if (typeof address !== 'string') {
-            return false;
-        }
         const { networkType = 'prod' } = opts;
         const decoded = bech32.decode(address, bech32.encodings.BECH32);
         if (!decoded) {

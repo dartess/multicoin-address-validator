@@ -1,14 +1,14 @@
 import {
     getSupportedSymbols,
     getCurrency,
-    CurrencySymbol,
+    CurrencySymbolAnyRegister,
     CurrencyNameAnyRegister,
     ValidateOpts,
 } from './currencies';
 
 function validate(
     address: string,
-    currencySymbolOrName: CurrencySymbol | CurrencyNameAnyRegister,
+    currencySymbolOrName: CurrencySymbolAnyRegister | CurrencyNameAnyRegister,
     networkTypeOrOpts?: string | ValidateOpts,
 ) {
     if (typeof address !== 'string') {

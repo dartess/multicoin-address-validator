@@ -608,7 +608,8 @@ const currencies = [
 ] as const;
 
 type Currency = (typeof currencies)[number];
-type CurrencySymbol = Currency['symbol'];
+type CurrencySymbolReal = Currency['symbol'];
+type CurrencySymbolAnyRegister = CurrencySymbolReal | Uppercase<CurrencySymbolReal> | Lowercase<CurrencySymbolReal>;
 type CurrencyNameReal = Currency['name'];
 type CurrencyNameAnyRegister = CurrencyNameReal | Uppercase<CurrencyNameReal> | Lowercase<CurrencyNameReal>;
 
@@ -622,7 +623,7 @@ const currenciesByLowercaseName = Object.fromEntries(
     currencies.map((currency) => [currency.name.toLowerCase(), currency]),
 );
 
-function getCurrency(symbolOrName: CurrencySymbol | CurrencyNameAnyRegister) {
+function getCurrency(symbolOrName: CurrencySymbolAnyRegister | CurrencyNameAnyRegister) {
     const lowerCased = symbolOrName?.toLowerCase();
     return currenciesBySymbol[lowerCased] ?? currenciesByLowercaseName[lowerCased];
 }
@@ -638,7 +639,7 @@ export {
 };
 
 export type {
-    CurrencySymbol,
+    CurrencySymbolAnyRegister,
     CurrencyNameAnyRegister,
     ValidateOpts,
 };

@@ -11,7 +11,7 @@ Simple wallet address validator for validating Bitcoin and other altcoins addres
 Forked from [christsim/multicoin-address-validator](https://github.com/christsim/multicoin-address-validator) which was
 forked from [ryanralph/altcoin-address](https://github.com/ryanralph/altcoin-address).
 
-## Key differences from this fork
+## Key differences this fork
 
 * The library is completely rewritten to the TypeScript.
 * The library offers api for importing individual validators, which will have a positive effect on the bundle size in case of partial use.

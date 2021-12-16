@@ -13,9 +13,7 @@ function validate(
         const opts = typeof networkTypeOrOpts === 'string'
             ? { networkType: networkTypeOrOpts }
             : networkTypeOrOpts;
-        return currency.validate
-            ? currency.validate(address, opts)
-            : currency.validator.isValidAddress(address, currency, opts);
+        return currency.validate(address, opts);
     }
 
     throw new Error(`Missing validator for currency: ${currencyNameOrSymbol}`);

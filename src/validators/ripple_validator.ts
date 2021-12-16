@@ -2,7 +2,6 @@ import baseX from 'base-x';
 
 import { toHex } from '../utils/toHex';
 import { sha256Checksum } from '../utils/sha256Checksum';
-import { Address } from '../types';
 
 const ALLOWED_CHARS = 'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz';
 
@@ -13,7 +12,7 @@ const XRPValidator = {
     /**
      * ripple address validation
      */
-    isValidAddress(address: Address) {
+    isValidAddress(address: string) {
         if (regexp.test(address)) {
             return this.verifyChecksum(address);
         }
@@ -21,7 +20,7 @@ const XRPValidator = {
         return false;
     },
 
-    verifyChecksum(address: Address) {
+    verifyChecksum(address: string) {
         const bytes = codec.decode(address);
         const computedChecksum = sha256Checksum(toHex(bytes.slice(0, -4)));
         const checksum = toHex(bytes.slice(-4));

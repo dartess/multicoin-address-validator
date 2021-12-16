@@ -3,14 +3,14 @@ import CRC from 'crc';
 
 import { BIP173Validator } from './bip173_validator';
 import { base58Decode } from '../utils/base58Decode';
-import { Address, OptsNetworkTypeOptional } from '../types';
+import { OptsNetworkTypeOptional } from '../types';
 
 type AdaCurrency = typeof import('../currencies/ada').adaCurrency;
 
 type Currency = AdaCurrency;
 type CurrencyNetworkType = keyof AdaCurrency['bech32Hrp'];
 
-function getDecoded(address: Address) {
+function getDecoded(address: string) {
     try {
         const decoded = base58Decode(address);
         return cbor.decode(new Uint8Array(decoded).buffer);
@@ -20,7 +20,7 @@ function getDecoded(address: Address) {
     }
 }
 
-function isValidAddressV1(address: Address) {
+function isValidAddressV1(address: string) {
     const decoded = getDecoded(address);
 
     if (!decoded || (!Array.isArray(decoded) || decoded.length !== 2)) {
@@ -39,7 +39,7 @@ function isValidAddressV1(address: Address) {
 }
 
 function isValidAddressShelley(
-    address: Address,
+    address: string,
     currency: Currency,
     opts: OptsNetworkTypeOptional<CurrencyNetworkType>,
 ) {
@@ -48,7 +48,7 @@ function isValidAddressShelley(
 }
 
 const ADAValidator = {
-    isValidAddress(address: Address, currency: Currency, opts: OptsNetworkTypeOptional<CurrencyNetworkType> = {}) {
+    isValidAddress(address: string, currency: Currency, opts: OptsNetworkTypeOptional<CurrencyNetworkType> = {}) {
         return isValidAddressV1(address) || isValidAddressShelley(address, currency, opts);
     },
 };

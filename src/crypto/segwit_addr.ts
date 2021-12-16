@@ -22,7 +22,7 @@
 
 // Ported to TypeScript by Sergey Kozlov
 
-import { Address, OptsNetworkTypeOptional } from '../types';
+import { OptsNetworkTypeOptional } from '../types';
 
 import { bech32, Encoding } from './bech32';
 
@@ -53,7 +53,7 @@ function convertbits(data: Array<number>, frombits: number, tobits: number, pad:
     return ret;
 }
 
-function decode(hrp: string, addr: Address) {
+function decode(hrp: string, addr: string) {
     let bech32m = false;
     let dec = bech32.decode(addr, bech32.encodings.BECH32);
     if (dec === null) {
@@ -117,7 +117,7 @@ function isCurrencyWithBech32Hrp(currency: Record<string, any>): currency is Cur
 type NetworkType = 'prod' | 'testnet' | string;
 
 function isValidAddress(
-    address: Address,
+    address: string,
     currency: Record<string, any>,
     opts: OptsNetworkTypeOptional<NetworkType> = {},
 ) {

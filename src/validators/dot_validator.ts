@@ -1,7 +1,6 @@
 import { byteArray2hexStr } from '../utils/byteArray2hexStr';
 import { blake2b } from '../utils/blake2b';
 import { base58Decode } from '../utils/base58Decode';
-import { Address } from '../types';
 
 // from https://github.com/paritytech/substrate/wiki/External-Address-Format-(SS58)
 const addressFormats = [
@@ -24,11 +23,11 @@ const addressFormats = [
 ];
 
 const DotValidator = {
-    isValidAddress(address: Address) {
+    isValidAddress(address: string) {
         return this.verifyChecksum(address);
     },
 
-    verifyChecksum(address: Address) {
+    verifyChecksum(address: string) {
         try {
             const preImage = '53533538505245';
 

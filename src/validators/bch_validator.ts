@@ -1,7 +1,7 @@
 import { base32Decode } from '../utils/base32';
 import { bech32 } from '../crypto/bech32';
 import { BTCValidator } from './bitcoin_validator';
-import { Address, ExtractNetworkType, OptsNetworkTypeOptional } from '../types';
+import { ExtractNetworkType, OptsNetworkTypeOptional } from '../types';
 
 type BchCurrency = typeof import('../currencies/bch').bchCurrency;
 type BscCurrency = typeof import('../currencies/bsv').bsvCurrency;
@@ -9,7 +9,7 @@ type BscCurrency = typeof import('../currencies/bsv').bsvCurrency;
 type Currency = BchCurrency | BscCurrency;
 type CurrencyNetworkType = ExtractNetworkType<Currency>;
 
-function validateAddress(address: Address, currency: Currency, opts?: OptsNetworkTypeOptional<CurrencyNetworkType>) {
+function validateAddress(address: string, currency: Currency, opts?: OptsNetworkTypeOptional<CurrencyNetworkType>) {
     const networkType = opts ? opts.networkType : '';
     let prefix = 'bitcoincash';
     const regexp = new RegExp(currency.regexp);
@@ -49,7 +49,7 @@ function validateAddress(address: Address, currency: Currency, opts?: OptsNetwor
 }
 
 const BCHValidator = {
-    isValidAddress(address: Address, currency: Currency, opts?: OptsNetworkTypeOptional<CurrencyNetworkType>) {
+    isValidAddress(address: string, currency: Currency, opts?: OptsNetworkTypeOptional<CurrencyNetworkType>) {
         if (typeof address !== 'string') {
             return false;
         }

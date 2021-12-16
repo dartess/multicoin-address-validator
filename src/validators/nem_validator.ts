@@ -3,7 +3,6 @@ import { Buffer } from 'buffer';
 import { base32Decode } from '../utils/base32';
 import { toHex } from '../utils/toHex';
 import { keccak256Checksum } from '../utils/keccak256Checksum';
-import { Address } from '../types';
 
 const NEMValidator = {
     /**
@@ -13,7 +12,7 @@ const NEMValidator = {
      *
      * @return {boolean} - True if address is valid, false otherwise
      */
-    isValidAddress(_address: Address) {
+    isValidAddress(_address: string) {
         if (typeof _address !== 'string') {
             return false;
         }

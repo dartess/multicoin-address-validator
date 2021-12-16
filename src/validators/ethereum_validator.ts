@@ -1,8 +1,7 @@
 import { keccak256 } from '../utils/keccak256';
-import { Address } from '../types';
 
 const ETHValidator = {
-    isValidAddress(address: Address) {
+    isValidAddress(address: string) {
         if (!/^0x[0-9a-fA-F]{40}$/.test(address)) {
             // Check if it has the basic requirements of an address
             return false;
@@ -17,7 +16,7 @@ const ETHValidator = {
         return this.verifyChecksum(address);
     },
 
-    verifyChecksum(addressRaw: Address) {
+    verifyChecksum(addressRaw: string) {
         // Check each case
         const address = addressRaw.replace('0x', '');
 

@@ -7,7 +7,7 @@ import { blake256Checksum } from '../utils/blake256Checksum';
 import { blake2b256 } from '../utils/blake2b256';
 import { keccak256Checksum } from '../utils/keccak256Checksum';
 import { base58Decode } from '../utils/base58Decode';
-import { Address, ExtractNetworkType, OptsNetworkTypeOptional } from '../types';
+import { ExtractNetworkType, OptsNetworkTypeOptional } from '../types';
 
 type BtcCurrency = typeof import('../currencies/btc').btcCurrency;
 type LtcCurrency = typeof import('../currencies/ltc').ltcCurrency;
@@ -97,7 +97,7 @@ type Opts = OptsNetworkTypeOptional<CurrencyNetworkType>;
 
 const DEFAULT_NETWORK_TYPE = 'prod';
 
-function getDecoded(address: Address) {
+function getDecoded(address: string) {
     try {
         return base58Decode(address);
     } catch (e) {
@@ -125,7 +125,7 @@ function getChecksum(hashFunction: HashFunction, payload: string) {
     }
 }
 
-function getAddressType(address: Address, currency: Currency) {
+function getAddressType(address: string, currency: Currency) {
     // should be 25 bytes per btc address spec and 26 decred
     const expectedLength = 'expectedLength' in currency ? currency.expectedLength : 25;
     const hashFunction = 'hashFunction' in currency ? currency.hashFunction : 'sha256';
@@ -154,7 +154,7 @@ function getAddressType(address: Address, currency: Currency) {
     return null;
 }
 
-function isValidP2PKHandP2SHAddress(address: Address, currency: Currency, opts: Opts) {
+function isValidP2PKHandP2SHAddress(address: string, currency: Currency, opts: Opts) {
     const { networkType = DEFAULT_NETWORK_TYPE } = opts;
 
     let correctAddressTypes: ReadonlyArray<string>;
@@ -172,7 +172,7 @@ function isValidP2PKHandP2SHAddress(address: Address, currency: Currency, opts: 
 }
 
 const BTCValidator = {
-    isValidAddress(address: Address, currency: Currency, opts: Opts = {}) {
+    isValidAddress(address: string, currency: Currency, opts: Opts = {}) {
         if (typeof address !== 'string') {
             return false;
         }

@@ -1,13 +1,12 @@
 import { byteArray2hexStr } from '../utils/byteArray2hexStr';
 import { sha512_256 } from '../utils/sha512_256';
 import { base32Decode } from '../utils/base32';
-import { Address } from '../types';
 
 const ALGORAND_CHECKSUM_BYTE_LENGTH = 4;
 const ALGORAND_ADDRESS_LENGTH = 58;
 
 const AlgoValidator = {
-    isValidAddress(address: Address) {
+    isValidAddress(address: string) {
         if (typeof address !== 'string') {
             return false;
         }
@@ -15,7 +14,7 @@ const AlgoValidator = {
         return this.verifyChecksum(address);
     },
 
-    verifyChecksum(address: Address) {
+    verifyChecksum(address: string) {
         if (address.length !== ALGORAND_ADDRESS_LENGTH) {
             return false;
         }

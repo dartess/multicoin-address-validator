@@ -1,7 +1,5 @@
-import { Address } from '../types';
-
 const EOSValidator = {
-    isValidAddress(address: Address) {
+    isValidAddress(address: string) {
         if (typeof address !== 'string') {
             return false;
         }

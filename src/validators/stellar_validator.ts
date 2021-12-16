@@ -3,7 +3,6 @@ import crc from 'crc';
 
 import { numberToHex } from '../utils/numberToHex';
 import { toHex } from '../utils/toHex';
-import { Address } from '../types';
 
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 
@@ -18,7 +17,7 @@ function swap16(number: number) {
 }
 
 const XLMValidator = {
-    isValidAddress(address: Address) {
+    isValidAddress(address: string) {
         if (regexp.test(address)) {
             return this.verifyChecksum(address);
         }
@@ -26,7 +25,7 @@ const XLMValidator = {
         return false;
     },
 
-    verifyChecksum(address: Address) {
+    verifyChecksum(address: string) {
         // based on https://github.com/stellar/js-stellar-base/blob/master/src/strkey.js#L126
         const bytes = base32.decode(address);
         if (bytes[0] !== ed25519PublicKeyVersionByte) {

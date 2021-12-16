@@ -1,7 +1,7 @@
 import { cnBase58Decode } from '../crypto/cnBase58';
 
 import { keccak256Checksum } from '../utils/keccak256Checksum';
-import { Address, ExtractNetworkType, OptsNetworkTypeOptional } from '../types';
+import { ExtractNetworkType, OptsNetworkTypeOptional } from '../types';
 
 type XmrCurrency = typeof import('../currencies/xmr').xmrCurrency;
 type LokiCurrency = typeof import('../currencies/loki').lokiCurrency;
@@ -45,7 +45,7 @@ function hextobin(hex: string) {
 }
 
 const XMRValidator = {
-    isValidAddress(address: Address, currency: Currency, opts: OptsNetworkTypeOptional<CurrencyNetworkType> = {}) {
+    isValidAddress(address: string, currency: Currency, opts: OptsNetworkTypeOptional<CurrencyNetworkType> = {}) {
         const { networkType = DEFAULT_NETWORK_TYPE } = opts;
         let addressType = 'standard';
         if (!addressRegTest.test(address)) {

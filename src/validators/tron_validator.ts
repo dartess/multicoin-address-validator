@@ -1,4 +1,4 @@
-import { Address, ExtractNetworkType, OptsNetworkTypeOptional } from '../types';
+import { ExtractNetworkType, OptsNetworkTypeOptional } from '../types';
 import { sha256 } from '../utils/sha256';
 import { base58Decode } from '../utils/base58Decode';
 import { byteArray2hexStr } from '../utils/byteArray2hexStr';
@@ -53,7 +53,7 @@ const TRXValidator = {
      * tron address validation
      */
     isValidAddress(
-        mainAddress: Address,
+        mainAddress: string,
         currency: Currency,
         opts?: OptsNetworkTypeOptional<CurrencyNetworkType>,
     ) {

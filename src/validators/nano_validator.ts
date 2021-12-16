@@ -2,7 +2,6 @@ import baseX from 'base-x';
 
 import { toHex } from '../utils/toHex';
 import { blake2b } from '../utils/blake2b';
-import { Address } from '../types';
 
 const ALLOWED_CHARS = '13456789abcdefghijkmnopqrstuwxyz';
 
@@ -11,7 +10,7 @@ const codec = baseX(ALLOWED_CHARS);
 const regexp = new RegExp(`^(xrb|nano)_([${ALLOWED_CHARS}]{60})$`);
 
 const NANOValidator = {
-    isValidAddress(address: Address) {
+    isValidAddress(address: string) {
         if (regexp.test(address)) {
             return this.verifyChecksum(address);
         }
@@ -19,7 +18,7 @@ const NANOValidator = {
         return false;
     },
 
-    verifyChecksum(address: Address) {
+    verifyChecksum(address: string) {
         const bytes = codec.decode(regexp.exec(address)![2]).slice(-37);
         // https://github.com/nanocurrency/raiblocks/blob/master/rai/lib/numbers.cpp#L73
         const computedChecksum = blake2b(toHex(bytes.slice(0, -5)), 5);

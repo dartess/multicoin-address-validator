@@ -1,5 +1,5 @@
 import { bech32 } from '../crypto/bech32';
-import { Address, OptsNetworkTypeOptional } from '../types';
+import { OptsNetworkTypeOptional } from '../types';
 
 type CroCurrency = typeof import('../currencies/cro').croCurrency;
 type AdaCurrency = typeof import('../currencies/ada').adaCurrency;
@@ -9,7 +9,7 @@ type CurrencyNetworkType = keyof CroCurrency['bech32Hrp'] | keyof AdaCurrency['b
 
 // bip 173 bech 32 addresses (https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)
 const BIP173Validator = {
-    isValidAddress(address: Address, currency: Currency, opts: OptsNetworkTypeOptional<CurrencyNetworkType> = {}) {
+    isValidAddress(address: string, currency: Currency, opts: OptsNetworkTypeOptional<CurrencyNetworkType> = {}) {
         if (typeof address !== 'string') {
             return false;
         }

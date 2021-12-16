@@ -1,5 +1,4 @@
 import { base58Decode } from '../utils/base58Decode';
-import { Address } from '../types';
 
 type SolCurrency = typeof import('../currencies/sol').solCurrency;
 
@@ -7,7 +6,7 @@ type Currency = SolCurrency;
 
 // simple base58 validator.  Just checks if it can be decoded.
 const Base58Validator = {
-    isValidAddress(address: Address, currency: Currency) {
+    isValidAddress(address: string, currency: Currency) {
         if (typeof address !== 'string') {
             return false;
         }

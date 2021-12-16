@@ -1,7 +1,7 @@
 import { ETHValidator } from './ethereum_validator';
 import { BTCValidator } from './bitcoin_validator';
 
-import { Address, ExtractNetworkType, OptsNetworkTypeOptional } from '../types';
+import { ExtractNetworkType, OptsNetworkTypeOptional } from '../types';
 
 type UsdtCurrency = typeof import('../currencies/usdt').usdtCurrency;
 
@@ -14,14 +14,14 @@ type UsdtValidatorOptions = {
 
 type Opts = OptsNetworkTypeOptional<CurrencyNetworkType>;
 
-function checkBothValidators(address: Address, currency: Currency, opts?: Opts) {
+function checkBothValidators(address: string, currency: Currency, opts?: Opts) {
     const result = BTCValidator.isValidAddress(address, currency, opts);
     return result || ETHValidator.isValidAddress(address);
 }
 
 const USDTValidator = {
     isValidAddress(
-        address: Address,
+        address: string,
         currency: Currency,
         opts?: OptsNetworkTypeOptional<CurrencyNetworkType> & UsdtValidatorOptions,
     ) {

@@ -1,8 +1,7 @@
 import { blake2b } from '../utils/blake2b';
-import { Address } from '../types';
 
 const SCValidator = {
-    isValidAddress(address: Address) {
+    isValidAddress(address: string) {
         if (typeof address !== 'string') {
             return false;
         }
@@ -14,7 +13,7 @@ const SCValidator = {
         // Otherwise check each case
         return this.verifyChecksum(address);
     },
-    verifyChecksum(address: Address) {
+    verifyChecksum(address: string) {
         const checksumBytes = address.slice(0, 32 * 2);
         const check = address.slice(32 * 2, 38 * 2);
         const blakeHash = blake2b(checksumBytes, 32).slice(0, 6 * 2);

@@ -1,6 +1,6 @@
 var ETHValidator = require('./ethereum_validator');
 var BTCValidator = require('./bitcoin_validator');
-var ADAValidator = require('./ada_validator');
+const {adaCurrency, adaValidate} = require("./currencies/ada");
 const {xmrCurrency, xmrValidate} = require("./currencies/xmr");
 const {lokiCurrency, lokiValidate} = require("./currencies/loki");
 const {nanoCurrency, nanoValidate} = require("./currencies/nano");
@@ -293,10 +293,8 @@ var CURRENCIES = [
         validator: ETHValidator
     },
     {
-        name: 'Cardano',
-        symbol: 'ada',
-        bech32Hrp: {prod: ['addr'], testnet: ['addr']},
-        validator: ADAValidator
+        ...adaCurrency,
+        validate: adaValidate,
     },
     {
         ...xmrCurrency,

@@ -177,7 +177,7 @@ const BTCValidator = {
     },
 };
 
-type Validator = Parameters<typeof BTCValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof BTCValidator.isValidAddress>;
 
 export { BTCValidator };
-export type { Validator };
+export type { ValidatorParams };

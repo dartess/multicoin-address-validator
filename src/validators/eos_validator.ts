@@ -4,7 +4,7 @@ const EOSValidator = {
     },
 };
 
-type Validator = Parameters<typeof EOSValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof EOSValidator.isValidAddress>;
 
 export { EOSValidator };
-export type { Validator };
+export type { ValidatorParams };

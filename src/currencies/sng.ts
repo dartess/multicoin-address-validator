@@ -1,4 +1,4 @@
-import { BTCValidator, Validator } from '../validators/bitcoin_validator';
+import { BTCValidator, ValidatorParams } from '../validators/bitcoin_validator';
 
 const sngCurrency = {
     name: 'SnowGem',
@@ -17,8 +17,8 @@ const sngCurrency = {
 } as const;
 
 const sngValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => BTCValidator.isValidAddress(address, sngCurrency, opts);
 
 export {

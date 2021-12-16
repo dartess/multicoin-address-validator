@@ -29,7 +29,7 @@ const XRPValidator = {
     },
 };
 
-type Validator = Parameters<typeof XRPValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof XRPValidator.isValidAddress>;
 
 export { XRPValidator };
-export type { Validator };
+export type { ValidatorParams };

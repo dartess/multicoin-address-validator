@@ -1,4 +1,4 @@
-import { USDTValidator, Validator } from '../validators/usdt_validator';
+import { USDTValidator, ValidatorParams } from '../validators/usdt_validator';
 
 const usdtCurrency = {
     name: 'Tether',
@@ -7,8 +7,8 @@ const usdtCurrency = {
 } as const;
 
 const usdtValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => USDTValidator.isValidAddress(address, usdtCurrency, opts);
 
 export {

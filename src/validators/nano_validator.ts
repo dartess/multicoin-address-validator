@@ -28,7 +28,7 @@ const NANOValidator = {
     },
 };
 
-type Validator = Parameters<typeof NANOValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof NANOValidator.isValidAddress>;
 
 export { NANOValidator };
-export type { Validator };
+export type { ValidatorParams };

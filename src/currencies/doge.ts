@@ -1,4 +1,4 @@
-import { BTCValidator, Validator } from '../validators/bitcoin_validator';
+import { BTCValidator, ValidatorParams } from '../validators/bitcoin_validator';
 
 const dogeCurrency = {
     name: 'DogeCoin',
@@ -16,8 +16,8 @@ const dogeCurrency = {
 } as const;
 
 const dogeValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => BTCValidator.isValidAddress(address, dogeCurrency, opts);
 
 export {

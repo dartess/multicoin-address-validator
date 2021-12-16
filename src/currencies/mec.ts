@@ -1,4 +1,4 @@
-import { BTCValidator, Validator } from '../validators/bitcoin_validator';
+import { BTCValidator, ValidatorParams } from '../validators/bitcoin_validator';
 
 const mecCurrency = {
     name: 'MegaCoin',
@@ -16,8 +16,8 @@ const mecCurrency = {
 } as const;
 
 const mecValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => BTCValidator.isValidAddress(address, mecCurrency, opts);
 
 export {

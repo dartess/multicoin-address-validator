@@ -1,4 +1,4 @@
-import { BTCValidator, Validator } from '../validators/bitcoin_validator';
+import { BTCValidator, ValidatorParams } from '../validators/bitcoin_validator';
 
 const dcrCurrency = {
     name: 'Decred',
@@ -18,8 +18,8 @@ const dcrCurrency = {
 } as const;
 
 const dcrValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => BTCValidator.isValidAddress(address, dcrCurrency, opts);
 
 export {

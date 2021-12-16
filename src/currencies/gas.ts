@@ -1,4 +1,4 @@
-import { BTCValidator, Validator } from '../validators/bitcoin_validator';
+import { BTCValidator, ValidatorParams } from '../validators/bitcoin_validator';
 
 const gasCurrency = {
     name: 'NeoGas',
@@ -12,8 +12,8 @@ const gasCurrency = {
 } as const;
 
 const gasValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => BTCValidator.isValidAddress(address, gasCurrency, opts);
 
 export {

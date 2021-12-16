@@ -19,7 +19,7 @@ const SCValidator = {
     },
 };
 
-type Validator = Parameters<typeof SCValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof SCValidator.isValidAddress>;
 
 export { SCValidator };
-export type { Validator };
+export type { ValidatorParams };

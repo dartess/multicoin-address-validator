@@ -1,4 +1,4 @@
-import { BTCValidator, Validator } from '../validators/bitcoin_validator';
+import { BTCValidator, ValidatorParams } from '../validators/bitcoin_validator';
 
 const bvcCurrency = {
     name: 'BeaverCoin',
@@ -16,8 +16,8 @@ const bvcCurrency = {
 } as const;
 
 const bvcValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => BTCValidator.isValidAddress(address, bvcCurrency, opts);
 
 export {

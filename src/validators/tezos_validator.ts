@@ -34,7 +34,7 @@ const XTZValidator = {
     },
 };
 
-type Validator = Parameters<typeof XTZValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof XTZValidator.isValidAddress>;
 
 export { XTZValidator };
-export type { Validator };
+export type { ValidatorParams };

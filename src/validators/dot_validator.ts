@@ -56,7 +56,7 @@ const DotValidator = {
     },
 };
 
-type Validator = Parameters<typeof DotValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof DotValidator.isValidAddress>;
 
 export { DotValidator };
-export type { Validator };
+export type { ValidatorParams };

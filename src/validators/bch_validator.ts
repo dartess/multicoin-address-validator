@@ -55,7 +55,7 @@ const BCHValidator = {
     },
 };
 
-type Validator = Parameters<typeof BCHValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof BCHValidator.isValidAddress>;
 
 export { BCHValidator };
-export type { Validator };
+export type { ValidatorParams };

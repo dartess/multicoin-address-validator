@@ -1,4 +1,4 @@
-import { BCHValidator, Validator } from '../validators/bch_validator';
+import { BCHValidator, ValidatorParams } from '../validators/bch_validator';
 
 const bchCurrency = {
     name: 'BitcoinCash',
@@ -8,8 +8,8 @@ const bchCurrency = {
 } as const;
 
 const bchValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => BCHValidator.isValidAddress(address, bchCurrency, opts);
 
 export {

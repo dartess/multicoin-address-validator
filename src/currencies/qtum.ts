@@ -1,4 +1,4 @@
-import { BTCValidator, Validator } from '../validators/bitcoin_validator';
+import { BTCValidator, ValidatorParams } from '../validators/bitcoin_validator';
 
 const qtumCurrency = {
     name: 'Qtum',
@@ -16,8 +16,8 @@ const qtumCurrency = {
 } as const;
 
 const qtumValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => BTCValidator.isValidAddress(address, qtumCurrency, opts);
 
 export {

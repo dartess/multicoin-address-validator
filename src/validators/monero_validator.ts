@@ -68,7 +68,7 @@ const XMRValidator = {
     },
 };
 
-type Validator = Parameters<typeof XMRValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof XMRValidator.isValidAddress>;
 
 export { XMRValidator };
-export type { Validator };
+export type { ValidatorParams };

@@ -25,7 +25,7 @@ const BIP173Validator = {
     },
 };
 
-type Validator = Parameters<typeof BIP173Validator.isValidAddress>;
+type ValidatorParams = Parameters<typeof BIP173Validator.isValidAddress>;
 
 export { BIP173Validator };
-export type { Validator };
+export type { ValidatorParams };

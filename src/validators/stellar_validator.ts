@@ -39,7 +39,7 @@ const XLMValidator = {
     },
 };
 
-type Validator = Parameters<typeof XLMValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof XLMValidator.isValidAddress>;
 
 export { XLMValidator };
-export type { Validator };
+export type { ValidatorParams };

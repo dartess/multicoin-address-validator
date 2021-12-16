@@ -53,7 +53,7 @@ const ADAValidator = {
     },
 };
 
-type Validator = Parameters<typeof ADAValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof ADAValidator.isValidAddress>;
 
 export { ADAValidator };
-export type { Validator };
+export type { ValidatorParams };

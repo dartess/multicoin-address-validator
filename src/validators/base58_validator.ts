@@ -29,7 +29,7 @@ const Base58Validator = {
     },
 };
 
-type Validator = Parameters<typeof Base58Validator.isValidAddress>;
+type ValidatorParams = Parameters<typeof Base58Validator.isValidAddress>;
 
 export { Base58Validator };
-export type { Validator };
+export type { ValidatorParams };

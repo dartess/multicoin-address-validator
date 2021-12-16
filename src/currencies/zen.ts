@@ -1,4 +1,4 @@
-import { BTCValidator, Validator } from '../validators/bitcoin_validator';
+import { BTCValidator, ValidatorParams } from '../validators/bitcoin_validator';
 
 const zenCurrency = {
     name: 'ZenCash',
@@ -17,8 +17,8 @@ const zenCurrency = {
 } as const;
 
 const zenValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => BTCValidator.isValidAddress(address, zenCurrency, opts);
 
 export {

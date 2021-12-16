@@ -1,4 +1,4 @@
-import { BTCValidator, Validator } from '../validators/bitcoin_validator';
+import { BTCValidator, ValidatorParams } from '../validators/bitcoin_validator';
 
 const wavesCurrency = {
     name: 'Waves',
@@ -10,8 +10,8 @@ const wavesCurrency = {
 } as const;
 
 const wavesValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => BTCValidator.isValidAddress(address, wavesCurrency, opts);
 
 export {

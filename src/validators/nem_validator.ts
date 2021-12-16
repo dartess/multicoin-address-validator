@@ -24,7 +24,7 @@ const NEMValidator = {
     },
 };
 
-type Validator = Parameters<typeof NEMValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof NEMValidator.isValidAddress>;
 
 export { NEMValidator };
-export type { Validator };
+export type { ValidatorParams };

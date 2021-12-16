@@ -1,4 +1,4 @@
-import { BTCValidator, Validator } from '../validators/bitcoin_validator';
+import { BTCValidator, ValidatorParams } from '../validators/bitcoin_validator';
 
 const monaCurrency = {
     name: 'MonaCoin',
@@ -13,8 +13,8 @@ const monaCurrency = {
 } as const;
 
 const monaValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => BTCValidator.isValidAddress(address, monaCurrency, opts);
 
 export {

@@ -1,4 +1,4 @@
-import { BIP173Validator, Validator } from '../validators/bip173_validator';
+import { BIP173Validator, ValidatorParams } from '../validators/bip173_validator';
 
 const croCurrency = {
     name: 'Crypto.com Coin',
@@ -7,8 +7,8 @@ const croCurrency = {
 } as const;
 
 const croValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => BIP173Validator.isValidAddress(address, croCurrency, opts);
 
 export {

@@ -1,4 +1,4 @@
-import { XMRValidator, Validator } from '../validators/monero_validator';
+import { XMRValidator, ValidatorParams } from '../validators/monero_validator';
 
 const lokiCurrency = {
     name: 'loki',
@@ -8,8 +8,8 @@ const lokiCurrency = {
 } as const;
 
 const lokiValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => XMRValidator.isValidAddress(address, lokiCurrency, opts);
 
 export {

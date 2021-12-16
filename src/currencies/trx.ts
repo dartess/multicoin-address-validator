@@ -1,4 +1,4 @@
-import { TRXValidator, Validator } from '../validators/tron_validator';
+import { TRXValidator, ValidatorParams } from '../validators/tron_validator';
 
 const trxCurrency = {
     name: 'Tron',
@@ -7,8 +7,8 @@ const trxCurrency = {
 } as const;
 
 const trxValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => TRXValidator.isValidAddress(address, trxCurrency, opts);
 
 export {

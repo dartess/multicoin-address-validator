@@ -1,4 +1,4 @@
-import { ADAValidator, Validator } from '../validators/ada_validator';
+import { ADAValidator, ValidatorParams } from '../validators/ada_validator';
 
 const adaCurrency = {
     name: 'Cardano',
@@ -7,8 +7,8 @@ const adaCurrency = {
 } as const;
 
 const adaValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => ADAValidator.isValidAddress(address, adaCurrency, opts);
 
 export {

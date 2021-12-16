@@ -20,7 +20,7 @@ const LSKValidator = {
     },
 };
 
-type Validator = Parameters<typeof LSKValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof LSKValidator.isValidAddress>;
 
 export { LSKValidator };
-export type { Validator };
+export type { ValidatorParams };

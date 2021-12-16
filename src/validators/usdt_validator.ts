@@ -30,7 +30,7 @@ const USDTValidator = {
     },
 };
 
-type Validator = Parameters<typeof USDTValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof USDTValidator.isValidAddress>;
 
 export { USDTValidator };
-export type { Validator };
+export type { ValidatorParams };

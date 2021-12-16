@@ -34,7 +34,7 @@ const ETHValidator = {
     },
 };
 
-type Validator = Parameters<typeof ETHValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof ETHValidator.isValidAddress>;
 
 export { ETHValidator };
-export type { Validator };
+export type { ValidatorParams };

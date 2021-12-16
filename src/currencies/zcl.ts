@@ -1,4 +1,4 @@
-import { BTCValidator, Validator } from '../validators/bitcoin_validator';
+import { BTCValidator, ValidatorParams } from '../validators/bitcoin_validator';
 
 const zclCurrency = {
     name: 'ZClassic',
@@ -17,8 +17,8 @@ const zclCurrency = {
 } as const;
 
 const zclValidate = (
-    address: Validator[0],
-    opts?: Validator[2],
+    address: ValidatorParams[0],
+    opts?: ValidatorParams[2],
 ) => BTCValidator.isValidAddress(address, zclCurrency, opts);
 
 export {

@@ -26,7 +26,7 @@ const AlgoValidator = {
     },
 };
 
-type Validator = Parameters<typeof AlgoValidator.isValidAddress>;
+type ValidatorParams = Parameters<typeof AlgoValidator.isValidAddress>;
 
 export { AlgoValidator };
-export type { Validator };
+export type { ValidatorParams };

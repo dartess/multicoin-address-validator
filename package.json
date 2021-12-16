@@ -16,7 +16,7 @@
     "engineStrict": true,
     "scripts": {
         "transpile": "rimraf lib && tsc",
-        "bundle": "esbuild src/browser.ts --outfile=dist/wallet-address-validator.min.js --bundle --define:global=window --minify",
+        "bundle": "esbuild src/browser.ts --outfile=dist/wallet-address-validator.min.js --bundle --metafile=.tmp/meta.json --define:global=window --minify",
         "lint": "eslint ./src --ext .ts",
         "lint:fix": "eslint ./src --ext .ts --fix",
         "test:node": "jest",
@@ -24,6 +24,7 @@
         "test:coverage": "jest --coverage",
         "test": "npm run test:node && npm run test:browser && npm run lint",
         "start": "npm run bundle && npm run transpile && npm test",
+        "esbuild-visualizer": "esbuild-visualizer --metadata .tmp/meta.json --filename .tmp/stats.html",
         "prepare": "husky install"
     },
     "dependencies": {
@@ -44,6 +45,7 @@
         "@typescript-eslint/eslint-plugin": "^5.7.0",
         "@typescript-eslint/parser": "^5.7.0",
         "esbuild": "^0.14.5",
+        "esbuild-visualizer": "^0.3.1",
         "eslint": "^8.4.1",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-airbnb-typescript": "^16.1.0",

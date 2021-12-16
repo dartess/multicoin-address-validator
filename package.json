@@ -25,7 +25,7 @@
         "test": "npm run test:node && npm run test:browser && npm run lint",
         "start": "npm run bundle && npm run transpile && npm test",
         "esbuild-visualizer": "esbuild-visualizer --metadata .tmp/meta.json --filename .tmp/stats.html",
-        "generate": "ts-node generation/index.ts --project tsconfig.json",
+        "generate": "ts-node generation/index.ts && git add README.md package.json",
         "pre-commit": "npm test && npm run generate",
         "prepare": "husky install"
     },

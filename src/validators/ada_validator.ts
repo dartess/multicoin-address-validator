@@ -1,5 +1,5 @@
 import cbor from 'cbor-js';
-import CRC from 'crc';
+import { crc32 } from 'crc';
 
 import { BIP173Validator } from './bip173_validator';
 import { base58Decode } from '../utils/base58Decode';
@@ -33,7 +33,7 @@ function isValidAddressV1(address: string) {
     }
 
     // get crc of the payload
-    const crc = CRC.crc32(tagged as Buffer); // todo check CRC types
+    const crc = crc32(tagged as Buffer); // todo check CRC types
 
     return crc === validCrc;
 }

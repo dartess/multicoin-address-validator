@@ -1,5 +1,5 @@
 import baseX from 'base-x';
-import crc from 'crc';
+import { crc16xmodem } from 'crc';
 
 import { numberToHex } from '../utils/numberToHex';
 import { toHex } from '../utils/toHex';
@@ -32,7 +32,7 @@ const XLMValidator = {
             return false;
         }
 
-        const computedChecksum = numberToHex(swap16(crc.crc16xmodem(bytes.slice(0, -2))), 4);
+        const computedChecksum = numberToHex(swap16(crc16xmodem(bytes.slice(0, -2))), 4);
         const checksum = toHex(bytes.slice(-2));
 
         return computedChecksum === checksum;

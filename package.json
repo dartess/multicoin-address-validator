@@ -30,7 +30,7 @@
     "dependencies": {
         "base-x": "^3.0.9",
         "bignumber.js": "^9.0.2",
-        "buffer": "^6.0.3",
+        "buffer": "^5.7.1",
         "cbor-js": "^0.1.0",
         "crc": "^3.8.0",
         "js-sha3": "^0.8.0",

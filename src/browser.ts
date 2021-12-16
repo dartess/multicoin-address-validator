@@ -1,4 +1,4 @@
-import { validate, getSupportedSymbols } from './wallet_address_validator';
+import { validate, getSupportedSymbols } from './index';
 
 // @ts-ignore
 window.WAValidator = { validate, getSupportedSymbols };

@@ -1,6 +1,6 @@
 const isPuppeteer = Boolean(global.__PUPPETEER__);
 
-const WAValidator = !isPuppeteer && require('../src/wallet_address_validator');
+const WAValidator = !isPuppeteer && require('../lib');
 
 if (isPuppeteer) {
     const path = require('path');

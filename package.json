@@ -9,11 +9,15 @@
         "type": "git",
         "url": "https://github.com/dartess/multicoin-address-validator.git"
     },
-    "main": "src/wallet_address_validator",
+    "main": "lib/index",
     "engines": {
         "node": ">=12.0.0"
     },
     "engineStrict": true,
+    "files": [
+        "dist",
+        "lib"
+    ],
     "scripts": {
         "transpile": "rimraf lib && tsc",
         "bundle": "esbuild src/browser.ts --outfile=dist/wallet-address-validator.min.js --bundle --metafile=.tmp/meta.json --define:global=window --minify",

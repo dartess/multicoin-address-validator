@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const mkrCurrency = {
     name: 'Maker',
     symbol: 'mkr',
 } as const;
 
-const mkrValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const mkrValidate = ETHValidator.isValidAddress;
 
 export {
     mkrCurrency,

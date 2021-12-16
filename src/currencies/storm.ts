@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const stormCurrency = {
     name: 'Storm',
     symbol: 'storm',
 } as const;
 
-const stormValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const stormValidate = ETHValidator.isValidAddress;
 
 export {
     stormCurrency,

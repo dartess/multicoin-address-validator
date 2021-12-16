@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const vetCurrency = {
     name: 'VeChain',
     symbol: 'vet',
 } as const;
 
-const vetValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const vetValidate = ETHValidator.isValidAddress;
 
 export {
     vetCurrency,

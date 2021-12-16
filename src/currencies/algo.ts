@@ -1,11 +1,11 @@
-import { AlgoValidator, Validator } from '../validators/algo_validator';
+import { AlgoValidator } from '../validators/algo_validator';
 
 const algoCurrency = {
     name: 'Algorand',
     symbol: 'algo',
 } as const;
 
-const algoValidate = (address: Validator[0]) => AlgoValidator.isValidAddress(address);
+const algoValidate = AlgoValidator.isValidAddress;
 
 export {
     algoCurrency,

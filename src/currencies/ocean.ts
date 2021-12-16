@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const oceanCurrency = {
     name: 'Ocean Protocol',
     symbol: 'ocean',
 } as const;
 
-const oceanValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const oceanValidate = ETHValidator.isValidAddress;
 
 export {
     oceanCurrency,

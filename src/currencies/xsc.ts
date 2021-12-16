@@ -1,11 +1,11 @@
-import { SCValidator, Validator } from '../validators/siacoin_validator';
+import { SCValidator } from '../validators/siacoin_validator';
 
 const xscCurrency = {
     name: 'HyperSpace',
     symbol: 'xsc',
 } as const;
 
-const xscValidate = (address: Validator[0]) => SCValidator.isValidAddress(address);
+const xscValidate = SCValidator.isValidAddress;
 
 export {
     xscCurrency,

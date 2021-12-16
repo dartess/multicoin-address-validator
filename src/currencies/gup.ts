@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const gupCurrency = {
     name: 'Matchpool',
     symbol: 'gup',
 } as const;
 
-const gupValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const gupValidate = ETHValidator.isValidAddress;
 
 export {
     gupCurrency,

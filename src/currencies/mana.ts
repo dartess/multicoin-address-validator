@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const manaCurrency = {
     name: 'Decentraland',
     symbol: 'mana',
 } as const;
 
-const manaValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const manaValidate = ETHValidator.isValidAddress;
 
 export {
     manaCurrency,

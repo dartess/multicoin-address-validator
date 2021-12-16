@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const daiCurrency = {
     name: 'Multi-collateral DAI',
     symbol: 'dai',
 } as const;
 
-const daiValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const daiValidate = ETHValidator.isValidAddress;
 
 export {
     daiCurrency,

@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const paxCurrency = {
     name: 'Paxos',
     symbol: 'pax',
 } as const;
 
-const paxValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const paxValidate = ETHValidator.isValidAddress;
 
 export {
     paxCurrency,

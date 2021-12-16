@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const aaveCurrency = {
     name: 'Aave Coin',
     symbol: 'aave',
 } as const;
 
-const aaveValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const aaveValidate = ETHValidator.isValidAddress;
 
 export {
     aaveCurrency,

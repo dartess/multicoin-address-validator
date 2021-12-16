@@ -1,11 +1,11 @@
-import { EOSValidator, Validator } from '../validators/eos_validator';
+import { EOSValidator } from '../validators/eos_validator';
 
 const eosCurrency = {
     name: 'EOS',
     symbol: 'eos',
 } as const;
 
-const eosValidate = (address: Validator[0]) => EOSValidator.isValidAddress(address);
+const eosValidate = EOSValidator.isValidAddress;
 
 export {
     eosCurrency,

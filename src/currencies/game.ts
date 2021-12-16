@@ -1,4 +1,4 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const gameCurrency = {
     name: 'GameCredits',
@@ -6,7 +6,7 @@ const gameCurrency = {
     addressTypes: { prod: ['26', '05'], testnet: [] },
 } as const;
 
-const gameValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const gameValidate = ETHValidator.isValidAddress;
 
 export {
     gameCurrency,

@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const rcnCurrency = {
     name: 'Ripio Credit Network',
     symbol: 'rcn',
 } as const;
 
-const rcnValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const rcnValidate = ETHValidator.isValidAddress;
 
 export {
     rcnCurrency,

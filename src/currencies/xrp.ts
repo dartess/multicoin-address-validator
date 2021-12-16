@@ -1,11 +1,11 @@
-import { XRPValidator, Validator } from '../validators/ripple_validator';
+import { XRPValidator } from '../validators/ripple_validator';
 
 const xrpCurrency = {
     name: 'Ripple',
     symbol: 'xrp',
 } as const;
 
-const xrpValidate = (address: Validator[0]) => XRPValidator.isValidAddress(address);
+const xrpValidate = XRPValidator.isValidAddress;
 
 export {
     xrpCurrency,

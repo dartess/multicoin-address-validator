@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const hedgCurrency = {
     name: 'HedgeTrade',
     symbol: 'hedg',
 } as const;
 
-const hedgValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const hedgValidate = ETHValidator.isValidAddress;
 
 export {
     hedgCurrency,

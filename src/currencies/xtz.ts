@@ -1,11 +1,11 @@
-import { XTZValidator, Validator } from '../validators/tezos_validator';
+import { XTZValidator } from '../validators/tezos_validator';
 
 const xtzCurrency = {
     name: 'Tezos',
     symbol: 'xtz',
 } as const;
 
-const xtzValidate = (address: Validator[0]) => XTZValidator.isValidAddress(address);
+const xtzValidate = XTZValidator.isValidAddress;
 
 export {
     xtzCurrency,

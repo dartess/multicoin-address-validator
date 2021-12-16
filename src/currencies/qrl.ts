@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const qrlCurrency = {
     name: 'Quantum Resistant Ledger',
     symbol: 'qrl',
 } as const;
 
-const qrlValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const qrlValidate = ETHValidator.isValidAddress;
 
 export {
     qrlCurrency,

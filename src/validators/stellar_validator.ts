@@ -16,26 +16,26 @@ function swap16(number: number) {
     return (lower << 8) | upper;
 }
 
+function verifyChecksum(address: string) {
+    // based on https://github.com/stellar/js-stellar-base/blob/master/src/strkey.js#L126
+    const bytes = base32.decode(address);
+    if (bytes[0] !== ed25519PublicKeyVersionByte) {
+        return false;
+    }
+
+    const computedChecksum = numberToHex(swap16(crc16xmodem(bytes.slice(0, -2))), 4);
+    const checksum = toHex(bytes.slice(-2));
+
+    return computedChecksum === checksum;
+}
+
 const XLMValidator = {
     isValidAddress(address: string) {
         if (regexp.test(address)) {
-            return this.verifyChecksum(address);
+            return verifyChecksum(address);
         }
 
         return false;
-    },
-
-    verifyChecksum(address: string) {
-        // based on https://github.com/stellar/js-stellar-base/blob/master/src/strkey.js#L126
-        const bytes = base32.decode(address);
-        if (bytes[0] !== ed25519PublicKeyVersionByte) {
-            return false;
-        }
-
-        const computedChecksum = numberToHex(swap16(crc16xmodem(bytes.slice(0, -2))), 4);
-        const checksum = toHex(bytes.slice(-2));
-
-        return computedChecksum === checksum;
     },
 };
 

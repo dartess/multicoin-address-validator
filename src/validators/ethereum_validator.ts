@@ -1,5 +1,22 @@
 import { keccak256 } from 'js-sha3';
 
+function verifyChecksum(addressRaw: string) {
+    // Check each case
+    const address = addressRaw.replace('0x', '');
+
+    const addressHash = keccak256(address.toLowerCase());
+
+    for (let i = 0; i < 40; i++) {
+        // The nth letter should be uppercase if the nth digit of casemap is 1
+        if ((parseInt(addressHash[i], 16) > 7 && address[i].toUpperCase() !== address[i])
+            || (parseInt(addressHash[i], 16) <= 7 && address[i].toLowerCase() !== address[i])) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 const ETHValidator = {
     isValidAddress(address: string) {
         if (!/^0x[0-9a-fA-F]{40}$/.test(address)) {
@@ -13,24 +30,7 @@ const ETHValidator = {
         }
 
         // Otherwise check each case
-        return this.verifyChecksum(address);
-    },
-
-    verifyChecksum(addressRaw: string) {
-        // Check each case
-        const address = addressRaw.replace('0x', '');
-
-        const addressHash = keccak256(address.toLowerCase());
-
-        for (let i = 0; i < 40; i++) {
-            // The nth letter should be uppercase if the nth digit of casemap is 1
-            if ((parseInt(addressHash[i], 16) > 7 && address[i].toUpperCase() !== address[i])
-                || (parseInt(addressHash[i], 16) <= 7 && address[i].toLowerCase() !== address[i])) {
-                return false;
-            }
-        }
-
-        return true;
+        return verifyChecksum(address);
     },
 };
 

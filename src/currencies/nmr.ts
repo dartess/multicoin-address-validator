@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const nmrCurrency = {
     name: 'Numeraire',
     symbol: 'nmr',
 } as const;
 
-const nmrValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const nmrValidate = ETHValidator.isValidAddress;
 
 export {
     nmrCurrency,

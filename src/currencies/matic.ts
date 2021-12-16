@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const maticCurrency = {
     name: 'Matic',
     symbol: 'matic',
 } as const;
 
-const maticValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const maticValidate = ETHValidator.isValidAddress;
 
 export {
     maticCurrency,

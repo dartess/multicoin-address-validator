@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const xtpCurrency = {
     name: 'Tap',
     symbol: 'xtp',
 } as const;
 
-const xtpValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const xtpValidate = ETHValidator.isValidAddress;
 
 export {
     xtpCurrency,

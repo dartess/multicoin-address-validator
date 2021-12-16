@@ -1,11 +1,11 @@
-import { NANOValidator, Validator } from '../validators/nano_validator';
+import { NANOValidator } from '../validators/nano_validator';
 
 const nanoCurrency = {
     name: 'Nano',
     symbol: 'nano',
 } as const;
 
-const nanoValidate = (address: Validator[0]) => NANOValidator.isValidAddress(address);
+const nanoValidate = NANOValidator.isValidAddress;
 
 export {
     nanoCurrency,

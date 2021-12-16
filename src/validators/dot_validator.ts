@@ -22,37 +22,37 @@ const addressFormats = [
     { addressLength: 34, accountIndexLength: 32, checkSumLength: 2 },
 ];
 
-const DotValidator = {
-    isValidAddress(address: string) {
-        return this.verifyChecksum(address);
-    },
+function verifyChecksum(address: string) {
+    try {
+        const preImage = '53533538505245';
 
-    verifyChecksum(address: string) {
-        try {
-            const preImage = '53533538505245';
+        const decoded = base58Decode(address);
+        const addressType = byteArray2hexStr(decoded.slice(0, 1));
+        const addressAndChecksum = decoded.slice(1);
 
-            const decoded = base58Decode(address);
-            const addressType = byteArray2hexStr(decoded.slice(0, 1));
-            const addressAndChecksum = decoded.slice(1);
+        // get the address format
+        const addressFormat = addressFormats.find((af) => af.addressLength === addressAndChecksum.length);
 
-            // get the address format
-            const addressFormat = addressFormats.find((af) => af.addressLength === addressAndChecksum.length);
-
-            if (!addressFormat) {
-                return false;
-            }
-
-            const decodedAddress = byteArray2hexStr(addressAndChecksum.slice(0, addressFormat.accountIndexLength));
-            const checksum = byteArray2hexStr(addressAndChecksum.slice(-addressFormat.checkSumLength));
-
-            const calculatedHash = blake2b(preImage + addressType + decodedAddress, 64)
-                .slice(0, addressFormat.checkSumLength * 2)
-                .toUpperCase();
-
-            return calculatedHash === checksum;
-        } catch (err) {
+        if (!addressFormat) {
             return false;
         }
+
+        const decodedAddress = byteArray2hexStr(addressAndChecksum.slice(0, addressFormat.accountIndexLength));
+        const checksum = byteArray2hexStr(addressAndChecksum.slice(-addressFormat.checkSumLength));
+
+        const calculatedHash = blake2b(preImage + addressType + decodedAddress, 64)
+            .slice(0, addressFormat.checkSumLength * 2)
+            .toUpperCase();
+
+        return calculatedHash === checksum;
+    } catch (err) {
+        return false;
+    }
+}
+
+const DotValidator = {
+    isValidAddress(address: string) {
+        return verifyChecksum(address);
     },
 };
 

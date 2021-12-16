@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const dntCurrency = {
     name: 'District0x',
     symbol: 'dnt',
 } as const;
 
-const dntValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const dntValidate = ETHValidator.isValidAddress;
 
 export {
     dntCurrency,

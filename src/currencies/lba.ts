@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const lbaCurrency = {
     name: 'Cred',
     symbol: 'lba',
 } as const;
 
-const lbaValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const lbaValidate = ETHValidator.isValidAddress;
 
 export {
     lbaCurrency,

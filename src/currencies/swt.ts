@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const swtCurrency = {
     name: 'Swarm City',
     symbol: 'swt',
 } as const;
 
-const swtValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const swtValidate = ETHValidator.isValidAddress;
 
 export {
     swtCurrency,

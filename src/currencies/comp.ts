@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const compCurrency = {
     name: 'Compound',
     symbol: 'comp',
 } as const;
 
-const compValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const compValidate = ETHValidator.isValidAddress;
 
 export {
     compCurrency,

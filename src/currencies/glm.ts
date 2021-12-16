@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const glmCurrency = {
     name: 'Golem',
     symbol: 'glm',
 } as const;
 
-const glmValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const glmValidate = ETHValidator.isValidAddress;
 
 export {
     glmCurrency,

@@ -1,11 +1,11 @@
-import { ETHValidator, Validator } from '../validators/ethereum_validator';
+import { ETHValidator } from '../validators/ethereum_validator';
 
 const snxCurrency = {
     name: 'Synthetix Network',
     symbol: 'snx',
 } as const;
 
-const snxValidate = (address: Validator[0]) => ETHValidator.isValidAddress(address);
+const snxValidate = ETHValidator.isValidAddress;
 
 export {
     snxCurrency,

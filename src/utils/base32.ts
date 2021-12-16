@@ -1,4 +1,4 @@
-const baseX = require('base-x');
+import baseX from 'base-x';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 

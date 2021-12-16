@@ -7,7 +7,7 @@ import { hexStr2byteArray } from './utils/hexStr2byteArray';
 type TrxCurrency = typeof import('./currencies/trx').trxCurrency;
 
 type Currency = TrxCurrency;
-type CurrencyAddressType = keyof TrxCurrency['addressTypes'];
+type CurrencyNetworkType = keyof TrxCurrency['addressTypes'];
 
 function decodeBase58Address(base58Sting: string) {
     if (typeof (base58Sting) !== 'string') {
@@ -40,7 +40,7 @@ function decodeBase58Address(base58Sting: string) {
     return false;
 }
 
-function getEnv(currency: Currency, networkType: CurrencyAddressType | '') {
+function getEnv(currency: Currency, networkType: CurrencyNetworkType | '') {
     let evn = networkType || 'prod';
 
     if (evn !== 'prod' && evn !== 'testnet') evn = 'prod';
@@ -55,7 +55,7 @@ const TRXValidator = {
     isValidAddress(
         mainAddress: Address,
         currency: Currency,
-        opts?: OptsNetworkTypeOptional<CurrencyAddressType>,
+        opts?: OptsNetworkTypeOptional<CurrencyNetworkType>,
     ) {
         const networkType = opts?.networkType ?? '';
         const address = decodeBase58Address(mainAddress);

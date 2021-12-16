@@ -1,4 +1,4 @@
-/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-restricted-syntax,@typescript-eslint/no-explicit-any */
 
 // Copyright (c) 2017, 2021 Pieter Wuille
 //
@@ -99,23 +99,35 @@ function encode(hrp: string, version: number, program: Array<number>) {
 
 const DEFAULT_NETWORK_TYPE = 'prod';
 
-type Currency = {
-    bech32Hrp?: {
-        prod: Array<string>;
-        testnet: Array<string>;
+type CurrencyWithBech32Hrp = {
+    bech32Hrp: {
+        prod: ReadonlyArray<string>;
+        testnet: ReadonlyArray<string>;
     };
 };
 
+function isCurrencyWithBech32Hrp(currency: Record<string, any>): currency is CurrencyWithBech32Hrp {
+    if (!currency.bech32Hrp || !Array.isArray(currency.bech32Hrp.prod) || !Array.isArray(currency.bech32Hrp.testnet)) {
+        return false;
+    }
+    return (currency.bech32Hrp.prod as Array<unknown>).every((value) => typeof value === 'string')
+        && (currency.bech32Hrp.testnet as Array<unknown>).every((value) => typeof value === 'string');
+}
+
 type NetworkType = 'prod' | 'testnet' | string;
 
-function isValidAddress(address: Address, currency: Currency, opts: OptsNetworkTypeOptional<NetworkType> = {}) {
-    if (!currency.bech32Hrp) {
+function isValidAddress(
+    address: Address,
+    currency: Record<string, any>,
+    opts: OptsNetworkTypeOptional<NetworkType> = {},
+) {
+    if (!isCurrencyWithBech32Hrp(currency)) {
         return false;
     }
 
     const { networkType = DEFAULT_NETWORK_TYPE } = opts;
 
-    let correctBech32Hrps;
+    let correctBech32Hrps: ReadonlyArray<string>;
     if (networkType === 'prod' || networkType === 'testnet') {
         correctBech32Hrps = currency.bech32Hrp[networkType];
     } else if (currency.bech32Hrp) {

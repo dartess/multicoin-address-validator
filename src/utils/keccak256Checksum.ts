@@ -1,5 +1,5 @@
-import sha3 from 'js-sha3';
+import sha3, { Message } from 'js-sha3';
 
-export function keccak256Checksum(payload: Buffer | Uint8Array) {
+export function keccak256Checksum(payload: Message) {
     return sha3.keccak256(payload).toString().slice(0, 8);
 }

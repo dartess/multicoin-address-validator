@@ -7,13 +7,13 @@ type XmrCurrency = typeof import('./currencies/xmr').xmrCurrency;
 type LokiCurrency = typeof import('./currencies/loki').lokiCurrency;
 
 type Currency = XmrCurrency | LokiCurrency;
-type CurrencyAddressType = keyof XmrCurrency['addressTypes'] | keyof LokiCurrency['addressTypes'] | 'both';
+type CurrencyNetworkType = keyof XmrCurrency['addressTypes'] | keyof LokiCurrency['addressTypes'] | 'both';
 
 const DEFAULT_NETWORK_TYPE = 'prod';
 const addressRegTest = /^[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{95}$/;
 const integratedAddressRegTest = /^[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{106}$/;
 
-function validateNetwork(decoded: string, currency: Currency, networkType: CurrencyAddressType, addressType: string) {
+function validateNetwork(decoded: string, currency: Currency, networkType: CurrencyNetworkType, addressType: string) {
     let network: Record<string, ReadonlyArray<string>> = currency.addressTypes;
     if (addressType === 'integrated') {
         network = currency.iAddressTypes;
@@ -45,7 +45,7 @@ function hextobin(hex: string) {
 }
 
 const XMRValidator = {
-    isValidAddress(address: Address, currency: Currency, opts: OptsNetworkTypeOptional<CurrencyAddressType> = {}) {
+    isValidAddress(address: Address, currency: Currency, opts: OptsNetworkTypeOptional<CurrencyNetworkType> = {}) {
         const { networkType = DEFAULT_NETWORK_TYPE } = opts;
         let addressType = 'standard';
         if (!addressRegTest.test(address)) {

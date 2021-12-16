@@ -1,4 +1,38 @@
-var BTCValidator = require('./bitcoin_validator');
+const {btcCurrency, btcValidate} = require("./currencies/btc");
+const {ltcCurrency, ltcValidate} = require("./currencies/ltc");
+const {ppcCurrency, ppcValidate} = require("./currencies/ppc");
+const {dogeCurrency, dogeValidate} = require("./currencies/doge");
+const {bvcCurrency, bvcValidate} = require("./currencies/bvc");
+const {frcCurrency, frcValidate} = require("./currencies/frc");
+const {ptsCurrency, ptsValidate} = require("./currencies/pts");
+const {mecCurrency, mecValidate} = require("./currencies/mec");
+const {xpmCurrency, xpmValidate} = require("./currencies/xpm");
+const {aurCurrency, aurValidate} = require("./currencies/aur");
+const {nmcCurrency, nmcValidate} = require("./currencies/nmc");
+const {bioCurrency, bioValidate} = require("./currencies/bio");
+const {grlcCurrency, grlcValidate} = require("./currencies/grlc");
+const {vtcCurrency, vtcValidate} = require("./currencies/vtc");
+const {btgCurrency, btgValidate} = require("./currencies/btg");
+const {kmdCurrency, kmdValidate} = require("./currencies/kmd");
+const {btczCurrency, btczValidate} = require("./currencies/btcz");
+const {btcpCurrency, btcpValidate} = require("./currencies/btcp");
+const {hushCurrency, hushValidate} = require("./currencies/hush");
+const {sngCurrency, sngValidate} = require("./currencies/sng");
+const {zecCurrency, zecValidate} = require("./currencies/zec");
+const {zclCurrency, zclValidate} = require("./currencies/zcl");
+const {zenCurrency, zenValidate} = require("./currencies/zen");
+const {votCurrency, votValidate} = require("./currencies/vot");
+const {dcrCurrency, dcrValidate} = require("./currencies/dcr");
+const {pivxCurrency, pivxValidate} = require("./currencies/pivx");
+const {slrCurrency, slrValidate} = require("./currencies/slr");
+const {monaCurrency, monaValidate} = require("./currencies/mona");
+const {dgbCurrency, dgbValidate} = require("./currencies/dgb");
+const {dashCurrency, dashValidate} = require("./currencies/dash");
+const {neoCurrency, neoValidate} = require("./currencies/neo");
+const {gasCurrency, gasValidate} = require("./currencies/gas");
+const {qtumCurrency, qtumValidate} = require("./currencies/qtum");
+const {lbcCurrency, lbcValidate} = require("./currencies/lbc");
+const {wavesCurrency, wavesValidate} = require("./currencies/waves");
 const {antCurrency, antValidate} = require("./currencies/ant");
 const {batCurrency, batValidate} = require("./currencies/bat");
 const {bntCurrency, bntValidate} = require("./currencies/bnt");
@@ -89,11 +123,8 @@ const {xrpCurrency, xrpValidate} = require("./currencies/xrp");
 // defines P2PKH and P2SH address types for standard (prod) and testnet networks
 var CURRENCIES = [
     {
-        name: 'Bitcoin',
-        symbol: 'btc',
-        addressTypes: {prod: ['00', '05'], testnet: ['6f', 'c4', '3c', '26']},
-        bech32Hrp: {prod: ['bc'], testnet: ['tb']},
-        validator: BTCValidator
+        ...btcCurrency,
+        validate: btcValidate,
     },
     {
         ...bchCurrency,
@@ -104,189 +135,120 @@ var CURRENCIES = [
         validate: bsvValidate,
     },
     {
-        name: 'LiteCoin',
-        symbol: 'ltc',
-        addressTypes: {prod: ['30', '05', '32'], testnet: ['6f', 'c4', '3a']},
-        bech32Hrp: {prod: ['ltc'], testnet: ['tltc']},
-        validator: BTCValidator
+        ...ltcCurrency,
+        validate: ltcValidate,
     },
     {
-        name: 'PeerCoin',
-        symbol: 'ppc',
-        addressTypes: {prod: ['37', '75'], testnet: ['6f', 'c4']},
-        validator: BTCValidator
+        ...ppcCurrency,
+        validate: ppcValidate,
     },
     {
-        name: 'DogeCoin',
-        symbol: 'doge',
-        addressTypes: {prod: ['1e', '16'], testnet: ['71', 'c4']},
-        validator: BTCValidator
+        ...dogeCurrency,
+        validate: dogeValidate,
     },
     {
-        name: 'BeaverCoin',
-        symbol: 'bvc',
-        addressTypes: {prod: ['19', '05'], testnet: ['6f', 'c4']},
-        validator: BTCValidator,
+        ...bvcCurrency,
+        validate: bvcValidate,
     },
     {
-        name: 'FreiCoin',
-        symbol: 'frc',
-        addressTypes: {prod: ['00', '05'], testnet: ['6f', 'c4']},
-        validator: BTCValidator
+        ...frcCurrency,
+        validate: frcValidate,
     },
     {
-        name: 'ProtoShares',
-        symbol: 'pts',
-        addressTypes: {prod: ['38', '05'], testnet: ['6f', 'c4']},
-        validator: BTCValidator
+        ...ptsCurrency,
+        validate: ptsValidate,
     },
     {
-        name: 'MegaCoin',
-        symbol: 'mec',
-        addressTypes: {prod: ['32', '05'], testnet: ['6f', 'c4']},
-        validator: BTCValidator
+        ...mecCurrency,
+        validate: mecValidate,
     },
     {
-        name: 'PrimeCoin',
-        symbol: 'xpm',
-        addressTypes: {prod: ['17', '53'], testnet: ['6f', 'c4']},
-        validator: BTCValidator
+        ...xpmCurrency,
+        validate: xpmValidate,
     },
     {
-        name: 'AuroraCoin',
-        symbol: 'aur',
-        addressTypes: {prod: ['17', '05'], testnet: ['6f', 'c4']},
-        validator: BTCValidator
+        ...aurCurrency,
+        validate: aurValidate,
     },
     {
-        name: 'NameCoin',
-        symbol: 'nmc',
-        addressTypes: {prod: ['34'], testnet: []},
-        validator: BTCValidator
+        ...nmcCurrency,
+        validate: nmcValidate,
     },
     {
-        name: 'BioCoin',
-        symbol: 'bio',
-        addressTypes: {prod: ['19', '14'], testnet: ['6f', 'c4']},
-        validator: BTCValidator
+        ...bioCurrency,
+        validate: bioValidate,
     },
     {
-        name: 'GarliCoin',
-        symbol: 'grlc',
-        addressTypes: {prod: ['26', '05'], testnet: ['6f', 'c4']},
-        validator: BTCValidator
+        ...grlcCurrency,
+        validate: grlcValidate,
     },
     {
-        name: 'VertCoin',
-        symbol: 'vtc',
-        addressTypes: {prod: ['0x', '47', '71', '05'], testnet: ['6f', 'c4']},
-        validator: BTCValidator
-
+        ...vtcCurrency,
+        validate: vtcValidate,
     },
     {
-        name: 'BitcoinGold',
-        symbol: 'btg',
-        addressTypes: {prod: ['26', '17'], testnet: ['6f', 'c4']},
-        validator: BTCValidator
+        ...btgCurrency,
+        validate: btgValidate,
     },
     {
-        name: 'Komodo',
-        symbol: 'kmd',
-        addressTypes: {prod: ['3c', '55'], testnet: ['0', '5']},
-        validator: BTCValidator
+        ...kmdCurrency,
+        validate: kmdValidate,
     },
     {
-        name: 'BitcoinZ',
-        symbol: 'btcz',
-        expectedLength: 26,
-        addressTypes: {prod: ['1cb8', '1cbd'], testnet: ['1d25', '1cba']},
-        validator: BTCValidator
+        ...btczCurrency,
+        validate: btczValidate,
     },
     {
-        name: 'BitcoinPrivate',
-        symbol: 'btcp',
-        expectedLength: 26,
-        addressTypes: {prod: ['1325', '13af'], testnet: ['1957', '19e0']},
-        validator: BTCValidator
+        ...btcpCurrency,
+        validate: btcpValidate,
     },
     {
-        name: 'Hush',
-        symbol: 'hush',
-        expectedLength: 26,
-        addressTypes: {prod: ['1cb8', '1cbd'], testnet: ['1d25', '1cba']},
-        validator: BTCValidator
+        ...hushCurrency,
+        validate: hushValidate,
     },
     {
-        name: 'SnowGem',
-        symbol: 'sng',
-        expectedLength: 26,
-        addressTypes: {prod: ['1c28', '1c2d'], testnet: ['1d25', '1cba']},
-        validator: BTCValidator
+        ...sngCurrency,
+        validate: sngValidate,
     },
     {
-        name: 'ZCash',
-        symbol: 'zec',
-        expectedLength: 26,
-        addressTypes: {prod: ['1cb8', '1cbd'], testnet: ['1d25', '1cba']},
-        validator: BTCValidator
+        ...zecCurrency,
+        validate: zecValidate,
     },
     {
-        name: 'ZClassic',
-        symbol: 'zcl',
-        expectedLength: 26,
-        addressTypes: {prod: ['1cb8', '1cbd'], testnet: ['1d25', '1cba']},
-        validator: BTCValidator
+        ...zclCurrency,
+        validate: zclValidate,
     },
     {
-        name: 'ZenCash',
-        symbol: 'zen',
-        expectedLength: 26,
-        addressTypes: {prod: ['2089', '2096'], testnet: ['2092', '2098']},
-        validator: BTCValidator
+        ...zenCurrency,
+        validate: zenValidate,
     },
     {
-        name: 'VoteCoin',
-        symbol: 'vot',
-        expectedLength: 26,
-        addressTypes: {prod: ['1cb8', '1cbd'], testnet: ['1d25', '1cba']},
-        validator: BTCValidator
+        ...votCurrency,
+        validate: votValidate,
     },
     {
-        name: 'Decred',
-        symbol: 'dcr',
-        addressTypes: {prod: ['073f', '071a'], testnet: ['0f21', '0efc']},
-        hashFunction: 'blake256',
-        expectedLength: 26,
-        validator: BTCValidator
+        ...dcrCurrency,
+        validate: dcrValidate,
     },
     {
         ...gameCurrency,
         validate: gameValidate,
     },
     {
-        name: 'PIVX',
-        symbol: 'pivx',
-        addressTypes: {prod: ['1e', '0d'], testnet: []},
-        validator: BTCValidator
+        ...pivxCurrency,
+        validate: pivxValidate,
     },
     {
-        name: 'SolarCoin',
-        symbol: 'slr',
-        addressTypes: {prod: ['12', '05'], testnet: []},
-        validator: BTCValidator
+        ...slrCurrency,
+        validate: slrValidate,
     },
     {
-        name: 'MonaCoin',
-        symbol: 'mona',
-        addressTypes: {prod: ['32', '37'], testnet: []},
-        validator: BTCValidator
+        ...monaCurrency,
+        validate: monaValidate,
     },
     {
-        name: 'DigiByte',
-        symbol: 'dgb',
-        addressTypes: {prod: ['1e', '3f'], testnet: []},
-        bech32Hrp: {prod: ['dgb', 'S'], testnet: []},
-        validator: BTCValidator
+        ...dgbCurrency,
+        validate: dgbValidate,
     },
     {
         ...usdtCurrency,
@@ -297,37 +259,24 @@ var CURRENCIES = [
         validate: xrpValidate,
     },
     {
-        name: 'Dash',
-        symbol: 'dash',
-        addressTypes: {prod: ['4c', '10'], testnet: ['8c', '13']},
-        validator: BTCValidator
+        ...dashCurrency,
+        validate: dashValidate,
     },
     {
-        name: 'Neo',
-        symbol: 'neo',
-        addressTypes: {prod: ['17'], testnet: []},
-        validator: BTCValidator
+        ...neoCurrency,
+        validate: neoValidate,
     },
     {
-        name: 'NeoGas',
-        symbol: 'gas',
-        addressTypes: {prod: ['17'], testnet: []},
-        validator: BTCValidator
+        ...gasCurrency,
+        validate: gasValidate,
     },
     {
-        name: 'Qtum',
-        symbol: 'qtum',
-        addressTypes: {prod: ['3a', '32'], testnet: ['78', '6e']},
-        validator: BTCValidator
+        ...qtumCurrency,
+        validate: qtumValidate,
     },
     {
-        name: 'Waves',
-        symbol: 'waves',
-        addressTypes: {prod: ['0157'], testnet: ['0154']},
-        expectedLength: 26,
-        hashFunction: 'blake256keccak256',
-        regex: /^[a-zA-Z0-9]{35}$/,
-        validator: BTCValidator
+        ...wavesCurrency,
+        validate: wavesValidate,
     },
     {
         ...ethCurrency,
@@ -490,10 +439,8 @@ var CURRENCIES = [
         validate: lokiValidate,
     },
     {
-        name: 'LBRY Credits',
-        symbol: 'lbc',
-        addressTypes: {prod: ['55'], testnet: []},
-        validator: BTCValidator
+        ...lbcCurrency,
+        validate: lbcValidate,
     },
     {
         ...trxCurrency,

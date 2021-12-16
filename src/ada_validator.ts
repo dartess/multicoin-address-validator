@@ -8,7 +8,7 @@ import { Address, OptsNetworkTypeOptional } from './types';
 type AdaCurrency = typeof import('./currencies/ada').adaCurrency;
 
 type Currency = AdaCurrency;
-type CurrencyAddressType = keyof AdaCurrency['bech32Hrp'];
+type CurrencyNetworkType = keyof AdaCurrency['bech32Hrp'];
 
 function getDecoded(address: Address) {
     try {
@@ -41,14 +41,14 @@ function isValidAddressV1(address: Address) {
 function isValidAddressShelley(
     address: Address,
     currency: Currency,
-    opts: OptsNetworkTypeOptional<CurrencyAddressType>,
+    opts: OptsNetworkTypeOptional<CurrencyNetworkType>,
 ) {
     // shelley address are just bip 173 - bech32 addresses (https://cips.cardano.org/cips/cip4/)
     return BIP173Validator.isValidAddress(address, currency, opts);
 }
 
 const ADAValidator = {
-    isValidAddress(address: Address, currency: Currency, opts: OptsNetworkTypeOptional<CurrencyAddressType> = {}) {
+    isValidAddress(address: Address, currency: Currency, opts: OptsNetworkTypeOptional<CurrencyNetworkType> = {}) {
         return isValidAddressV1(address) || isValidAddressShelley(address, currency, opts);
     },
 };

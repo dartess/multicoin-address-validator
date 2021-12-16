@@ -5,7 +5,7 @@ const bsvCurrency = {
     symbol: 'bsv',
     regexp: '^[qQ]{1}[0-9a-zA-Z]{41}$',
     addressTypes: { prod: ['00', '05'], testnet: ['6f', 'c4'] },
-};
+} as const;
 
 const bsvValidate = (
     address: Validator[0],

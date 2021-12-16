@@ -1,4 +1,4 @@
-const currencies = require('./currencies');
+import { getAll, getByNameOrSymbol } from './currencies';
 
 const DEFAULT_CURRENCY_NAME = 'bitcoin';
 
@@ -7,7 +7,7 @@ function validate(
     currencyNameOrSymbol: string,
     networkTypeOrOpts?: string | Record<string, unknown>, // TODO
 ) {
-    const currency = currencies.getByNameOrSymbol(currencyNameOrSymbol || DEFAULT_CURRENCY_NAME);
+    const currency = getByNameOrSymbol(currencyNameOrSymbol || DEFAULT_CURRENCY_NAME);
 
     if (currency) {
         const opts = typeof networkTypeOrOpts === 'string'
@@ -20,11 +20,11 @@ function validate(
 }
 
 function getCurrencies() {
-    return currencies.getAll();
+    return getAll();
 }
 
 function findCurrency(symbol: string) {
-    return currencies.getByNameOrSymbol(symbol) || null;
+    return getByNameOrSymbol(symbol) || null;
 }
 
 export {

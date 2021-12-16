@@ -16,7 +16,7 @@
     "engineStrict": true,
     "scripts": {
         "transpile": "rimraf lib && tsc",
-        "bundle": "esbuild src/browser.js --outfile=dist/wallet-address-validator.min.js --bundle --define:global=window --minify",
+        "bundle": "esbuild src/browser.ts --outfile=dist/wallet-address-validator.min.js --bundle --define:global=window --minify",
         "lint": "eslint ./src --ext .ts",
         "lint:fix": "eslint ./src --ext .ts --fix",
         "test:node": "jest",

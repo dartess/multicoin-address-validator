@@ -1,127 +1,126 @@
-const {btcCurrency, btcValidate} = require("./currencies/btc");
-const {ltcCurrency, ltcValidate} = require("./currencies/ltc");
-const {ppcCurrency, ppcValidate} = require("./currencies/ppc");
-const {dogeCurrency, dogeValidate} = require("./currencies/doge");
-const {bvcCurrency, bvcValidate} = require("./currencies/bvc");
-const {frcCurrency, frcValidate} = require("./currencies/frc");
-const {ptsCurrency, ptsValidate} = require("./currencies/pts");
-const {mecCurrency, mecValidate} = require("./currencies/mec");
-const {xpmCurrency, xpmValidate} = require("./currencies/xpm");
-const {aurCurrency, aurValidate} = require("./currencies/aur");
-const {nmcCurrency, nmcValidate} = require("./currencies/nmc");
-const {bioCurrency, bioValidate} = require("./currencies/bio");
-const {grlcCurrency, grlcValidate} = require("./currencies/grlc");
-const {vtcCurrency, vtcValidate} = require("./currencies/vtc");
-const {btgCurrency, btgValidate} = require("./currencies/btg");
-const {kmdCurrency, kmdValidate} = require("./currencies/kmd");
-const {btczCurrency, btczValidate} = require("./currencies/btcz");
-const {btcpCurrency, btcpValidate} = require("./currencies/btcp");
-const {hushCurrency, hushValidate} = require("./currencies/hush");
-const {sngCurrency, sngValidate} = require("./currencies/sng");
-const {zecCurrency, zecValidate} = require("./currencies/zec");
-const {zclCurrency, zclValidate} = require("./currencies/zcl");
-const {zenCurrency, zenValidate} = require("./currencies/zen");
-const {votCurrency, votValidate} = require("./currencies/vot");
-const {dcrCurrency, dcrValidate} = require("./currencies/dcr");
-const {pivxCurrency, pivxValidate} = require("./currencies/pivx");
-const {slrCurrency, slrValidate} = require("./currencies/slr");
-const {monaCurrency, monaValidate} = require("./currencies/mona");
-const {dgbCurrency, dgbValidate} = require("./currencies/dgb");
-const {dashCurrency, dashValidate} = require("./currencies/dash");
-const {neoCurrency, neoValidate} = require("./currencies/neo");
-const {gasCurrency, gasValidate} = require("./currencies/gas");
-const {qtumCurrency, qtumValidate} = require("./currencies/qtum");
-const {lbcCurrency, lbcValidate} = require("./currencies/lbc");
-const {wavesCurrency, wavesValidate} = require("./currencies/waves");
-const {antCurrency, antValidate} = require("./currencies/ant");
-const {batCurrency, batValidate} = require("./currencies/bat");
-const {bntCurrency, bntValidate} = require("./currencies/bnt");
-const {cvcCurrency, cvcValidate} = require("./currencies/cvc");
-const {dntCurrency, dntValidate} = require("./currencies/dnt");
-const {gnoCurrency, gnoValidate} = require("./currencies/gno");
-const {gntCurrency, gntValidate} = require("./currencies/gnt");
-const {glmCurrency, glmValidate} = require("./currencies/glm");
-const {gupCurrency, gupValidate} = require("./currencies/gup");
-const {mlnCurrency, mlnValidate} = require("./currencies/mln");
-const {nmrCurrency, nmrValidate} = require("./currencies/nmr");
-const {omgCurrency, omgValidate} = require("./currencies/omg");
-const {payCurrency, payValidate} = require("./currencies/pay");
-const {rcnCurrency, rcnValidate} = require("./currencies/rcn");
-const {repCurrency, repValidate} = require("./currencies/rep");
-const {rlcCurrency, rlcValidate} = require("./currencies/rlc");
-const {saltCurrency, saltValidate} = require("./currencies/salt");
-const {sntCurrency, sntValidate} = require("./currencies/snt");
-const {storjCurrency, storjValidate} = require("./currencies/storj");
-const {swtCurrency, swtValidate} = require("./currencies/swt");
-const {tusdCurrency, tusdValidate} = require("./currencies/tusd");
-const {wingsCurrency, wingsValidate} = require("./currencies/wings");
-const {zrxCurrency, zrxValidate} = require("./currencies/zrx");
-const {expCurrency, expValidate} = require("./currencies/exp");
-const {vibCurrency, vibValidate} = require("./currencies/vib");
-const {ocnCurrency, ocnValidate} = require("./currencies/ocn");
-const {polyCurrency, polyValidate} = require("./currencies/poly");
-const {stormCurrency, stormValidate} = require("./currencies/storm");
-const {btuCurrency, btuValidate} = require("./currencies/btu");
-const {daiCurrency, daiValidate} = require("./currencies/dai");
-const {enjCurrency, enjValidate} = require("./currencies/enj");
-const {hedgCurrency, hedgValidate} = require("./currencies/hedg");
-const {lbaCurrency, lbaValidate} = require("./currencies/lba");
-const {linkCurrency, linkValidate} = require("./currencies/link");
-const {loomCurrency, loomValidate} = require("./currencies/loom");
-const {mkrCurrency, mkrValidate} = require("./currencies/mkr");
-const {mtlCurrency, mtlValidate} = require("./currencies/mtl");
-const {oceanCurrency, oceanValidate} = require("./currencies/ocean");
-const {qntCurrency, qntValidate} = require("./currencies/qnt");
-const {snxCurrency, snxValidate} = require("./currencies/snx");
-const {solveCurrency, solveValidate} = require("./currencies/solve");
-const {spndCurrency, spndValidate} = require("./currencies/spnd");
-const {temcoCurrency, temcoValidate} = require("./currencies/temco");
-const {vetCurrency, vetValidate} = require("./currencies/vet");
-const {stmxCurrency, stmxValidate} = require("./currencies/stmx");
-const {repv2Currency, repv2Validate} = require("./currencies/repv2");
-const {fctCurrency, fctValidate} = require("./currencies/fct");
-const {bttCurrency, bttValidate} = require("./currencies/btt");
-const {qrlCurrency, qrlValidate} = require("./currencies/qrl");
-const {servCurrency, servValidate} = require("./currencies/serv");
-const {xtpCurrency, xtpValidate} = require("./currencies/xtp");
-const {compCurrency, compValidate} = require("./currencies/comp");
-const {paxCurrency, paxValidate} = require("./currencies/pax");
-const {usdcCurrency, usdcValidate} = require("./currencies/usdc");
-const {cusdCurrency, cusdValidate} = require("./currencies/cusd");
-const {uniCurrency, uniValidate} = require("./currencies/uni");
-const {aaveCurrency, aaveValidate} = require("./currencies/aave");
-const {maticCurrency, maticValidate} = require("./currencies/matic");
-const {manaCurrency, manaValidate} = require("./currencies/mana");
-const {gameCurrency, gameValidate} = require("./currencies/game");
-const {ethCurrency, ethValidate} = require("./currencies/eth");
-const {etzCurrency, etzValidate} = require("./currencies/etz");
-const {etcCurrency, etcValidate} = require("./currencies/etc");
-const {cloCurrency, cloValidate} = require("./currencies/clo");
-const {bkxCurrency, bkxValidate} = require("./currencies/bkx");
-const {adaCurrency, adaValidate} = require("./currencies/ada");
-const {xmrCurrency, xmrValidate} = require("./currencies/xmr");
-const {lokiCurrency, lokiValidate} = require("./currencies/loki");
-const {nanoCurrency, nanoValidate} = require("./currencies/nano");
-const {xrbCurrency, xrbValidate} = require("./currencies/xrb");
-const {scCurrency, scValidate} = require("./currencies/sc");
-const {xscCurrency, xscValidate} = require("./currencies/xsc");
-const {xemCurrency, xemValidate} = require("./currencies/xem");
-const {lskCurrency, lskValidate} = require("./currencies/lsk");
-const {xlmCurrency, xlmValidate} = require("./currencies/xlm");
-const {eosCurrency, eosValidate} = require("./currencies/eos");
-const {xtzCurrency, xtzValidate} = require("./currencies/xtz");
-const {usdtCurrency, usdtValidate} = require("./currencies/usdt");
-const {algoCurrency, algoValidate} = require("./currencies/algo");
-const {dotCurrency, dotValidate} = require("./currencies/dot");
-const {croCurrency, croValidate} = require("./currencies/cro");
-const {solCurrency, solValidate} = require("./currencies/sol");
-const {bchCurrency, bchValidate} = require("./currencies/bch");
-const {bsvCurrency, bsvValidate} = require("./currencies/bsv");
-const {trxCurrency, trxValidate} = require("./currencies/trx");
-const {xrpCurrency, xrpValidate} = require("./currencies/xrp");
+import { btcCurrency, btcValidate } from './currencies/btc';
+import { ltcCurrency, ltcValidate } from './currencies/ltc';
+import { xrpCurrency, xrpValidate } from './currencies/xrp';
+import { trxCurrency, trxValidate } from './currencies/trx';
+import { bsvCurrency, bsvValidate } from './currencies/bsv';
+import { bchCurrency, bchValidate } from './currencies/bch';
+import { solCurrency, solValidate } from './currencies/sol';
+import { croCurrency, croValidate } from './currencies/cro';
+import { dotCurrency, dotValidate } from './currencies/dot';
+import { algoCurrency, algoValidate } from './currencies/algo';
+import { usdtCurrency, usdtValidate } from './currencies/usdt';
+import { xtzCurrency, xtzValidate } from './currencies/xtz';
+import { eosCurrency, eosValidate } from './currencies/eos';
+import { xlmCurrency, xlmValidate } from './currencies/xlm';
+import { lskCurrency, lskValidate } from './currencies/lsk';
+import { xemCurrency, xemValidate } from './currencies/xem';
+import { xscCurrency, xscValidate } from './currencies/xsc';
+import { scCurrency, scValidate } from './currencies/sc';
+import { xrbCurrency, xrbValidate } from './currencies/xrb';
+import { nanoCurrency, nanoValidate } from './currencies/nano';
+import { lokiCurrency, lokiValidate } from './currencies/loki';
+import { xmrCurrency, xmrValidate } from './currencies/xmr';
+import { adaCurrency, adaValidate } from './currencies/ada';
+import { bkxCurrency, bkxValidate } from './currencies/bkx';
+import { cloCurrency, cloValidate } from './currencies/clo';
+import { etcCurrency, etcValidate } from './currencies/etc';
+import { etzCurrency, etzValidate } from './currencies/etz';
+import { ethCurrency, ethValidate } from './currencies/eth';
+import { gameCurrency, gameValidate } from './currencies/game';
+import { manaCurrency, manaValidate } from './currencies/mana';
+import { maticCurrency, maticValidate } from './currencies/matic';
+import { aaveCurrency, aaveValidate } from './currencies/aave';
+import { uniCurrency, uniValidate } from './currencies/uni';
+import { cusdCurrency, cusdValidate } from './currencies/cusd';
+import { usdcCurrency, usdcValidate } from './currencies/usdc';
+import { paxCurrency, paxValidate } from './currencies/pax';
+import { compCurrency, compValidate } from './currencies/comp';
+import { xtpCurrency, xtpValidate } from './currencies/xtp';
+import { servCurrency, servValidate } from './currencies/serv';
+import { qrlCurrency, qrlValidate } from './currencies/qrl';
+import { bttCurrency, bttValidate } from './currencies/btt';
+import { fctCurrency, fctValidate } from './currencies/fct';
+import { repv2Currency, repv2Validate } from './currencies/repv2';
+import { stmxCurrency, stmxValidate } from './currencies/stmx';
+import { vetCurrency, vetValidate } from './currencies/vet';
+import { temcoCurrency, temcoValidate } from './currencies/temco';
+import { spndCurrency, spndValidate } from './currencies/spnd';
+import { solveCurrency, solveValidate } from './currencies/solve';
+import { snxCurrency, snxValidate } from './currencies/snx';
+import { qntCurrency, qntValidate } from './currencies/qnt';
+import { oceanCurrency, oceanValidate } from './currencies/ocean';
+import { mtlCurrency, mtlValidate } from './currencies/mtl';
+import { mkrCurrency, mkrValidate } from './currencies/mkr';
+import { loomCurrency, loomValidate } from './currencies/loom';
+import { linkCurrency, linkValidate } from './currencies/link';
+import { lbaCurrency, lbaValidate } from './currencies/lba';
+import { hedgCurrency, hedgValidate } from './currencies/hedg';
+import { enjCurrency, enjValidate } from './currencies/enj';
+import { daiCurrency, daiValidate } from './currencies/dai';
+import { btuCurrency, btuValidate } from './currencies/btu';
+import { stormCurrency, stormValidate } from './currencies/storm';
+import { polyCurrency, polyValidate } from './currencies/poly';
+import { ocnCurrency, ocnValidate } from './currencies/ocn';
+import { vibCurrency, vibValidate } from './currencies/vib';
+import { expCurrency, expValidate } from './currencies/exp';
+import { zrxCurrency, zrxValidate } from './currencies/zrx';
+import { wingsCurrency, wingsValidate } from './currencies/wings';
+import { tusdCurrency, tusdValidate } from './currencies/tusd';
+import { swtCurrency, swtValidate } from './currencies/swt';
+import { storjCurrency, storjValidate } from './currencies/storj';
+import { sntCurrency, sntValidate } from './currencies/snt';
+import { saltCurrency, saltValidate } from './currencies/salt';
+import { rlcCurrency, rlcValidate } from './currencies/rlc';
+import { repCurrency, repValidate } from './currencies/rep';
+import { rcnCurrency, rcnValidate } from './currencies/rcn';
+import { payCurrency, payValidate } from './currencies/pay';
+import { omgCurrency, omgValidate } from './currencies/omg';
+import { nmrCurrency, nmrValidate } from './currencies/nmr';
+import { mlnCurrency, mlnValidate } from './currencies/mln';
+import { gupCurrency, gupValidate } from './currencies/gup';
+import { glmCurrency, glmValidate } from './currencies/glm';
+import { gntCurrency, gntValidate } from './currencies/gnt';
+import { gnoCurrency, gnoValidate } from './currencies/gno';
+import { dntCurrency, dntValidate } from './currencies/dnt';
+import { cvcCurrency, cvcValidate } from './currencies/cvc';
+import { bntCurrency, bntValidate } from './currencies/bnt';
+import { batCurrency, batValidate } from './currencies/bat';
+import { antCurrency, antValidate } from './currencies/ant';
+import { wavesCurrency, wavesValidate } from './currencies/waves';
+import { lbcCurrency, lbcValidate } from './currencies/lbc';
+import { qtumCurrency, qtumValidate } from './currencies/qtum';
+import { gasCurrency, gasValidate } from './currencies/gas';
+import { neoCurrency, neoValidate } from './currencies/neo';
+import { dashCurrency, dashValidate } from './currencies/dash';
+import { dgbCurrency, dgbValidate } from './currencies/dgb';
+import { monaCurrency, monaValidate } from './currencies/mona';
+import { slrCurrency, slrValidate } from './currencies/slr';
+import { pivxCurrency, pivxValidate } from './currencies/pivx';
+import { dcrCurrency, dcrValidate } from './currencies/dcr';
+import { votCurrency, votValidate } from './currencies/vot';
+import { zenCurrency, zenValidate } from './currencies/zen';
+import { zclCurrency, zclValidate } from './currencies/zcl';
+import { zecCurrency, zecValidate } from './currencies/zec';
+import { sngCurrency, sngValidate } from './currencies/sng';
+import { hushCurrency, hushValidate } from './currencies/hush';
+import { btcpCurrency, btcpValidate } from './currencies/btcp';
+import { btczCurrency, btczValidate } from './currencies/btcz';
+import { kmdCurrency, kmdValidate } from './currencies/kmd';
+import { btgCurrency, btgValidate } from './currencies/btg';
+import { vtcCurrency, vtcValidate } from './currencies/vtc';
+import { grlcCurrency, grlcValidate } from './currencies/grlc';
+import { bioCurrency, bioValidate } from './currencies/bio';
+import { nmcCurrency, nmcValidate } from './currencies/nmc';
+import { aurCurrency, aurValidate } from './currencies/aur';
+import { xpmCurrency, xpmValidate } from './currencies/xpm';
+import { mecCurrency, mecValidate } from './currencies/mec';
+import { ptsCurrency, ptsValidate } from './currencies/pts';
+import { frcCurrency, frcValidate } from './currencies/frc';
+import { bvcCurrency, bvcValidate } from './currencies/bvc';
+import { dogeCurrency, dogeValidate } from './currencies/doge';
+import { ppcCurrency, ppcValidate } from './currencies/ppc';
 
-// defines P2PKH and P2SH address types for standard (prod) and testnet networks
-var CURRENCIES = [
+const CURRENCIES = [
     {
         ...btcCurrency,
         validate: btcValidate,
@@ -606,28 +605,30 @@ var CURRENCIES = [
         ...solCurrency,
         validate: solValidate,
     },
-];
+] as const;
 
-module.exports = {
-    getByNameOrSymbol: function (currencyNameOrSymbol) {
-        var nameOrSymbol = currencyNameOrSymbol.toLowerCase();
-        return CURRENCIES.find(function (currency) {
-            return currency.name.toLowerCase() === nameOrSymbol || currency.symbol.toLowerCase() === nameOrSymbol
-        });
-    },
-    getAll: function () {
-        return CURRENCIES;
-    }
+function getByNameOrSymbol(currencyNameOrSymbol: string) {
+    const nameOrSymbol = currencyNameOrSymbol.toLowerCase();
+    return CURRENCIES.find((currency) => currency.name.toLowerCase() === nameOrSymbol
+            || currency.symbol.toLowerCase() === nameOrSymbol);
+}
+
+function getAll() {
+    return CURRENCIES;
+}
+
+export {
+    getByNameOrSymbol,
+    getAll,
 };
 
-////spit out details for readme.md
+/// /spit out details for readme.md
 // CURRENCIES
 //     .sort((a, b) => a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1)
 //     .forEach(c => console.log(`* ${c.name}/${c.symbol} \`'${c.name}'\` or \`'${c.symbol}'\` `));
 
-////spit out keywords for package.json
+/// /spit out keywords for package.json
 // CURRENCIES
 //     .sort((a, b) => a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1)
 //     .forEach(c => console.log(`"${c.name}","${c.symbol}",`));
 //
-

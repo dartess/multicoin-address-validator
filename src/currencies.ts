@@ -627,13 +627,13 @@ function getCurrency(symbolOrName: CurrencySymbol | CurrencyNameAnyRegister) {
     return currenciesBySymbol[lowerCased] ?? currenciesByLowercaseName[lowerCased];
 }
 
-function getAll() {
-    return currencies;
+function getSupportedSymbols(): Array<string> {
+    return currencies.map((currency) => currency.symbol);
 }
 
 export {
     getCurrency,
-    getAll,
+    getSupportedSymbols,
 };
 
 export type {

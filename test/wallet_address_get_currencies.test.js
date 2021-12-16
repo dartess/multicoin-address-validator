@@ -19,28 +19,9 @@ async function withPuppeteer(fn) {
 }
 
 describe('WAValidator.getCurrencies()', function () {
-    it('Should get all currencies', async function () {
-        const currencies = await withPuppeteer(() => WAValidator.getCurrencies());
+    it('Should get all supported symbols', async function () {
+        const currencies = await withPuppeteer(() => WAValidator.getSupportedSymbols());
         expect(currencies).toBeTruthy();
         expect(currencies.length).toBeGreaterThan(0);
-    });
-
-    it('Should find a specific currency by symbol', async function() {
-        const currency = await withPuppeteer(() => WAValidator.findCurrency('xrp'));
-        expect(currency).toBeTruthy();
-        expect(currency.name).toEqual('Ripple');
-        expect(currency.symbol).toEqual('xrp');
-    });
-
-    it('Should find a specific currency by name', async function() {
-        const currency = await withPuppeteer(() => WAValidator.findCurrency('Ripple'));
-        expect(currency).toBeTruthy();
-        expect(currency.name).toEqual('Ripple');
-        expect(currency.symbol).toEqual('xrp');
-    });
-
-    it('Should return null if currency is not found', async function() {
-        const currency = await withPuppeteer(() => WAValidator.findCurrency('random'));
-        expect(currency).toBeNull();
     });
 });

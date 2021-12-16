@@ -1,5 +1,5 @@
 import {
-    getAll,
+    getSupportedSymbols,
     getCurrency,
     CurrencySymbol,
     CurrencyNameAnyRegister,
@@ -28,16 +28,7 @@ function validate(
     return (currency as any).validate(address, opts);
 }
 
-function getCurrencies() {
-    return getAll();
-}
-
-function findCurrency(currencySymbolOrName: CurrencySymbol | CurrencyNameAnyRegister) {
-    return getCurrency(currencySymbolOrName) || null;
-}
-
 export {
     validate,
-    getCurrencies,
-    findCurrency,
+    getSupportedSymbols,
 };

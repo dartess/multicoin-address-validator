@@ -8,11 +8,9 @@ type UsdtCurrency = typeof import('../currencies/usdt').usdtCurrency;
 type Currency = UsdtCurrency;
 type CurrencyNetworkType = ExtractNetworkType<Currency>;
 
-type UsdtValidatorOptions = {
+type Opts = OptsNetworkTypeOptional<CurrencyNetworkType> & {
     chainType?: 'erc20' | 'omni';
 };
-
-type Opts = OptsNetworkTypeOptional<CurrencyNetworkType>;
 
 function checkBothValidators(address: string, currency: Currency, opts?: Opts) {
     const result = BTCValidator.isValidAddress(address, currency, opts);
@@ -20,11 +18,7 @@ function checkBothValidators(address: string, currency: Currency, opts?: Opts) {
 }
 
 const USDTValidator = {
-    isValidAddress(
-        address: string,
-        currency: Currency,
-        opts?: OptsNetworkTypeOptional<CurrencyNetworkType> & UsdtValidatorOptions,
-    ) {
+    isValidAddress(address: string, currency: Currency, opts?: Opts) {
         if (opts) {
             if (opts.chainType === 'erc20') {
                 return ETHValidator.isValidAddress(address);

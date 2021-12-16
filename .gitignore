@@ -1,4 +1,8 @@
 node_modules
 bower_components
+.tmp
 .idea
+.vscode
 .DS_Store
+
+lib/

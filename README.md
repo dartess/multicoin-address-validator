@@ -1,36 +1,86 @@
-# wallet-address-validator
+<!--
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Do NOT manually edit README.md. Edit README_TEMPLATE.md and run 'npm run generate'. #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+-->
+
+# @dartess/multicoin-address-validator
+
 Simple wallet address validator for validating Bitcoin and other altcoins addresses in **Node.js and browser**.
 
-[![Build Status](https://travis-ci.org/christsim/multicoin-address-validator.svg?branch=master)](https://travis-ci.org/christsim/multicoin-address-validator)
+Forked from [christsim/multicoin-address-validator](https://github.com/christsim/multicoin-address-validator) which was
+forked from [ryanralph/altcoin-address](https://github.com/ryanralph/altcoin-address).
 
-Forked from [ryanralph/altcoin-address](https://github.com/ryanralph/altcoin-address).
+## Key differences from this fork
 
-**File size is ~17 kB (minifed and gzipped)**.
+* The library is completely rewritten to the TypeScript.
+* The library offers api for importing individual validators, which will have a positive effect on the bundle size in case of partial use.
+* Other size optimizations and test improvements.
 
 ## Installation
 
 ### NPM
+
 ```
-npm install multicoin-address-validator
+npm install @dartess/multicoin-address-validator
 ```
 
 ### Browser
+
 ```html
 <script src="wallet-address-validator.min.js"></script>
 ```
 
 ## API
 
-##### validate (address [, currency = 'bitcoin'[, networkType = 'prod']])
+### main entry point: validate(address, currency[, options])
 
-###### Parameters
+Returns true if the address (string) is a valid wallet address for the crypto currency specified, see below for supported currencies.
+
+#### Parameters
+
 * address - Wallet address to validate.
-* currency - Optional. Currency name or symbol, e.g. `'bitcoin'` (default), `'litecoin'` or `'LTC'`
-* networkType - Optional. Use `'prod'` (default) to enforce standard address, `'testnet'` to enforce testnet address and `'both'` to enforce nothing.
+* currency - Currency name or symbol, e.g. `'bitcoin'`, `'litecoin'` or `'LTC'`
+* options - Optional. Usually `networkType` (`string`) or `{ networkType: string }`.
 
-> Returns true if the address (string) is a valid wallet address for the crypto currency specified, see below for supported currencies.
+###### option networkType
 
-### Supported crypto currencies
+Use `'prod'` (default) to enforce standard address, `'testnet'` to enforce testnet address and `'both'` to enforce nothing.
+
+###### extra options
+
+* `xmr` (Monero) also support `stagenet` as `options.networkType`;
+* `usdt` (Tether) also support 'erc20' | 'omni' as `options.chainType`;
+
+### Example:
+
+```
+import { validate } from '@dartess/multicoin-address-validator';
+// or const { validate } = require('@dartess/multicoin-address-validator');
+
+const isValid = validate('1KFzzGtDdnq5hrwxXGjwVnKzRbvf8WVxck', 'BTC');
+```
+
+When connected via a script, it is available as a global variable `window.WAValidator`.
+
+### separate entry points: validate(address[, options]);
+
+The same, but due to the use of a separate validator, there is no need to send the currency.
+
+This connection can be useful if you only need to use some validators and want to save on the size of your bundle.
+
+Not available when connecting through a script.
+
+### Example:
+
+```
+import { adaValidate } from '@dartess/multicoin-address-validator/currencies/ada');
+// or const { adaValidate } = require('@dartess/multicoin-address-validator/currencies/ada');
+
+const isValid = adaValidate('Ae2tdPwUPEYzs5BRbGcoS3DXvK8mwgggmESz4HqUwMyaS9eNksZGz1LMS9v');
+```
+
+## Supported crypto currencies
 
 * 0x/zrx `'0x'` or `'zrx'`
 * Aave Coin/aave `'Aave Coin'` or `'aave'`
@@ -124,6 +174,7 @@ npm install multicoin-address-validator
 * Serve/serv `'Serve'` or `'serv'`
 * Siacoin/sc `'Siacoin'` or `'sc'`
 * SnowGem/sng `'SnowGem'` or `'sng'`
+* Solana/sol `'Solana'` or `'sol'`
 * SolarCoin/slr `'SolarCoin'` or `'slr'`
 * SOLVE/solve `'SOLVE'` or `'solve'`
 * Spendcoin/spnd `'Spendcoin'` or `'spnd'`
@@ -152,70 +203,3 @@ npm install multicoin-address-validator
 * ZCash/zec `'ZCash'` or `'zec'`
 * ZClassic/zcl `'ZClassic'` or `'zcl'`
 * ZenCash/zen `'ZenCash'` or `'zen'`
-
-
-### Usage example
-
-#### Node
-```javascript
-var WAValidator = require('multicoin-address-validator');
-
-var valid = WAValidator.validate('1KFzzGtDdnq5hrwxXGjwVnKzRbvf8WVxck', 'BTC');
-if(valid)
-	console.log('This is a valid address');
-else
-	console.log('Address INVALID');
-
-// This will log 'This is a valid address' to the console.
-```
-
-```javascript
-var WAValidator = require('multicoin-address-validator');
-
-var valid = WAValidator.validate('1KFzzGtDdnq5hrwxXGjwVnKzRbvf8WVxck', 'litecoin', 'testnet');
-if(valid)
-      console.log('This is a valid address');
-else
-      console.log('Address INVALID');
-
-// As this is a invalid litecoin address 'Address INVALID' will be logged to console.
-```
-
-```javascript
-var WAValidator = require('multicoin-address-validator');
-
-var currency = WAValidator.findCurrency('xrp');
-if(currency)
-      console.log('This currency exists');
-else
-      console.log('Currency INVALID');
-
-// As this is a valid currency symbol 'This currency exists' will be logged to console.
-```
-
-```javascript
-var WAValidator = require('multicoin-address-validator');
-
-var currency = WAValidator.findCurrency('random');
-if(currency)
-      console.log('This currency exists');
-else
-      console.log('Currency INVALID');
-
-// As this is not a valid currency symbol 'Currency INVALID' will be logged to console.
-```
-#### Browser
-```html
-<script src="wallet-address-validator.min.js"></script>
-```
-
-```javascript
-// WAValidator is exposed as a global (window.WAValidator)
-var valid = WAValidator.validate('1KFzzGtDdnq5hrwxXGjwVnKzRbvf8WVxck', 'bitcoin');
-if(valid)
-    alert('This is a valid address');
-else
-    alert('Address INVALID');
-
-// This should show a pop up with text 'This is a valid address'.
-```

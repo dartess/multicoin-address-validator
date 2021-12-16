@@ -1,5 +1,11 @@
 var ETHValidator = require('./ethereum_validator');
 var BTCValidator = require('./bitcoin_validator');
+const {gameCurrency, gameValidate} = require("./currencies/game");
+const {ethCurrency, ethValidate} = require("./currencies/eth");
+const {etzCurrency, etzValidate} = require("./currencies/etz");
+const {etcCurrency, etcValidate} = require("./currencies/etc");
+const {cloCurrency, cloValidate} = require("./currencies/clo");
+const {bkxCurrency, bkxValidate} = require("./currencies/bkx");
 const {adaCurrency, adaValidate} = require("./currencies/ada");
 const {xmrCurrency, xmrValidate} = require("./currencies/xmr");
 const {lokiCurrency, lokiValidate} = require("./currencies/loki");
@@ -196,10 +202,8 @@ var CURRENCIES = [
         validator: BTCValidator
     },
     {
-        name: 'GameCredits',
-        symbol: 'game',
-        addressTypes: {prod: ['26', '05'], testnet: []},
-        validator: ETHValidator
+        ...gameCurrency,
+        validate: gameValidate,
     },
     {
         name: 'PIVX',
@@ -268,29 +272,24 @@ var CURRENCIES = [
         validator: BTCValidator
     },
     {
-        name: 'Ethereum',
-        symbol: 'eth',
-        validator: ETHValidator,
+        ...ethCurrency,
+        validate: ethValidate,
     },
     {
-        name: 'EtherZero',
-        symbol: 'etz',
-        validator: ETHValidator,
+        ...etzCurrency,
+        validate: etzValidate,
     },
     {
-        name: 'EthereumClassic',
-        symbol: 'etc',
-        validator: ETHValidator,
+        ...etcCurrency,
+        validate: etcValidate,
     },
     {
-        name: 'Callisto',
-        symbol: 'clo',
-        validator: ETHValidator,
+        ...cloCurrency,
+        validate: cloValidate,
     },
     {
-        name: 'Bankex',
-        symbol: 'bkx',
-        validator: ETHValidator
+        ...bkxCurrency,
+        validate: bkxValidate,
     },
     {
         ...adaCurrency,

@@ -1,3 +1,5 @@
+import { ETHValidator } from './ethereum_validator';
+
 import { Address, OptsNetworkTypeOptional } from './types';
 
 type UsdtCurrency = typeof import('./currencies/usdt').usdtCurrency;
@@ -10,11 +12,10 @@ type UsdtValidatorOptions = {
 };
 
 const BTCValidator = require('./bitcoin_validator');
-const ETHValidator = require('./ethereum_validator');
 
 function checkBothValidators(address: Address, currency: Currency, networkType?: CurrencyAddressType) {
     const result = BTCValidator.isValidAddress(address, currency, networkType);
-    return result || ETHValidator.isValidAddress(address, currency, networkType);
+    return result || ETHValidator.isValidAddress(address);
 }
 
 const USDTValidator = {
@@ -25,7 +26,7 @@ const USDTValidator = {
     ) {
         if (opts) {
             if (opts.chainType === 'erc20') {
-                return ETHValidator.isValidAddress(address, currency, opts.networkType);
+                return ETHValidator.isValidAddress(address);
             } if (opts.chainType === 'omni') {
                 return BTCValidator.isValidAddress(address, currency, opts.networkType);
             }

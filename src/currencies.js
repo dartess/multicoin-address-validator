@@ -1,5 +1,63 @@
-var ETHValidator = require('./ethereum_validator');
 var BTCValidator = require('./bitcoin_validator');
+const {antCurrency, antValidate} = require("./currencies/ant");
+const {batCurrency, batValidate} = require("./currencies/bat");
+const {bntCurrency, bntValidate} = require("./currencies/bnt");
+const {cvcCurrency, cvcValidate} = require("./currencies/cvc");
+const {dntCurrency, dntValidate} = require("./currencies/dnt");
+const {gnoCurrency, gnoValidate} = require("./currencies/gno");
+const {gntCurrency, gntValidate} = require("./currencies/gnt");
+const {glmCurrency, glmValidate} = require("./currencies/glm");
+const {gupCurrency, gupValidate} = require("./currencies/gup");
+const {mlnCurrency, mlnValidate} = require("./currencies/mln");
+const {nmrCurrency, nmrValidate} = require("./currencies/nmr");
+const {omgCurrency, omgValidate} = require("./currencies/omg");
+const {payCurrency, payValidate} = require("./currencies/pay");
+const {rcnCurrency, rcnValidate} = require("./currencies/rcn");
+const {repCurrency, repValidate} = require("./currencies/rep");
+const {rlcCurrency, rlcValidate} = require("./currencies/rlc");
+const {saltCurrency, saltValidate} = require("./currencies/salt");
+const {sntCurrency, sntValidate} = require("./currencies/snt");
+const {storjCurrency, storjValidate} = require("./currencies/storj");
+const {swtCurrency, swtValidate} = require("./currencies/swt");
+const {tusdCurrency, tusdValidate} = require("./currencies/tusd");
+const {wingsCurrency, wingsValidate} = require("./currencies/wings");
+const {zrxCurrency, zrxValidate} = require("./currencies/zrx");
+const {expCurrency, expValidate} = require("./currencies/exp");
+const {vibCurrency, vibValidate} = require("./currencies/vib");
+const {ocnCurrency, ocnValidate} = require("./currencies/ocn");
+const {polyCurrency, polyValidate} = require("./currencies/poly");
+const {stormCurrency, stormValidate} = require("./currencies/storm");
+const {btuCurrency, btuValidate} = require("./currencies/btu");
+const {daiCurrency, daiValidate} = require("./currencies/dai");
+const {enjCurrency, enjValidate} = require("./currencies/enj");
+const {hedgCurrency, hedgValidate} = require("./currencies/hedg");
+const {lbaCurrency, lbaValidate} = require("./currencies/lba");
+const {linkCurrency, linkValidate} = require("./currencies/link");
+const {loomCurrency, loomValidate} = require("./currencies/loom");
+const {mkrCurrency, mkrValidate} = require("./currencies/mkr");
+const {mtlCurrency, mtlValidate} = require("./currencies/mtl");
+const {oceanCurrency, oceanValidate} = require("./currencies/ocean");
+const {qntCurrency, qntValidate} = require("./currencies/qnt");
+const {snxCurrency, snxValidate} = require("./currencies/snx");
+const {solveCurrency, solveValidate} = require("./currencies/solve");
+const {spndCurrency, spndValidate} = require("./currencies/spnd");
+const {temcoCurrency, temcoValidate} = require("./currencies/temco");
+const {vetCurrency, vetValidate} = require("./currencies/vet");
+const {stmxCurrency, stmxValidate} = require("./currencies/stmx");
+const {repv2Currency, repv2Validate} = require("./currencies/repv2");
+const {fctCurrency, fctValidate} = require("./currencies/fct");
+const {bttCurrency, bttValidate} = require("./currencies/btt");
+const {qrlCurrency, qrlValidate} = require("./currencies/qrl");
+const {servCurrency, servValidate} = require("./currencies/serv");
+const {xtpCurrency, xtpValidate} = require("./currencies/xtp");
+const {compCurrency, compValidate} = require("./currencies/comp");
+const {paxCurrency, paxValidate} = require("./currencies/pax");
+const {usdcCurrency, usdcValidate} = require("./currencies/usdc");
+const {cusdCurrency, cusdValidate} = require("./currencies/cusd");
+const {uniCurrency, uniValidate} = require("./currencies/uni");
+const {aaveCurrency, aaveValidate} = require("./currencies/aave");
+const {maticCurrency, maticValidate} = require("./currencies/matic");
+const {manaCurrency, manaValidate} = require("./currencies/mana");
 const {gameCurrency, gameValidate} = require("./currencies/game");
 const {ethCurrency, ethValidate} = require("./currencies/eth");
 const {etzCurrency, etzValidate} = require("./currencies/etz");
@@ -300,144 +358,116 @@ var CURRENCIES = [
         validate: xmrValidate,
     },
     {
-        name: 'Aragon',
-        symbol: 'ant',
-        validator: ETHValidator
+        ...antCurrency,
+        validate: antValidate,
     },
     {
-        name: 'Basic Attention Token',
-        symbol: 'bat',
-        validator: ETHValidator
+        ...batCurrency,
+        validate: batValidate,
     },
     {
-        name: 'Bancor',
-        symbol: 'bnt',
-        validator: ETHValidator
+        ...bntCurrency,
+        validate: bntValidate,
     },
     {
-        name: 'Civic',
-        symbol: 'cvc',
-        validator: ETHValidator
+        ...cvcCurrency,
+        validate: cvcValidate,
     },
     {
-        name: 'District0x',
-        symbol: 'dnt',
-        validator: ETHValidator
+        ...dntCurrency,
+        validate: dntValidate,
     },
     {
-        name: 'Gnosis',
-        symbol: 'gno',
-        validator: ETHValidator
+        ...gnoCurrency,
+        validate: gnoValidate,
     },
     {
-        name: 'Golem (GNT)',
-        symbol: 'gnt',
-        validator: ETHValidator
+        ...gntCurrency,
+        validate: gntValidate,
     },
     {
-        name: 'Golem',
-        symbol: 'glm',
-        validator: ETHValidator
+        ...glmCurrency,
+        validate: glmValidate,
     },
     {
-        name: 'Matchpool',
-        symbol: 'gup',
-        validator: ETHValidator
+        ...gupCurrency,
+        validate: gupValidate,
     },
     {
-        name: 'Melon',
-        symbol: 'mln',
-        validator: ETHValidator
+        ...mlnCurrency,
+        validate: mlnValidate,
     },
     {
-        name: 'Numeraire',
-        symbol: 'nmr',
-        validator: ETHValidator
+        ...nmrCurrency,
+        validate: nmrValidate,
     },
     {
-        name: 'OmiseGO',
-        symbol: 'omg',
-        validator: ETHValidator
+        ...omgCurrency,
+        validate: omgValidate,
     },
     {
-        name: 'TenX',
-        symbol: 'pay',
-        validator: ETHValidator
+        ...payCurrency,
+        validate: payValidate,
     },
     {
-        name: 'Ripio Credit Network',
-        symbol: 'rcn',
-        validator: ETHValidator
+        ...rcnCurrency,
+        validate: rcnValidate,
     },
     {
-        name: 'Augur',
-        symbol: 'rep',
-        validator: ETHValidator
+        ...repCurrency,
+        validate: repValidate,
     },
     {
-        name: 'iExec RLC',
-        symbol: 'rlc',
-        validator: ETHValidator
+        ...rlcCurrency,
+        validate: rlcValidate,
     },
     {
-        name: 'Salt',
-        symbol: 'salt',
-        validator: ETHValidator
+        ...saltCurrency,
+        validate: saltValidate,
     },
     {
-        name: 'Status',
-        symbol: 'snt',
-        validator: ETHValidator
+        ...sntCurrency,
+        validate: sntValidate,
     },
     {
-        name: 'Storj',
-        symbol: 'storj',
-        validator: ETHValidator
+        ...storjCurrency,
+        validate: storjValidate,
     },
     {
-        name: 'Swarm City',
-        symbol: 'swt',
-        validator: ETHValidator
+        ...swtCurrency,
+        validate: swtValidate,
     },
     {
-        name: 'TrueUSD',
-        symbol: 'tusd',
-        validator: ETHValidator
+        ...tusdCurrency,
+        validate: tusdValidate,
     },
     {
-        name: 'Wings',
-        symbol: 'wings',
-        validator: ETHValidator
+        ...wingsCurrency,
+        validate: wingsValidate,
     },
     {
-        name: '0x',
-        symbol: 'zrx',
-        validator: ETHValidator
+        ...zrxCurrency,
+        validate: zrxValidate,
     },
     {
-        name: 'Expanse',
-        symbol: 'exp',
-        validator: ETHValidator
+        ...expCurrency,
+        validate: expValidate,
     },
     {
-        name: 'Viberate',
-        symbol: 'vib',
-        validator: ETHValidator
+        ...vibCurrency,
+        validate: vibValidate,
     },
     {
-        name: 'Odyssey',
-        symbol: 'ocn',
-        validator: ETHValidator
+        ...ocnCurrency,
+        validate: ocnValidate,
     },
     {
-        name: 'Polymath',
-        symbol: 'poly',
-        validator: ETHValidator
+        ...polyCurrency,
+        validate: polyValidate,
     },
     {
-        name: 'Storm',
-        symbol: 'storm',
-        validator: ETHValidator
+        ...stormCurrency,
+        validate: stormValidate,
     },
     {
         ...nanoCurrency,
@@ -482,83 +512,68 @@ var CURRENCIES = [
         validate: xlmValidate,
     },
     {
-        name: 'BTU Protocol',
-        symbol: 'btu',
-        validator: ETHValidator,
+        ...btuCurrency,
+        validate: btuValidate,
     },
     {
         ...croCurrency,
         validate: croValidate,
     },
     {
-        name: 'Multi-collateral DAI',
-        symbol: 'dai',
-        validator: ETHValidator,
+        ...daiCurrency,
+        validate: daiValidate,
     },
     {
-        name: 'Enjin Coin',
-        symbol: 'enj',
-        validator: ETHValidator,
+        ...enjCurrency,
+        validate: enjValidate,
     },
     {
-        name: 'HedgeTrade',
-        symbol: 'hedg',
-        validator: ETHValidator,
+        ...hedgCurrency,
+        validate: hedgValidate,
     },
     {
-        name: 'Cred',
-        symbol: 'lba',
-        validator: ETHValidator,
+        ...lbaCurrency,
+        validate: lbaValidate,
     },
     {
-        name: 'Chainlink',
-        symbol: 'link',
-        validator: ETHValidator,
+        ...linkCurrency,
+        validate: linkValidate,
     },
     {
-        name: 'Loom Network',
-        symbol: 'loom',
-        validator: ETHValidator,
+        ...loomCurrency,
+        validate: loomValidate,
     },
     {
-        name: 'Maker',
-        symbol: 'mkr',
-        validator: ETHValidator,
+        ...mkrCurrency,
+        validate: mkrValidate,
     },
     {
-        name: 'Metal',
-        symbol: 'mtl',
-        validator: ETHValidator,
+        ...mtlCurrency,
+        validate: mtlValidate,
     },
     {
-        name: 'Ocean Protocol',
-        symbol: 'ocean',
-        validator: ETHValidator,
+        ...oceanCurrency,
+        validate: oceanValidate,
     },
     {
-        name: 'Quant',
-        symbol: 'qnt',
-        validator: ETHValidator,
+        ...qntCurrency,
+        validate: qntValidate,
     },
     {
-        name: 'Synthetix Network',
-        symbol: 'snx',
-        validator: ETHValidator,
+        ...snxCurrency,
+        validate: snxValidate,
     },
     {
-        name: 'SOLVE',
-        symbol: 'solve',
-        validator: ETHValidator,
+        ...solveCurrency,
+        validate: solveValidate,
     },
     {
-        name: 'Spendcoin',
-        symbol: 'spnd',
-        validator: ETHValidator,
+        ...spndCurrency,
+        validate: spndValidate,
     },
     {
-        name: 'TEMCO',
-        symbol: 'temco',
-        validator: ETHValidator,
+        ...temcoCurrency,
+        validate: temcoValidate,
     },
     {
         ...eosCurrency,
@@ -569,64 +584,52 @@ var CURRENCIES = [
         validate: xtzValidate,
     },
     {
-        name: 'VeChain',
-        symbol: 'vet',
-        validator: ETHValidator
+        ...vetCurrency,
+        validate: vetValidate,
     },
     {
-        name: 'StormX',
-        symbol: 'stmx',
-        validator: ETHValidator
+        ...stmxCurrency,
+        validate: stmxValidate,
     },
     {
-        name: 'AugurV2',
-        symbol: 'repv2',
-        validator: ETHValidator
+        ...repv2Currency,
+        validate: repv2Validate,
     },
     {
-        name: 'FirmaChain',
-        symbol: 'fct',
-        validator: ETHValidator
+        ...fctCurrency,
+        validate: fctValidate,
     },
     {
-        name: 'BlockTrade',
-        symbol: 'btt',
-        validator: ETHValidator
+        ...bttCurrency,
+        validate: bttValidate,
     },
     {
-        name: 'Quantum Resistant Ledger',
-        symbol: 'qrl',
-        validator: ETHValidator
+        ...qrlCurrency,
+        validate: qrlValidate,
     },
     {
-        name: 'Serve',
-        symbol: 'serv',
-        validator: ETHValidator
+        ...servCurrency,
+        validate: servValidate,
     },
     {
-        name: 'Tap',
-        symbol: 'xtp',
-        validator: ETHValidator
+        ...xtpCurrency,
+        validate: xtpValidate,
     },
     {
-        name: 'Compound',
-        symbol: 'comp',
-        validator: ETHValidator
+        ...compCurrency,
+        validate: compValidate,
     },
     {
-        name: 'Paxos',
-        symbol: 'pax',
-        validator: ETHValidator
+        ...paxCurrency,
+        validate: paxValidate,
     },
     {
-        name: 'USD Coin',
-        symbol: 'usdc',
-        validator: ETHValidator
+        ...usdcCurrency,
+        validate: usdcValidate,
     },
     {
-        name: 'CUSD',
-        symbol: 'cusd',
-        validator: ETHValidator
+        ...cusdCurrency,
+        validate: cusdValidate,
     },
     {
         ...algoCurrency,
@@ -637,24 +640,20 @@ var CURRENCIES = [
         validate: dotValidate,
     },
     {
-        name: 'Uniswap Coin',
-        symbol: 'uni',
-        validator: ETHValidator
+        ...uniCurrency,
+        validate: uniValidate,
     },
     {
-        name: 'Aave Coin',
-        symbol: 'aave',
-        validator: ETHValidator
+        ...aaveCurrency,
+        validate: aaveValidate,
     },
     {
-        name: 'Matic',
-        symbol: 'matic',
-        validator: ETHValidator
+        ...maticCurrency,
+        validate: maticValidate,
     },
     {
-        name: 'Decentraland',
-        symbol: 'mana',
-        validator: ETHValidator
+        ...manaCurrency,
+        validate: manaValidate,
     },
     {
         ...solCurrency,

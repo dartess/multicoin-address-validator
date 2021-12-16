@@ -1,4 +1,4 @@
-import { Address } from './types';
+import { Address } from '../types';
 
 const EOSValidator = {
     isValidAddress(address: Address) {

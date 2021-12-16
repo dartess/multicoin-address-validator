@@ -1,4 +1,4 @@
-import { NANOValidator, Validator } from '../nano_validator';
+import { NANOValidator, Validator } from '../validators/nano_validator';
 
 const nanoCurrency = {
     name: 'Nano',

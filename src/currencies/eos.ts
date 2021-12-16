@@ -1,4 +1,4 @@
-import { EOSValidator, Validator } from '../eos_validator';
+import { EOSValidator, Validator } from '../validators/eos_validator';
 
 const eosCurrency = {
     name: 'EOS',

@@ -1,4 +1,4 @@
-import { NEMValidator, Validator } from '../nem_validator';
+import { NEMValidator, Validator } from '../validators/nem_validator';
 
 const xemCurrency = {
     name: 'Nem',

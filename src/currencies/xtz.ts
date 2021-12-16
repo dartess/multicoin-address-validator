@@ -1,4 +1,4 @@
-import { XTZValidator, Validator } from '../tezos_validator';
+import { XTZValidator, Validator } from '../validators/tezos_validator';
 
 const xtzCurrency = {
     name: 'Tezos',

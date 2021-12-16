@@ -1,4 +1,4 @@
-import { BTCValidator, Validator } from '../bitcoin_validator';
+import { BTCValidator, Validator } from '../validators/bitcoin_validator';
 
 const slrCurrency = {
     name: 'SolarCoin',

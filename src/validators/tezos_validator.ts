@@ -1,8 +1,8 @@
-import { hexStr2byteArray } from './utils/hexStr2byteArray';
-import { sha256x2 } from './utils/sha256x2';
-import { base58Decode } from './utils/base58Decode';
-import { byteArray2hexStr } from './utils/byteArray2hexStr';
-import { Address } from './types';
+import { hexStr2byteArray } from '../utils/hexStr2byteArray';
+import { sha256x2 } from '../utils/sha256x2';
+import { base58Decode } from '../utils/base58Decode';
+import { byteArray2hexStr } from '../utils/byteArray2hexStr';
+import { Address } from '../types';
 
 const prefix = new Uint8Array([6, 161, 159]);
 

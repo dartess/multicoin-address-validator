@@ -1,4 +1,4 @@
-import { BCHValidator, Validator } from '../bch_validator';
+import { BCHValidator, Validator } from '../validators/bch_validator';
 
 const bchCurrency = {
     name: 'BitcoinCash',

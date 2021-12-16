@@ -1,4 +1,4 @@
-import { ADAValidator, Validator } from '../ada_validator';
+import { ADAValidator, Validator } from '../validators/ada_validator';
 
 const adaCurrency = {
     name: 'Cardano',

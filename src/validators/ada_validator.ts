@@ -2,10 +2,10 @@ import cbor from 'cbor-js';
 import CRC from 'crc';
 
 import { BIP173Validator } from './bip173_validator';
-import { base58Decode } from './utils/base58Decode';
-import { Address, OptsNetworkTypeOptional } from './types';
+import { base58Decode } from '../utils/base58Decode';
+import { Address, OptsNetworkTypeOptional } from '../types';
 
-type AdaCurrency = typeof import('./currencies/ada').adaCurrency;
+type AdaCurrency = typeof import('../currencies/ada').adaCurrency;
 
 type Currency = AdaCurrency;
 type CurrencyNetworkType = keyof AdaCurrency['bech32Hrp'];

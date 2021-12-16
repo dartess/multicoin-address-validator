@@ -1,4 +1,4 @@
-import { ETHValidator, Validator } from '../ethereum_validator';
+import { ETHValidator, Validator } from '../validators/ethereum_validator';
 
 const enjCurrency = {
     name: 'Enjin Coin',

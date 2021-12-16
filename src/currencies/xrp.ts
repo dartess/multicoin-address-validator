@@ -1,4 +1,4 @@
-import { XRPValidator, Validator } from '../ripple_validator';
+import { XRPValidator, Validator } from '../validators/ripple_validator';
 
 const xrpCurrency = {
     name: 'Ripple',

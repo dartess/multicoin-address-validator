@@ -1,7 +1,7 @@
-import { base58Decode } from './utils/base58Decode';
-import { Address } from './types';
+import { base58Decode } from '../utils/base58Decode';
+import { Address } from '../types';
 
-type SolCurrency = typeof import('./currencies/sol').solCurrency;
+type SolCurrency = typeof import('../currencies/sol').solCurrency;
 
 type Currency = SolCurrency;
 

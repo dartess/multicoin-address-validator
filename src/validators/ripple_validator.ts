@@ -1,8 +1,8 @@
 import baseX from 'base-x';
 
-import { toHex } from './utils/toHex';
-import { sha256Checksum } from './utils/sha256Checksum';
-import { Address } from './types';
+import { toHex } from '../utils/toHex';
+import { sha256Checksum } from '../utils/sha256Checksum';
+import { Address } from '../types';
 
 const ALLOWED_CHARS = 'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz';
 

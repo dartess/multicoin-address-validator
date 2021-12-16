@@ -1,9 +1,9 @@
 import { ETHValidator } from './ethereum_validator';
 import { BTCValidator } from './bitcoin_validator';
 
-import { Address, OptsNetworkTypeOptional } from './types';
+import { Address, OptsNetworkTypeOptional } from '../types';
 
-type UsdtCurrency = typeof import('./currencies/usdt').usdtCurrency;
+type UsdtCurrency = typeof import('../currencies/usdt').usdtCurrency;
 
 type Currency = UsdtCurrency;
 type CurrencyNetworkType = keyof UsdtCurrency['addressTypes'];

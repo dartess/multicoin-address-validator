@@ -1,4 +1,4 @@
-import { SCValidator, Validator } from '../siacoin_validator';
+import { SCValidator, Validator } from '../validators/siacoin_validator';
 
 const xscCurrency = {
     name: 'HyperSpace',

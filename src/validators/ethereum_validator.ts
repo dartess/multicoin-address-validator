@@ -1,5 +1,5 @@
-import { keccak256 } from './utils/keccak256';
-import { Address } from './types';
+import { keccak256 } from '../utils/keccak256';
+import { Address } from '../types';
 
 const ETHValidator = {
     isValidAddress(address: Address) {

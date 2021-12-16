@@ -1,4 +1,4 @@
-import { BIP173Validator, Validator } from '../bip173_validator';
+import { BIP173Validator, Validator } from '../validators/bip173_validator';
 
 const croCurrency = {
     name: 'Crypto.com Coin',

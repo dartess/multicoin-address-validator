@@ -1,4 +1,4 @@
-import { DotValidator, Validator } from '../dot_validator';
+import { DotValidator, Validator } from '../validators/dot_validator';
 
 const dotCurrency = {
     name: 'Polkadot',

@@ -1,5 +1,5 @@
-import { blake2b } from './utils/blake2b';
-import { Address } from './types';
+import { blake2b } from '../utils/blake2b';
+import { Address } from '../types';
 
 const SCValidator = {
     isValidAddress(address: Address) {

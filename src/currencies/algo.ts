@@ -1,4 +1,4 @@
-import { AlgoValidator, Validator } from '../algo_validator';
+import { AlgoValidator, Validator } from '../validators/algo_validator';
 
 const algoCurrency = {
     name: 'Algorand',

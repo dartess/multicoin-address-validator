@@ -1,9 +1,9 @@
 import baseX from 'base-x';
 import crc from 'crc';
 
-import { numberToHex } from './utils/numberToHex';
-import { toHex } from './utils/toHex';
-import { Address } from './types';
+import { numberToHex } from '../utils/numberToHex';
+import { toHex } from '../utils/toHex';
+import { Address } from '../types';
 
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 

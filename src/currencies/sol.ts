@@ -1,4 +1,4 @@
-import { Base58Validator, Validator } from '../base58_validator';
+import { Base58Validator, Validator } from '../validators/base58_validator';
 
 const solCurrency = {
     name: 'Solana',

@@ -1,8 +1,8 @@
-import { bech32 } from './crypto/bech32';
-import { Address, OptsNetworkTypeOptional } from './types';
+import { bech32 } from '../crypto/bech32';
+import { Address, OptsNetworkTypeOptional } from '../types';
 
-type CroCurrency = typeof import('./currencies/cro').croCurrency;
-type AdaCurrency = typeof import('./currencies/ada').adaCurrency;
+type CroCurrency = typeof import('../currencies/cro').croCurrency;
+type AdaCurrency = typeof import('../currencies/ada').adaCurrency;
 
 type Currency = CroCurrency | AdaCurrency;
 type CurrencyNetworkType = keyof CroCurrency['bech32Hrp'] | keyof AdaCurrency['bech32Hrp'];

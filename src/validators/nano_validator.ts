@@ -1,8 +1,8 @@
 import baseX from 'base-x';
 
-import { toHex } from './utils/toHex';
-import { blake2b } from './utils/blake2b';
-import { Address } from './types';
+import { toHex } from '../utils/toHex';
+import { blake2b } from '../utils/blake2b';
+import { Address } from '../types';
 
 const ALLOWED_CHARS = '13456789abcdefghijkmnopqrstuwxyz';
 

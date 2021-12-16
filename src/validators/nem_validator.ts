@@ -1,9 +1,9 @@
 import { Buffer } from 'buffer';
 
-import { base32Decode } from './utils/base32';
-import { toHex } from './utils/toHex';
-import { keccak256Checksum } from './utils/keccak256Checksum';
-import { Address } from './types';
+import { base32Decode } from '../utils/base32';
+import { toHex } from '../utils/toHex';
+import { keccak256Checksum } from '../utils/keccak256Checksum';
+import { Address } from '../types';
 
 const NEMValidator = {
     /**

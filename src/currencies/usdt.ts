@@ -1,4 +1,4 @@
-import { USDTValidator, Validator } from '../usdt_validator';
+import { USDTValidator, Validator } from '../validators/usdt_validator';
 
 const usdtCurrency = {
     name: 'Tether',

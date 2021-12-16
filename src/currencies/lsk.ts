@@ -1,4 +1,4 @@
-import { LSKValidator, Validator } from '../lisk_validator';
+import { LSKValidator, Validator } from '../validators/lisk_validator';
 
 const lskCurrency = {
     name: 'Lisk',

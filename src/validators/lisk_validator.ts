@@ -1,7 +1,7 @@
 import { Buffer } from 'buffer';
 
-import { bigNumberToBuffer } from './utils/bigNumberToBuffer';
-import { Address } from './types';
+import { bigNumberToBuffer } from '../utils/bigNumberToBuffer';
+import { Address } from '../types';
 
 const regexp = /^[0-9]{1,20}L$/;
 

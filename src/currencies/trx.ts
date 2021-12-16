@@ -1,4 +1,4 @@
-import { TRXValidator, Validator } from '../tron_validator';
+import { TRXValidator, Validator } from '../validators/tron_validator';
 
 const trxCurrency = {
     name: 'Tron',

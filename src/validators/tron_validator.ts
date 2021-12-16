@@ -1,10 +1,10 @@
-import { Address, OptsNetworkTypeOptional } from './types';
-import { sha256 } from './utils/sha256';
-import { base58Decode } from './utils/base58Decode';
-import { byteArray2hexStr } from './utils/byteArray2hexStr';
-import { hexStr2byteArray } from './utils/hexStr2byteArray';
+import { Address, OptsNetworkTypeOptional } from '../types';
+import { sha256 } from '../utils/sha256';
+import { base58Decode } from '../utils/base58Decode';
+import { byteArray2hexStr } from '../utils/byteArray2hexStr';
+import { hexStr2byteArray } from '../utils/hexStr2byteArray';
 
-type TrxCurrency = typeof import('./currencies/trx').trxCurrency;
+type TrxCurrency = typeof import('../currencies/trx').trxCurrency;
 
 type Currency = TrxCurrency;
 type CurrencyNetworkType = keyof TrxCurrency['addressTypes'];

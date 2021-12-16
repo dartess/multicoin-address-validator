@@ -1,4 +1,4 @@
-import { XMRValidator, Validator } from '../monero_validator';
+import { XMRValidator, Validator } from '../validators/monero_validator';
 
 const xmrCurrency = {
     name: 'Monero',

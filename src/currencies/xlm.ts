@@ -1,4 +1,4 @@
-import { XLMValidator, Validator } from '../stellar_validator';
+import { XLMValidator, Validator } from '../validators/stellar_validator';
 
 const xlmCurrency = {
     name: 'Stellar',

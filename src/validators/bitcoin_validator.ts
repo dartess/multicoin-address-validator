@@ -7,7 +7,7 @@ import { blake256Checksum } from '../utils/blake256Checksum';
 import { blake2b256 } from '../utils/blake2b256';
 import { keccak256Checksum } from '../utils/keccak256Checksum';
 import { base58Decode } from '../utils/base58Decode';
-import { Address, OptsNetworkTypeOptional } from '../types';
+import { Address, ExtractNetworkType, OptsNetworkTypeOptional } from '../types';
 
 type BtcCurrency = typeof import('../currencies/btc').btcCurrency;
 type LtcCurrency = typeof import('../currencies/ltc').ltcCurrency;
@@ -88,7 +88,6 @@ type Currency =
     | BscCurrency
     | UsdtCurrency;
 
-type ExtractNetworkType<U> = U extends { addressTypes: unknown } ? keyof U['addressTypes'] : never;
 type CurrencyNetworkType = ExtractNetworkType<Currency>;
 
 type ExtractHashFunction<U> = U extends { hashFunction: unknown } ? U['hashFunction'] : never;

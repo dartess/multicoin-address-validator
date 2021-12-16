@@ -1,13 +1,13 @@
 import { cnBase58Decode } from '../crypto/cnBase58';
 
 import { keccak256Checksum } from '../utils/keccak256Checksum';
-import { Address, OptsNetworkTypeOptional } from '../types';
+import { Address, ExtractNetworkType, OptsNetworkTypeOptional } from '../types';
 
 type XmrCurrency = typeof import('../currencies/xmr').xmrCurrency;
 type LokiCurrency = typeof import('../currencies/loki').lokiCurrency;
 
 type Currency = XmrCurrency | LokiCurrency;
-type CurrencyNetworkType = keyof XmrCurrency['addressTypes'] | keyof LokiCurrency['addressTypes'] | 'both';
+type CurrencyNetworkType = ExtractNetworkType<Currency> | 'both';
 
 const DEFAULT_NETWORK_TYPE = 'prod';
 const addressRegTest = /^[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{95}$/;

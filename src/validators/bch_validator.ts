@@ -1,13 +1,13 @@
 import { base32Decode } from '../utils/base32';
 import { bech32 } from '../crypto/bech32';
 import { BTCValidator } from './bitcoin_validator';
-import { Address, OptsNetworkTypeOptional } from '../types';
+import { Address, ExtractNetworkType, OptsNetworkTypeOptional } from '../types';
 
 type BchCurrency = typeof import('../currencies/bch').bchCurrency;
 type BscCurrency = typeof import('../currencies/bsv').bsvCurrency;
 
 type Currency = BchCurrency | BscCurrency;
-type CurrencyNetworkType = keyof BchCurrency['addressTypes'] | keyof BscCurrency['addressTypes'];
+type CurrencyNetworkType = ExtractNetworkType<Currency>;
 
 function validateAddress(address: Address, currency: Currency, opts?: OptsNetworkTypeOptional<CurrencyNetworkType>) {
     const networkType = opts ? opts.networkType : '';

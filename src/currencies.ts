@@ -120,7 +120,7 @@ import { bvcCurrency, bvcValidate } from './currencies/bvc';
 import { dogeCurrency, dogeValidate } from './currencies/doge';
 import { ppcCurrency, ppcValidate } from './currencies/ppc';
 
-const CURRENCIES = [
+const currencies = [
     {
         ...btcCurrency,
         validate: btcValidate,
@@ -607,19 +607,39 @@ const CURRENCIES = [
     },
 ] as const;
 
-function getByNameOrSymbol(currencyNameOrSymbol: string) {
-    const nameOrSymbol = currencyNameOrSymbol.toLowerCase();
-    return CURRENCIES.find((currency) => currency.name.toLowerCase() === nameOrSymbol
-            || currency.symbol.toLowerCase() === nameOrSymbol);
+type Currency = (typeof currencies)[number];
+type CurrencySymbol = Currency['symbol'];
+type CurrencyNameReal = Currency['name'];
+type CurrencyNameAnyRegister = CurrencyNameReal | Uppercase<CurrencyNameReal> | Lowercase<CurrencyNameReal>;
+
+type ValidateOpts = Parameters<Currency['validate']>[1];
+
+const currenciesBySymbol = Object.fromEntries(
+    currencies.map((currency) => [currency.symbol, currency]),
+);
+
+const currenciesByLowercaseName = Object.fromEntries(
+    currencies.map((currency) => [currency.name.toLowerCase(), currency]),
+);
+
+function getCurrency(symbolOrName: CurrencySymbol | CurrencyNameAnyRegister) {
+    const lowerCased = symbolOrName?.toLowerCase();
+    return currenciesBySymbol[lowerCased] ?? currenciesByLowercaseName[lowerCased];
 }
 
 function getAll() {
-    return CURRENCIES;
+    return currencies;
 }
 
 export {
-    getByNameOrSymbol,
+    getCurrency,
     getAll,
+};
+
+export type {
+    CurrencySymbol,
+    CurrencyNameAnyRegister,
+    ValidateOpts,
 };
 
 /// /spit out details for readme.md

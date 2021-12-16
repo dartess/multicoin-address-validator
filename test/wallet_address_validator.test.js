@@ -48,11 +48,10 @@ describe('WAValidator.validate()', function () {
             await valid('mzBc4XEFSdzCDcTxAgf6EZXgsZWpztRhef', 'bitcoin', 'both');
             await valid('1HVDCg2KrPBH1Mg5SK9fGjAR9KVqyMMdBC', 'btc');
 
-            await valid('1SQHtwR5oJRKLfiWQ2APsAd9miUc4k2ez');
-            await valid('116CGDLddrZhMrTwhCVJXtXQpxygTT1kHd');
+            await valid('1SQHtwR5oJRKLfiWQ2APsAd9miUc4k2ez', 'btc');
+            await valid('116CGDLddrZhMrTwhCVJXtXQpxygTT1kHd', 'btc');
 
             // p2sh addresses
-            await valid('3NJZLcZEEYBpxYEUGewU4knsQRn1WM5Fkt');
             await valid('3NJZLcZEEYBpxYEUGewU4knsQRn1WM5Fkt', 'bitcoin');
             await valid('2MxKEf2su6FGAUfCEAHreGFQvEYrfYNHvL7', 'bitcoin', 'testnet');
 
@@ -911,7 +910,7 @@ describe('WAValidator.validate()', function () {
 
         it('should return false for incorrect lbry addresses', async function () {
             await commonTests('lbc')
-            await invalid('ffe1308c044ade30392a0cdc1fd5a4dbe94f9616a95faf888ed36123d9e711557aa497530372')
+            await invalid('ffe1308c044ade30392a0cdc1fd5a4dbe94f9616a95faf888ed36123d9e711557aa497530372', 'lbc')
         })
 
         it('should return false for incorrect tron addresses', async function () {

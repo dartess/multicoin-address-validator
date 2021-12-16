@@ -1,4 +1,4 @@
-import { Address, OptsNetworkTypeOptional } from '../types';
+import { Address, ExtractNetworkType, OptsNetworkTypeOptional } from '../types';
 import { sha256 } from '../utils/sha256';
 import { base58Decode } from '../utils/base58Decode';
 import { byteArray2hexStr } from '../utils/byteArray2hexStr';
@@ -7,7 +7,7 @@ import { hexStr2byteArray } from '../utils/hexStr2byteArray';
 type TrxCurrency = typeof import('../currencies/trx').trxCurrency;
 
 type Currency = TrxCurrency;
-type CurrencyNetworkType = keyof TrxCurrency['addressTypes'];
+type CurrencyNetworkType = ExtractNetworkType<Currency>;
 
 function decodeBase58Address(base58Sting: string) {
     if (typeof (base58Sting) !== 'string') {

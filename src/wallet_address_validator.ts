@@ -1,30 +1,35 @@
-import { getAll, getByNameOrSymbol } from './currencies';
-
-const DEFAULT_CURRENCY_NAME = 'bitcoin';
+import {
+    getAll,
+    getCurrency,
+    CurrencySymbol,
+    CurrencyNameAnyRegister,
+    ValidateOpts,
+} from './currencies';
 
 function validate(
     address: string,
-    currencyNameOrSymbol: string,
-    networkTypeOrOpts?: string | Record<string, unknown>, // TODO
+    currencySymbolOrName: CurrencySymbol | CurrencyNameAnyRegister,
+    networkTypeOrOpts?: string | ValidateOpts,
 ) {
-    const currency = getByNameOrSymbol(currencyNameOrSymbol || DEFAULT_CURRENCY_NAME);
+    const currency = getCurrency(currencySymbolOrName);
 
-    if (currency) {
-        const opts = typeof networkTypeOrOpts === 'string'
-            ? { networkType: networkTypeOrOpts }
-            : networkTypeOrOpts;
-        return currency.validate(address, opts);
+    if (!currency) {
+        throw new Error(`Missing validator for currency: ${currencySymbolOrName}`);
     }
 
-    throw new Error(`Missing validator for currency: ${currencyNameOrSymbol}`);
+    const opts = typeof networkTypeOrOpts === 'string'
+        ? { networkType: networkTypeOrOpts }
+        : networkTypeOrOpts;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return (currency as any).validate(address, opts);
 }
 
 function getCurrencies() {
     return getAll();
 }
 
-function findCurrency(symbol: string) {
-    return getByNameOrSymbol(symbol) || null;
+function findCurrency(currencySymbolOrName: CurrencySymbol | CurrencyNameAnyRegister) {
+    return getCurrency(currencySymbolOrName) || null;
 }
 
 export {

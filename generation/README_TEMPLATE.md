@@ -11,7 +11,7 @@ Simple wallet address validator for validating Bitcoin and other altcoins addres
 Forked from [christsim/multicoin-address-validator](https://github.com/christsim/multicoin-address-validator) which was
 forked from [ryanralph/altcoin-address](https://github.com/ryanralph/altcoin-address).
 
-## Key differences this fork
+## Key differences of this fork
 
 * The library is completely rewritten to the TypeScript.
 * The library offers api for importing individual validators, which will have a positive effect on the bundle size in case of partial use.
@@ -67,6 +67,8 @@ When connected via a script, it is available as a global variable `window.WAVali
 
 The same, but due to the use of a separate validator, there is no need to send the currency.
 
+In this case, options cannot be a string;
+
 This connection can be useful if you only need to use some validators and want to save on the size of your bundle.
 
 Not available when connecting through a script.
@@ -74,8 +76,8 @@ Not available when connecting through a script.
 ### Example:
 
 ```
-import { adaValidate } from '@dartess/multicoin-address-validator/currencies/ada');
-// or const { adaValidate } = require('@dartess/multicoin-address-validator/currencies/ada');
+import { adaValidate } from '@dartess/multicoin-address-validator/lib/currencies/ada';
+// or const { adaValidate } = require('@dartess/multicoin-address-validator/lib/currencies/ada');
 
 const isValid = adaValidate('Ae2tdPwUPEYzs5BRbGcoS3DXvK8mwgggmESz4HqUwMyaS9eNksZGz1LMS9v');
 ```
